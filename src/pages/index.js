@@ -1,3 +1,9 @@
-import React from "react"
+import React from 'react'
+import Layout from '../components/Layout'
+import ListPosts from '../components/ListPosts'
 
-export default () => <div>Hello world!</div>
+export default ({ data }) => (
+  <Layout displayListPosts={false}>
+    <ListPosts />
+  </Layout>
+)
