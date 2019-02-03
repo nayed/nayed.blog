@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Nayed Saïd Ali's personal blog",
     author: 'Nayed Saïd Ali',
-    description: "I have no idea what I'm talking ¯_(ツ)_/¯",
+    description: "Late 20-something talking about stuff he doen't grasp",
     siteUrl: 'https://nayed.blog'
   },
   plugins: [
@@ -11,7 +11,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Montserrat', 'Roboto']
+          families: ['Lato', 'Lora']
         }
       }
     },

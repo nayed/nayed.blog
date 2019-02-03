@@ -1,7 +1,48 @@
 import React from 'react'
+import styled from 'styled-components'
 import { StaticQuery, Link, graphql } from 'gatsby'
 
-export default ({ children }) => (
+import avatar from '../images/nayed.svg'
+
+const Img = styled.img`
+  display: inline-block;
+  height: 4.3rem;
+  // vertical-align: middle;
+`
+
+const About = styled.div`
+  text-align: center;
+`
+
+const A = styled(Link)`
+  display: inline;
+`
+
+const Intro = styled.div`
+  display: inline-block;
+  margin-left: 1rem;
+`
+
+const Name = styled.p`
+  color: #a2a9ad;
+  font-family: 'Anaheim';
+  font-size: 1.8rem;
+  margin-bottom: 0;
+`
+const Desc = styled.p`
+  font-size: 1.2rem;
+  margin-top: 0;
+`
+
+const Blog = styled.span`
+  color: #48b8d0;
+`
+
+const Hr = styled.hr`
+  margin-bottom: 0;
+`
+
+export default () => (
   <StaticQuery
     query={graphql`
       query {
@@ -15,13 +56,19 @@ export default ({ children }) => (
     `}
     render={data => (
       <>
-        <div>
-          <Link to="/">
-            <h1>{data.site.siteMetadata.title}</h1>
-          </Link>
-          <p>{data.site.siteMetadata.description}</p>
-          {children}
-        </div>
+        <About>
+          <A to="/">
+            <Img src={avatar} alt="nayed's avatar" />
+            <Intro>
+              <Name>Nayed Saïd Ali</Name>
+              <Desc>
+                Personal <Blog>blog</Blog>{' '}
+              </Desc>
+            </Intro>
+            <h6>{data.site.siteMetadata.description}</h6>
+          </A>
+        </About>
+        <Hr />
       </>
     )}
   />

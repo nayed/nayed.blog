@@ -5,8 +5,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
