@@ -54,6 +54,11 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
     text-decoration: inherit;
   }
+  
+  iframe {
+    max-width: 90vw;
+    width: 48rem !important;
+  }
 `
 
 export default GlobalStyles

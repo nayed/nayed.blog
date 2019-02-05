@@ -42,6 +42,10 @@ const Hr = styled.hr`
   margin-bottom: 0;
 `
 
+const Info = styled.p`
+  font-size: 0.6rem;
+`
+
 export default () => (
   <StaticQuery
     query={graphql`
@@ -65,7 +69,7 @@ export default () => (
                 Personal <Blog>blog</Blog>{' '}
               </Desc>
             </Intro>
-            <h6>{data.site.siteMetadata.description}</h6>
+            <Info>{data.site.siteMetadata.description}</Info>
           </A>
         </About>
         <Hr />
