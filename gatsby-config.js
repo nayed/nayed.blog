@@ -18,8 +18,8 @@ module.exports = {
         name: 'Nayed',
         short_name: 'Nayed',
         start_url: '/',
-        background_color: '#223344',
-        theme_color: '#fffef8',
+        background_color: '#ffffff',
+        theme_color: '#223344',
         display: 'minimal-ui',
         icon: 'src/images/n.svg'
       }
