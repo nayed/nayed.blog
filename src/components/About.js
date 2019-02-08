@@ -25,7 +25,7 @@ const Intro = styled.div`
 
 const Name = styled.p`
   color: #a2a9ad;
-  font-family: 'Anaheim';
+  font-family: 'Lora';
   font-size: 1.8rem;
   margin-bottom: 0;
 `
@@ -43,7 +43,7 @@ const Hr = styled.hr`
 `
 
 const Info = styled.p`
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 `
 
 export default () => (

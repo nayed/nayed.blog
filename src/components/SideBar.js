@@ -28,12 +28,29 @@ const Post = styled.div`
   padding: 0.5rem 1.7rem;
 
   &:hover {
-    background: #E7ECEF;
+    background: #e7ecef;
   }
 `
 
 const Title = styled.h5`
-  color: #12355B;
+  color: #12355b;
+`
+
+const PostInfo = styled.p`
+  font-style: italic;
+  margin: 0;
+`
+
+const Date = styled.span`
+  font-size: 0.8rem;
+`
+
+const MinToRead = styled.span`
+  font-size: 0.7rem;
+`
+
+const Excerpt = styled.p`
+  margin: 0.6rem 0;
 `
 
 export default ({ displayListPosts }) => (
@@ -47,7 +64,7 @@ export default ({ displayListPosts }) => (
               id
               frontmatter {
                 title
-                date(formatString: "DD MMMM, YYYY")
+                date(formatString: "MMMM DD, YYYY")
               }
               fields {
                 slug
@@ -69,9 +86,12 @@ export default ({ displayListPosts }) => (
                 <Link to={node.fields.slug}>
                   <Title>
                     {node.frontmatter.title}{' '}
-                    <span>— {node.frontmatter.date}</span>
+                    <PostInfo>
+                      <Date>{node.frontmatter.date} </Date>
+                      <MinToRead>— {node.timeToRead}min</MinToRead>
+                    </PostInfo>
                   </Title>
-                  <p>{node.excerpt}</p>
+                  <Excerpt>{node.excerpt}</Excerpt>
                 </Link>
               </Post>
             ))}

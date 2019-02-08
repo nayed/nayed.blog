@@ -10,10 +10,20 @@ const Post = styled.div`
 `
 
 const Title = styled.h1`
-  color: #e01a4f;
+  line-height: 0.85;
 `
+
+const PostInfo = styled.p`
+  font-style: italic;
+  margin: 0;
+`
+
 const Date = styled.span`
   font-size: 1rem;
+`
+
+const MinToRead = styled.span`
+  font-size: 0.85rem;
 `
 
 export default ({ children }) => (
@@ -27,7 +37,7 @@ export default ({ children }) => (
               id
               frontmatter {
                 title
-                date(formatString: "DD MMMM, YYYY")
+                date(formatString: "MMMM DD, YYYY")
               }
               fields {
                 slug
@@ -44,7 +54,11 @@ export default ({ children }) => (
         <Post key={node.id}>
           <Link to={node.fields.slug}>
             <Title>
-              {node.frontmatter.title} <Date>— {node.frontmatter.date}</Date>
+              {node.frontmatter.title}
+              <PostInfo>
+                <Date>{node.frontmatter.date} </Date>
+                <MinToRead>— {node.timeToRead} min read</MinToRead>
+              </PostInfo>
             </Title>
           </Link>
           <p>{node.excerpt}</p>

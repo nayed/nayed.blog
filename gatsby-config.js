@@ -30,7 +30,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Lato', 'Lora', 'Open Sans']
+          families: ['Lora', 'Open Sans']
         }
       }
     },

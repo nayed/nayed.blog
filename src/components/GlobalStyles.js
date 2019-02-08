@@ -27,7 +27,6 @@ const GlobalStyles = createGlobalStyle`
 
   h1 {
     color: #cc3355;
-    // font-family: 'Lora', serif;
   }
 
   h1 {
@@ -55,6 +54,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora';
     margin-bottom: 0.5rem;
     margin-top: 0;
   }
@@ -62,6 +62,10 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+
+  main a {
+    color: #00b1bb;
   }
   
   iframe {
