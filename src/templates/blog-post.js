@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import GlobalStyles from '../components/GlobalStyles'
 import SEO from '../components/SEO'
 
 const Content = styled.div`
@@ -35,22 +34,19 @@ const MinToRead = styled.span`
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
-    <>
-      <GlobalStyles />
-      <Layout displayListPosts={true}>
-        <SEO title={`Nayed's blog | ${post.frontmatter.title}`} />
-        <Content>
-          <Title>
-            {post.frontmatter.title}
-            <PostInfo>
-              <Date>{post.frontmatter.date} </Date>
-              <MinToRead>— {post.timeToRead} min read</MinToRead>
-            </PostInfo>
-          </Title>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        </Content>
-      </Layout>
-    </>
+    <Layout displayListPosts={true}>
+      <SEO title={`Nayed's blog | ${post.frontmatter.title}`} />
+      <Content>
+        <Title>
+          {post.frontmatter.title}
+          <PostInfo>
+            <Date>{post.frontmatter.date} </Date>
+            <MinToRead>— {post.timeToRead} min read</MinToRead>
+          </PostInfo>
+        </Title>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </Content>
+    </Layout>
   )
 }
 
