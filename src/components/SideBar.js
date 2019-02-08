@@ -5,7 +5,6 @@ import { StaticQuery, Link, graphql } from 'gatsby'
 import About from './About'
 
 const SideBar = styled.aside`
-  // background-color: #ffffff;
   border-right: 1px dashed #c5c5c5;
   display: flex;
   flex-direction: column;

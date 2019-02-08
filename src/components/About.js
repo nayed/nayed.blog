@@ -7,7 +7,6 @@ import avatar from '../images/nayed.svg'
 const Img = styled.img`
   display: inline-block;
   height: 4.3rem;
-  // vertical-align: middle;
 `
 
 const About = styled.div`
