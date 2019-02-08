@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import avatar from '../images/nayed.svg'
 
 const Nav = styled.nav`
-  @media (min-width: 45.9rem) {
+  @media (min-width: 45rem) {
     display: none;
   }
 `

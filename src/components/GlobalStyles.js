@@ -69,8 +69,12 @@ const GlobalStyles = createGlobalStyle`
   }
   
   iframe {
-    max-width: 90vw;
-    width: 48rem !important;
+    // max-width: 90vw;
+    width: 43rem !important;
+
+    @media (max-width: 45rem) {
+      max-width: 39rem !important;
+    }
   }
 `
 

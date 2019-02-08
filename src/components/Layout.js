@@ -9,7 +9,7 @@ import SideBar from './SideBar'
 const Layout = styled.article`
   display: grid;
   height: 100%;
-  grid-template-columns: 23rem 1fr;
+  grid-template-columns: 20rem 1fr;
   grid-template-rows: 1fr;
   min-height: 100vh;
 `
@@ -22,7 +22,7 @@ const Main = styled.main`
   // grid-template-rows: max-content;
   line-height: 1.75;
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 45rem;
   // padding: 2rem 4rem;
   padding-top: 1.3rem;
 

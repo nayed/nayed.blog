@@ -12,9 +12,9 @@ const SideBar = styled.aside`
   grid-column: 1 / 2;
   height: 100%;
   position: fixed;
-  width: 23rem;
+  width: 20rem;
 
-  @media (max-width: 46rem) {
+  @media (max-width: 45rem) {
     display: none;
   }
 `
@@ -50,6 +50,7 @@ const MinToRead = styled.span`
 `
 
 const Excerpt = styled.p`
+  font-size: 0.8rem;
   margin: 0.6rem 0;
 `
 
