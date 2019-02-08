@@ -17,6 +17,7 @@ const Layout = styled.article`
 const Main = styled.main`
   // display: grid;
   font-size: 1.125rem;
+  grid-column: 2 / 3;
   // grid-template-columns: 1fr 1fr 1fr;
   // grid-template-rows: max-content;
   line-height: 1.75;

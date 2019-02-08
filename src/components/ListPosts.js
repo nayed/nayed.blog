@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { StaticQuery, Link, graphql } from 'gatsby'
 
 const Post = styled.div`
+  // background-color: #ffffff;
   // grid-column: 2 / 3;
   // max-width: 50rem;
   padding: 0 1rem;

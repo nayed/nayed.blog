@@ -39,7 +39,7 @@ const Blog = styled.span`
 `
 
 const Hr = styled.hr`
-  margin-bottom: 0;
+  margin: 0 1.1rem;
 `
 
 const Info = styled.p`
@@ -59,7 +59,7 @@ export default () => (
       }
     `}
     render={data => (
-      <>
+      <div>
         <About>
           <A to="/">
             <Img src={avatar} alt="nayed's avatar" />
@@ -73,7 +73,7 @@ export default () => (
           </A>
         </About>
         <Hr />
-      </>
+      </div>
     )}
   />
 )

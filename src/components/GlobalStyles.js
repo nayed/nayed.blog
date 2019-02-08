@@ -1,9 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
+  *,
+  *::before,
+  *::after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
   html, body {
     height: 100%;
-    font-family: 'Lato', serif;
+    font-family: 'Open Sans', serif;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -14,11 +21,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #FFFFFF;
+    background-color: #fffef8;
+    color: #445566;
   }
 
   h1 {
-    font-family: 'Lora', serif;
+    color: #cc3355;
+    // font-family: 'Lora', serif;
   }
 
   h1 {

@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
 const Content = styled.div`
+  // background-color: #ffffff;
   // grid-column: 2 / 3;
   font-size: 1.125rem;
   line-height: 1.75;
