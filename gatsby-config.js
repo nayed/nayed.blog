@@ -18,6 +18,7 @@ module.exports = {
         icon: 'src/images/n.svg'
       }
     },
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-web-font-loader',
