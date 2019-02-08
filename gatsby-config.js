@@ -6,6 +6,18 @@ module.exports = {
     siteUrl: 'https://nayed.blog'
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Nayed',
+        short_name: 'Nayed',
+        start_url: '/',
+        background_color: '#223344',
+        theme_color: '#fffef8',
+        display: 'minimal-ui',
+        icon: 'src/images/n.svg'
+      }
+    },
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-web-font-loader',
@@ -15,13 +27,13 @@ module.exports = {
         }
       }
     },
-    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',
         path: `${__dirname}/src/`
       }
-    }
+    },
+    'gatsby-transformer-remark'
   ]
 }
