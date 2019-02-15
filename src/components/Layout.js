@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import localStorage from 'localStorage'
 
 import GlobalStyles from './GlobalStyles'
 import Nav from './Nav'
@@ -45,7 +44,19 @@ export default class Layout extends Component {
     let theme = ''
     let checked = false
 
-    switch (localStorage.getItem('theme')) {
+    this.state = {
+      theme,
+      checked
+    }
+
+    this.toggleTheme = this.toggleTheme.bind(this)
+  }
+
+  componentDidMount() {
+    const windowGlobal = typeof window !== 'undefined' && window
+    // console.log(windowGlobal)
+    let { theme, checked } = this.state
+    switch (windowGlobal.localStorage.getItem('theme')) {
       case 'light':
         theme = themes.light
         checked = false
@@ -60,21 +71,17 @@ export default class Layout extends Component {
         break
     }
 
-    this.state = {
-      theme,
-      checked
-    }
-
-    this.toggleTheme = this.toggleTheme.bind(this)
+    this.setState({ theme, checked })
   }
 
   toggleTheme() {
+    const windowGlobal = typeof window !== 'undefined' && window
     if (this.state.theme === themes.dark) {
       this.setState({ theme: themes.light, checked: false })
-      localStorage.setItem('theme', 'light')
+      windowGlobal.localStorage.setItem('theme', 'light')
     } else {
       this.setState({ theme: themes.dark, checked: true })
-      localStorage.setItem('theme', 'dark')
+      windowGlobal.localStorage.setItem('theme', 'dark')
     }
   }
 
