@@ -6,16 +6,14 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
 const Content = styled.div`
-  // background-color: #ffffff;
-  // grid-column: 2 / 3;
+  grid-column: 2 / 3;
   font-size: 1.125rem;
   line-height: 1.75;
-  padding: 0 1.2rem;
+  padding: 0 1rem;
 `
 
 const Title = styled.h1`
   line-height: 0.85;
-  margin-bottom: 1.5rem;
 `
 
 const PostInfo = styled.p`
@@ -41,7 +39,7 @@ export default ({ data }) => {
           {post.frontmatter.title}
           <PostInfo>
             <Date>{post.frontmatter.date} </Date>
-            <MinToRead>— {post.timeToRead} min read</MinToRead>
+            <MinToRead>— {post.timeToRead} min read or so</MinToRead>
           </PostInfo>
         </Title>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />

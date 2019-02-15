@@ -54,7 +54,7 @@ export default ({ children }) => (
               {node.frontmatter.title}
               <PostInfo>
                 <Date>{node.frontmatter.date} </Date>
-                <MinToRead>— {node.timeToRead} min read</MinToRead>
+                <MinToRead>— {node.timeToRead} min read or so</MinToRead>
               </PostInfo>
             </Title>
           </Link>
