@@ -12,7 +12,7 @@ const themes = {
     bodyBG: '#21374b',
     fontColor: '#e7dacb',
     sideTitleColor: '#fffef8',
-    sideHoverBG: '#0e6caf',
+    sideHoverBG: '#12355b',
     titleColor: '#ffffff'
   }
 }
