@@ -21,12 +21,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: #fffef8;
-    color: #445566;
+    background: ${props => props.theme.bodyBG || '#fffef8'};
+    color: ${props => props.theme.fontColor || '#445566'};
   }
 
   h1 {
-    color: #cc3355;
+    color: ${props => props.theme.titleColor || '#cc3355'};
   }
 
   h1 {
