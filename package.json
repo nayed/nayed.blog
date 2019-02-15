@@ -8,7 +8,8 @@
     "start": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "clean": "rm -rf node_modules && npm i"
   },
   "dependencies": {
     "gatsby": "^2.0.118",

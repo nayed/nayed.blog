@@ -41,9 +41,25 @@ export default class Layout extends Component {
   constructor(props) {
     super(props)
 
-    let theme = ''
+    let theme = themes.light
     let checked = false
 
+    if (typeof window !== 'undefined' && window) {
+      switch (localStorage.getItem('theme')) {
+        case 'light':
+          theme = themes.light
+          checked = false
+          break
+        case 'dark':
+          theme = themes.dark
+          checked = true
+          break
+        default:
+          theme = themes.light
+          checked = false
+          break
+      }
+    }
     this.state = {
       theme,
       checked
@@ -52,36 +68,15 @@ export default class Layout extends Component {
     this.toggleTheme = this.toggleTheme.bind(this)
   }
 
-  componentDidMount() {
-    const windowGlobal = typeof window !== 'undefined' && window
-    // console.log(windowGlobal)
-    let { theme, checked } = this.state
-    switch (windowGlobal.localStorage.getItem('theme')) {
-      case 'light':
-        theme = themes.light
-        checked = false
-        break
-      case 'dark':
-        theme = themes.dark
-        checked = true
-        break
-      default:
-        theme = themes.light
-        checked = false
-        break
-    }
-
-    this.setState({ theme, checked })
-  }
-
   toggleTheme() {
-    const windowGlobal = typeof window !== 'undefined' && window
-    if (this.state.theme === themes.dark) {
-      this.setState({ theme: themes.light, checked: false })
-      windowGlobal.localStorage.setItem('theme', 'light')
-    } else {
-      this.setState({ theme: themes.dark, checked: true })
-      windowGlobal.localStorage.setItem('theme', 'dark')
+    if (typeof window !== 'undefined' && window) {
+      if (this.state.theme === themes.dark) {
+        this.setState({ theme: themes.light, checked: false })
+        localStorage.setItem('theme', 'light')
+      } else {
+        this.setState({ theme: themes.dark, checked: true })
+        localStorage.setItem('theme', 'dark')
+      }
     }
   }
 
