@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import localStorage from 'localStorage'
 
 import GlobalStyles from './GlobalStyles'
 import Nav from './Nav'
