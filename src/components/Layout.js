@@ -86,7 +86,10 @@ export default class Layout extends Component {
         <GlobalStyles />
         <Nav />
         <Article>
-          <SideBar displayListPosts={displayListPosts} />
+          <SideBar
+            displayListPosts={displayListPosts}
+            theme={this.state.theme}
+          />
           <Main>
             <Switcher>
               <Checkbox
