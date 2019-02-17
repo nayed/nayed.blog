@@ -1,22 +1,5 @@
 import styled from 'styled-components'
 
-const themes = {
-  light: {
-    bodyBG: '#fffef8',
-    fontColor: '#445566',
-    sideTitleColor: '#12355b',
-    sideHoverBG: '#e7ecef',
-    titleColor: '#cc3355'
-  },
-  dark: {
-    bodyBG: '#21374b',
-    fontColor: '#e7dacb',
-    sideTitleColor: '#fffef8',
-    sideHoverBG: '#12355b',
-    titleColor: '#ffffff'
-  }
-}
-
 const Checkbox = styled.input`
   height: 0;
   width: 0;
@@ -57,4 +40,4 @@ const Label = styled.label`
   }
 `
 
-export { themes, Checkbox, Label }
+export { Checkbox, Label }
