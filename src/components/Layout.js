@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import GlobalStyles from './GlobalStyles'
 import Nav from './Nav'
 import SideBar from './SideBar'
-import { Checkbox, Label, themes } from './ThemeSwitcher'
+import { Checkbox, Label } from './ThemeSwitcher'
 
 const Article = styled.article`
   display: grid;
@@ -41,42 +41,40 @@ export default class Layout extends Component {
   constructor(props) {
     super(props)
 
-    let theme = themes.light
-    let checked = false
+    const windowGlobal = typeof window !== 'undefined' && window
 
-    if (typeof window !== 'undefined' && window) {
-      switch (localStorage.getItem('theme')) {
-        case 'light':
-          theme = themes.light
-          checked = false
-          break
-        case 'dark':
-          theme = themes.dark
-          checked = true
-          break
-        default:
-          theme = themes.light
-          checked = false
-          break
-      }
-    }
     this.state = {
-      theme,
-      checked
+      checked:
+        typeof windowGlobal.document !== 'undefined' &&
+        windowGlobal.document.body.className === 'dark'
+          ? true
+          : false,
+      theme:
+        typeof windowGlobal.document !== 'undefined' &&
+        windowGlobal.document.body.className === 'dark'
+          ? 'dark'
+          : 'light'
     }
 
     this.toggleTheme = this.toggleTheme.bind(this)
   }
 
+  componentDidMount() {
+    this.setState(state => ({
+      checked: document.body.className === 'dark' ? true : false,
+      theme: document.body.className === 'dark' ? 'dark' : 'light'
+    }))
+  }
+
   toggleTheme() {
-    if (typeof window !== 'undefined' && window) {
-      if (this.state.theme === themes.dark) {
-        this.setState({ theme: themes.light, checked: false })
-        localStorage.setItem('theme', 'light')
-      } else {
-        this.setState({ theme: themes.dark, checked: true })
-        localStorage.setItem('theme', 'dark')
-      }
+    if (document.body.className === 'dark') {
+      this.setState({ theme: 'light', checked: false })
+      localStorage.setItem('theme', 'light')
+      document.body.className = 'light'
+    } else {
+      this.setState({ theme: 'dark', checked: true })
+      localStorage.setItem('theme', 'dark')
+      document.body.className = 'dark'
     }
   }
 
@@ -85,10 +83,10 @@ export default class Layout extends Component {
 
     return (
       <>
-        <GlobalStyles {...this.state} />
+        <GlobalStyles />
         <Nav />
         <Article>
-          <SideBar {...this.state} displayListPosts={displayListPosts} />
+          <SideBar displayListPosts={displayListPosts} />
           <Main>
             <Switcher>
               <Checkbox

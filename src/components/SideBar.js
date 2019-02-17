@@ -29,12 +29,12 @@ export default class SB extends Component {
       padding: 0.5rem 1.7rem;
 
       &:hover {
-        background: ${this.props.theme.sideHoverBG || '#e7ecef'};
+        background: ${'#e7ecef' || '#12355b'};
       }
     `
 
     const Title = styled.h5`
-      color: ${this.props.theme.sideTitleColor || '#445566'};
+      color: ${'#12355b' || '#fffef8'};
     `
 
     const PostInfo = styled.p`

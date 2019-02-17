@@ -20,13 +20,22 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  body {
-    background: ${props => props.theme.bodyBG || '#fffef8'};
-    color: ${props => props.theme.fontColor || '#445566'};
+  body.light {
+    background: #fffef8;
+    color: #445566;
   }
 
-  h1 {
-    color: ${props => props.theme.titleColor || '#cc3355'};
+  body.light h1 {
+    color: #cc3355;
+  }
+
+  body.dark {
+    background: #21374b;
+    color: #e7dacb;
+  }
+
+  body.dark h1 {
+    color: #ffffff;
   }
 
   h1 {
