@@ -44,37 +44,19 @@ export default class Layout extends Component {
     const windowGlobal = typeof window !== 'undefined' && window
 
     this.state = {
-      checked:
-        typeof windowGlobal.document !== 'undefined' &&
-        windowGlobal.document.body.className === 'dark'
-          ? true
-          : false,
-      theme:
-        typeof windowGlobal.document !== 'undefined' &&
-        windowGlobal.document.body.className === 'dark'
-          ? 'dark'
-          : 'light'
+      checked: windowGlobal.__theme === 'dark',
+      theme: windowGlobal.__theme
     }
-
-    this.toggleTheme = this.toggleTheme.bind(this)
   }
 
   componentDidMount() {
-    this.setState(state => ({
-      checked: document.body.className === 'dark' ? true : false,
-      theme: document.body.className === 'dark' ? 'dark' : 'light'
-    }))
-  }
+    this.setState({ checked: window.__theme === 'dark', theme: window.__theme })
 
-  toggleTheme() {
-    if (document.body.className === 'dark') {
-      this.setState({ theme: 'light', checked: false })
-      localStorage.setItem('theme', 'light')
-      document.body.className = 'light'
-    } else {
-      this.setState({ theme: 'dark', checked: true })
-      localStorage.setItem('theme', 'dark')
-      document.body.className = 'dark'
+    window.__onThemeChange = () => {
+      this.setState({
+        checked: window.__theme === 'dark',
+        theme: window.__theme
+      })
     }
   }
 
@@ -95,8 +77,12 @@ export default class Layout extends Component {
               <Checkbox
                 type="checkbox"
                 id="switch"
-                defaultChecked={this.state.checked}
-                onChange={this.toggleTheme}
+                checked={this.state.checked}
+                onChange={e =>
+                  window.__setPreferredTheme(
+                    e.target.checked ? 'dark' : 'light'
+                  )
+                }
               />
               <Label htmlFor="switch">Toggle</Label>
             </Switcher>
