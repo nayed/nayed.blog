@@ -29,6 +29,21 @@ const MinToRead = styled.span`
   font-size: 0.85rem;
 `
 
+const Signature = styled.div`
+  font-family: 'Gloria Hallelujah', cursive;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 2rem 0;
+
+  p {
+    margin: 0;
+  }
+
+  p:last-child {
+    margin-top: 1rem;
+  }
+`
+
 export default ({ data }) => {
   const post = data.markdownRemark
   return (
@@ -43,6 +58,11 @@ export default ({ data }) => {
           </PostInfo>
         </Title>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Signature>
+          <p>Until next time,</p>
+          <p>Plus ultra!</p>
+          <p>NSA</p>
+        </Signature>
       </Content>
     </Layout>
   )

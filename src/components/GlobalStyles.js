@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Lora|Open+Sans');
+
   *,
   *::before,
   *::after {
@@ -20,7 +22,8 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
-  body.light {
+  body.light,
+  body.light .excerpt {
     background: #fffef8;
     color: #445566;
   }
@@ -29,9 +32,10 @@ const GlobalStyles = createGlobalStyle`
     color: #cc3355;
   }
 
-  body.dark {
+  body.dark,
+  body.dark .excerpt {
     background: #21374b;
-    color: #e7dacb;
+    color: #a0a0a0;
   }
 
   body.dark h1 {

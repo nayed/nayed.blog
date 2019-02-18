@@ -27,14 +27,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Lora', 'Open Sans']
-        }
-      }
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',

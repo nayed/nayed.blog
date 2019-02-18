@@ -119,5 +119,3 @@ and to fulfill my dream.
 
 So welcome to my blog. My name is Nayed Saïd Ali and I'll be talking about tech
 stuff and other non-related tech stuff.
-
-_Plus ultra_

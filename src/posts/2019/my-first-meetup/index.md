@@ -69,6 +69,3 @@ world and I aspire to be one of them, someday.
 
 To wrap things up, this year is the year where I will finally reach the tech
 community 😊.
-
-Until next time,  
-Plus ultra

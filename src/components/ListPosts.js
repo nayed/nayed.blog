@@ -57,8 +57,8 @@ export default ({ children }) => (
                 <MinToRead>— {node.timeToRead} min read or so</MinToRead>
               </PostInfo>
             </Title>
+            <p className="excerpt">{node.excerpt}</p>
           </Link>
-          <p>{node.excerpt}</p>
         </Post>
       ))
     }
