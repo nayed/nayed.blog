@@ -9,7 +9,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "clean": "rm -rf node_modules && npm i"
+    "clean": "rm -rf node_modules && npm i",
+    "cs": "npm run clean && npm start"
   },
   "dependencies": {
     "gatsby": "^2.0.118",
