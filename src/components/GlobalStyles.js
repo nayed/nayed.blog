@@ -79,9 +79,9 @@ const GlobalStyles = createGlobalStyle`
 
   main a {
     box-shadow: inset 0 0 0 rgba(250, 165, 0, 0);
+    color: #00b1bb;
     padding: 0.3rem 0 0.2rem;
     transition: all 0.2s ease;
-    color: #00b1bb;
   }
 
   main a:hover {
