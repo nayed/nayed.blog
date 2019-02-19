@@ -20,7 +20,6 @@ const Main = styled.main`
   line-height: 1.75;
   margin: 0 auto;
   max-width: 45rem;
-  // padding-top: 1.3rem;
 
   @media (max-width: 45rem) {
     grid-column: 1 / 3;
@@ -29,7 +28,7 @@ const Main = styled.main`
 
 const Switcher = styled.div`
   float: right;
-  margin-bottom: 1.25rem;
+  height: 5rem;
   padding-right: 1.5rem;
 `
 
@@ -41,11 +40,9 @@ export default class Layout extends Component {
   constructor(props) {
     super(props)
 
-    const windowGlobal = typeof window !== 'undefined' && window
-
     this.state = {
-      checked: windowGlobal.__theme === 'dark',
-      theme: windowGlobal.__theme
+      checked: null,
+      theme: null
     }
   }
 
@@ -73,19 +70,23 @@ export default class Layout extends Component {
             theme={this.state.theme}
           />
           <Main>
-            <Switcher>
-              <Checkbox
-                type="checkbox"
-                id="switch"
-                checked={this.state.checked}
-                onChange={e =>
-                  window.__setPreferredTheme(
-                    e.target.checked ? 'dark' : 'light'
-                  )
-                }
-              />
-              <Label htmlFor="switch">Toggle</Label>
-            </Switcher>
+            {this.state.checked !== null ? (
+              <Switcher>
+                <Checkbox
+                  type="checkbox"
+                  id="switch"
+                  checked={this.state.checked}
+                  onChange={e =>
+                    window.__setPreferredTheme(
+                      e.target.checked ? 'dark' : 'light'
+                    )
+                  }
+                />
+                <Label htmlFor="switch">Toggle</Label>
+              </Switcher>
+            ) : (
+              <div style={{ height: '5rem' }} />
+            )}
             <Content>{children}</Content>
           </Main>
         </Article>
