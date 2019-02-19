@@ -78,7 +78,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main a {
+    box-shadow: inset 0 0 0 rgba(250, 165, 0, 0);
+    padding: 0.3rem 0 0.2rem;
+    transition: all 0.2s ease;
     color: #00b1bb;
+  }
+
+  main a:hover {
+    box-shadow: inset 0 -3px 0 #faa500;
+    color: #faa500;
   }
   
   iframe {
