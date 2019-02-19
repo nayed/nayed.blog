@@ -7,8 +7,8 @@ import SEO from '../components/SEO'
 
 const Content = styled.div`
   grid-column: 2 / 3;
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.25rem;
+  line-height: 1.45;
   padding: 0 1rem;
 `
 

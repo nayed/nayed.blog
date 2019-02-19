@@ -16,9 +16,9 @@ const Article = styled.article`
 `
 
 const Main = styled.main`
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   grid-column: 2 / 3;
-  line-height: 1.75;
+  line-height: 1.45;
   margin: 0 auto;
   max-width: 45rem;
 
