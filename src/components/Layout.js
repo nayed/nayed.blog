@@ -5,6 +5,7 @@ import GlobalStyles from './GlobalStyles'
 import Nav from './Nav'
 import SideBar from './SideBar'
 import { Checkbox, Label } from './ThemeSwitcher'
+import Footer from './Footer'
 
 const Article = styled.article`
   display: grid;
@@ -89,6 +90,7 @@ export default class Layout extends Component {
             )}
             <Content>{children}</Content>
           </Main>
+          <Footer />
         </Article>
       </>
     )
