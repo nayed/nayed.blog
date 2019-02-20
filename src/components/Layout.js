@@ -59,7 +59,7 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { children, displayListPosts } = this.props
+    const { children, displayListPosts, location } = this.props
 
     return (
       <>
@@ -68,6 +68,7 @@ export default class Layout extends Component {
         <Article>
           <SideBar
             displayListPosts={displayListPosts}
+            location={location}
             theme={this.state.theme}
           />
           <Main>

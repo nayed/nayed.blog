@@ -44,10 +44,11 @@ const Signature = styled.div`
   }
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const post = data.markdownRemark
+
   return (
-    <Layout displayListPosts={true}>
+    <Layout displayListPosts={true} location={location}>
       <SEO title={`Nayed's blog | ${post.frontmatter.title}`} />
       <Content>
         <Title>

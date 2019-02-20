@@ -4,6 +4,15 @@ import { StaticQuery, Link, graphql } from 'gatsby'
 
 import About from './About'
 
+const bgPost = (slug, { location, theme }) => {
+  if (theme === 'light' && slug === location.pathname) {
+    return 'background: #e7ecef;'
+  } else if (theme === 'dark' && slug === location.pathname) {
+    return 'background: #12355b;'
+  }
+  return ''
+}
+
 export default class SB extends Component {
   render() {
     const SideBar = styled.aside`
@@ -25,6 +34,7 @@ export default class SB extends Component {
       overflow: scroll;
     `
     const Post = styled.div`
+      ${props => bgPost(props.slug, this.props)}
       border-bottom: 1px dashed #c4c4c4;
       padding: 0.5rem 1.7rem;
 
@@ -87,7 +97,7 @@ export default class SB extends Component {
             <Posts>
               {displayListPosts &&
                 data.allMarkdownRemark.edges.map(({ node }) => (
-                  <Post key={node.id}>
+                  <Post key={node.id} slug={node.fields.slug}>
                     <Link to={node.fields.slug}>
                       <Title>
                         {node.frontmatter.title}{' '}
