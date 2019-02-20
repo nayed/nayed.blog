@@ -37,9 +37,14 @@ export default class SB extends Component {
       ${props => bgPost(props.slug, this.props)}
       border-bottom: 1px dashed #c4c4c4;
       padding: 0.5rem 1.7rem;
+      transition: all 0.2s ease;
 
-      &:hover {
-        background: ${this.props.theme === 'light' ? '#e7ecef' : '#12355b'};
+      &:hover,
+      &:focus {
+        background: ${this.props.theme === 'light'
+          ? 'rgba(205, 202, 162, 0.16)'
+          : 'rgba(33, 5, 75, 0.16)'};
+        transform: scale(1.02);
       }
     `
 
