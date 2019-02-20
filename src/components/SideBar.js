@@ -45,6 +45,10 @@ export default class SB extends Component {
           ? 'rgba(205, 202, 162, 0.16)'
           : 'rgba(33, 5, 75, 0.16)'};
         transform: scale(1.02);
+
+        h5 {
+          color: ${this.props.theme === 'light' ? '#a5901f' : '#ffd700'};
+        }
       }
     `
 
