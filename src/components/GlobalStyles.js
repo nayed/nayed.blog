@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Inconsolata|Montserrat');
+  @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Inconsolata|Karla');
 
   *,
   *::before,
@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 2.55rem;
+    font-size: 2.75rem;
   }
 
   h2 {
@@ -67,7 +67,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Karla', sans-serif;
     margin-bottom: 0.5rem;
     margin-top: 0;
   }
