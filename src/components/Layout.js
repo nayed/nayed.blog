@@ -21,6 +21,7 @@ const Main = styled.main`
   line-height: 1.45;
   margin: 0 auto;
   max-width: var(--main-mw);
+  padding: 0 1rem;
 
   @media (max-width: ${mainMw}) {
     grid-column: 1 / 3;

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 // because we can't use css var in @media queries
-export const mainMw = '44rem'
+export const mainMw = '45rem'
 export const sbMw = '20rem'
 
 const GlobalStyles = createGlobalStyle`
