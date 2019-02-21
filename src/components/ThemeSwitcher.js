@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 const Checkbox = styled.input`
   height: 0;
-  width: 0;
   visibility: hidden;
+  width: 0;
 
   &:checked + label {
-    background: #0e6caf;
+    background: #fffef8;
   }
   &:checked + label:after {
     left: calc(100% - 5px);
@@ -15,28 +15,27 @@ const Checkbox = styled.input`
 `
 
 const Label = styled.label`
+  background: #a9a9a9;
+  border-radius: 1.5rem;
   cursor: pointer;
-  text-indent: -9999px;
-  width: 3.5rem;
+  display: block;
   height: 1.5rem;
   margin-left: 1.5rem;
-  background: #9eade6;
-  display: block;
-  border-radius: 1.5rem;
   position: relative;
+  text-indent: -9999px;
+  width: 3.5rem;
   &:after {
+    background: #ffffff;
+    border-color: #007d84;
+    border-radius: 1rem;
+    border-style: solid;
     content: '';
-    position: absolute;
-    top: 5px;
+    height: 1.4rem;
     left: 5px;
-    width: 0.875rem;
-    height: 0.875rem;
-    background: #fff;
-    border-radius: 0.875rem;
-    transition: 0.3s;
-  }
-  &:active:after {
-    width: 3.625rem;
+    position: absolute;
+    top: 1px;
+    transition: 0.5s;
+    width: 1.4rem;
   }
 `
 
