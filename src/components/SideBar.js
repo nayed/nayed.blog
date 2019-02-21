@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { StaticQuery, Link, graphql } from 'gatsby'
+import { mainMw } from './GlobalStyles.js'
 
 import About from './About'
 
@@ -8,7 +9,7 @@ const bgPost = (slug, { location, theme }) => {
   if (theme === 'light' && slug === location.pathname) {
     return 'background: #e7ecef;'
   } else if (theme === 'dark' && slug === location.pathname) {
-    return 'background: #12355b;'
+    return 'background: #162438;'
   }
   return ''
 }
@@ -22,9 +23,9 @@ export default class SB extends Component {
       grid-column: 1 / 2;
       height: 100%;
       position: fixed;
-      width: 20rem;
+      width: var(--sb-mw);
 
-      @media (max-width: 45rem) {
+      @media (max-width: ${mainMw}) {
         display: none;
       }
     `
@@ -37,7 +38,7 @@ export default class SB extends Component {
       ${props => bgPost(props.slug, this.props)}
       border-bottom: 1px dashed #c4c4c4;
       padding: 0.5rem 1.7rem;
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
 
       &:hover,
       &:focus {

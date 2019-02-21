@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { mainMw } from './GlobalStyles.js'
+
 import githubIcon from '../images/github.svg'
 
 const size = '1.05rem'
@@ -11,19 +13,18 @@ const Footer = styled.footer`
   margin: 2.5rem 0 1.5rem 0;
   text-align: center;
 
-  @media (max-width: 45rem) {
+  @media (max-width: ${mainMw}) {
     grid-column: 1 / 3;
   }
 `
 
 const A = styled.a`
-  box-shadow: inset 0 0 0 rgba(250, 165, 0, 0);
   padding: 0.3rem 0 0.2rem;
   transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: inset 0 -3px 0 #faa500;
-    color: #ffa500;
+    box-shadow: inset 0 -3px 0 var(--main-a-fc-hover);
+    color: var(--main-a-fc-hover);
   }
 `
 

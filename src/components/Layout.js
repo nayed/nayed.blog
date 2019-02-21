@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import GlobalStyles from './GlobalStyles'
+import GlobalStyles, { mainMw } from './GlobalStyles'
 import Nav from './Nav'
 import SideBar from './SideBar'
 import { Checkbox, Label } from './ThemeSwitcher'
@@ -10,19 +10,19 @@ import Footer from './Footer'
 const Article = styled.article`
   display: grid;
   height: 100%;
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: var(--sb-mw) 1fr;
   grid-template-rows: 1fr;
   min-height: 100vh;
 `
 
 const Main = styled.main`
-  font-size: 1.25rem;
+  font-size: var(--main-fs);
   grid-column: 2 / 3;
   line-height: 1.45;
   margin: 0 auto;
-  max-width: 45rem;
+  max-width: var(--main-mw);
 
-  @media (max-width: 45rem) {
+  @media (max-width: ${mainMw}) {
     grid-column: 1 / 3;
   }
 `

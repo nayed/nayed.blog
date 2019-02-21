@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import { mainMw } from './GlobalStyles.js'
+
 import avatar from '../images/nayed.svg'
 
 const Nav = styled.nav`
   text-align: center;
 
-  @media (min-width: 45rem) {
+  @media (min-width: ${mainMw}) {
     display: none;
   }
 `

@@ -1,7 +1,23 @@
 import { createGlobalStyle } from 'styled-components'
 
+// because we can't use css var in @media queries
+export const mainMw = '45rem'
+export const SBMw = '20rem'
+
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Inconsolata|Karla');
+
+  :root {
+    --dark-bg: #282c35;
+    --dark-fc: #a0a0a0;
+    --light-bg: #fffef8;
+    --light-fc: #445566;
+    --main-a-fc: #00b1bb;
+    --main-a-fc-hover: #faa500;
+    --main-fs: 1.1875rem;
+    --main-mw: 45rem;
+    --sb-mw: 20rem;
+  }
 
   *,
   *::before,
@@ -24,8 +40,8 @@ const GlobalStyles = createGlobalStyle`
 
   body.light,
   body.light .excerpt {
-    background: #fffef8;
-    color: #445566;
+    background: var(--light-bg);
+    color: var(--light-fc);
   }
 
   body.light h1 {
@@ -34,8 +50,8 @@ const GlobalStyles = createGlobalStyle`
 
   body.dark,
   body.dark .excerpt {
-    background: #21374b;
-    color: #a0a0a0;
+    background: var(--dark-bg);
+    color: var(--dark-fc);
   }
 
   body.dark h1 {
@@ -77,23 +93,24 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: inherit;
   }
 
-  main a {
-    box-shadow: inset 0 0 0 rgba(250, 165, 0, 0);
-    color: #00b1bb;
-    padding: 0.3rem 0 0.2rem;
-    transition: all 0.2s ease;
+  main {
+    a {
+      color: var(--main-a-fc);
+      padding: 0.3rem 0 0.2rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        box-shadow: inset 0 -3px 0 var(--main-a-fc-hover);
+        color: var(--main-a-fc-hover);
+      }
+    }
   }
 
-  main a:hover {
-    box-shadow: inset 0 -3px 0 #faa500;
-    color: #faa500;
-  }
-  
   iframe {
     max-width: 90vw;
     width: 43rem !important;
 
-    @media (max-width: 45rem) {
+    @media (max-width: ${mainMw}) {
       width: 39rem !important;
     }
   }
