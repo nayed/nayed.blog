@@ -1,22 +1,22 @@
 import { createGlobalStyle } from 'styled-components'
 
 // because we can't use css var in @media queries
-export const mainMw = '45rem'
-export const SBMw = '20rem'
+export const mainMw = '44rem'
+export const sbMw = '20rem'
 
 const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Inconsolata|Karla');
 
   :root {
     --dark-bg: #282c35;
-    --dark-fc: #a0a0a0;
+    --dark-fc: #a9a9a9;
     --light-bg: #fffef8;
     --light-fc: #445566;
     --main-a-fc: #00b1bb;
     --main-a-fc-hover: #faa500;
-    --main-fs: 1.1875rem;
-    --main-mw: 45rem;
-    --sb-mw: 20rem;
+    --main-fs: 1.2rem;
+    --main-mw: ${mainMw};
+    --sb-mw: ${sbMw};
   }
 
   *,

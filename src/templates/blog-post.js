@@ -7,7 +7,6 @@ import SEO from '../components/SEO'
 
 const Content = styled.div`
   grid-column: 2 / 3;
-  padding: 0 1rem;
 `
 
 const Title = styled.h1`
