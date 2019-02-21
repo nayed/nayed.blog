@@ -34,7 +34,7 @@ const Label = styled.label`
     left: 5px;
     position: absolute;
     top: 1px;
-    transition: 0.5s;
+    transition: 0.4s;
     width: 1.4rem;
   }
 `
