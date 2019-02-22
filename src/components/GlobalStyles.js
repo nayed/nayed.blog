@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --light-fc: #445566;
     --main-a-fc: #00b1bb;
     --main-a-fc-hover: #faa500;
-    --main-fs: 1.2rem;
+    --main-fs: 1.13rem;
     --main-mw: ${mainMw};
     --sb-mw: ${sbMw};
   }
