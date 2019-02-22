@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { StaticQuery, Link, graphql } from 'gatsby'
 
 const Post = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `
 
 const Title = styled.h1`

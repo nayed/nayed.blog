@@ -96,14 +96,14 @@ const GlobalStyles = createGlobalStyle`
   body.light div[class^='blog-post'] a,
   body.light div[class*=' blog-post'] a {
     background: rgba(25,235,59,0.5);
-    padding: 0.1rem 0.4rem;
+    padding: 0.15rem 0.4rem;
   }
 
   body.dark div[class^='blog-post'] a,
   body.dark div[class*=' blog-post'] a {
     background: rgba(72, 184, 208, 0.8);
     color: rgba(255, 255, 255, 0.7);
-    padding: 0.1rem 0.4rem;
+    padding: 0.15rem 0.4rem;
   }
 
   iframe {

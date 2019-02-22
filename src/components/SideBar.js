@@ -54,7 +54,7 @@ export default class SB extends Component {
     `
 
     const Title = styled.h5`
-      color: ${this.props.theme === 'light' ? '#12355b' : '#fffef8'};
+      color: ${this.props.theme === 'light' ? '#cc3355' : '#fffef8'};
     `
 
     const PostInfo = styled.p`
