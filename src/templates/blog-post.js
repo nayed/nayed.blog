@@ -43,10 +43,14 @@ const Signature = styled.div`
 
 export default ({ data, location }) => {
   const post = data.markdownRemark
+  const description = data.markdownRemark.excerpt
 
   return (
     <Layout displayListPosts={true} location={location}>
-      <SEO title={`Nayed's blog | ${post.frontmatter.title}`} />
+      <SEO
+        title={`Nayed's blog | ${post.frontmatter.title}`}
+        description={description}
+      />
       <Content>
         <Title>
           {post.frontmatter.title}
@@ -69,6 +73,7 @@ export default ({ data, location }) => {
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      excerpt
       html
       frontmatter {
         title

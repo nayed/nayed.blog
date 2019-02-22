@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Nayed Saïd Ali's personal blog",
     author: 'Nayed Saïd Ali',
-    description: "Late 20-something talking about stuff he doen't grasp",
+    description: "20-something developer ranting about stuff he doesn't grasp",
     siteUrl: 'https://nayed.blog'
   },
   plugins: [
