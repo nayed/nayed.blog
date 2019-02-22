@@ -42,10 +42,10 @@ const GlobalStyles = createGlobalStyle`
   body.light .excerpt {
     background: var(--light-bg);
     color: var(--light-fc);
-  }
 
-  body.light h1 {
-    color: #cc3355;
+    h1 {
+      color: #cc3355;
+    }
   }
 
   body.dark,
@@ -93,17 +93,17 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: inherit;
   }
 
-  main {
-    a {
-      color: var(--main-a-fc);
-      padding: 0.3rem 0 0.2rem;
-      transition: all 0.2s ease;
+  body.light div[class^='blog-post'] a,
+  body.light div[class*=' blog-post'] a {
+    background: rgba(25,235,59,0.5);
+    padding: 0.1rem 0.4rem;
+  }
 
-      &:hover {
-        box-shadow: inset 0 -3px 0 var(--main-a-fc-hover);
-        color: var(--main-a-fc-hover);
-      }
-    }
+  body.dark div[class^='blog-post'] a,
+  body.dark div[class*=' blog-post'] a {
+    background: rgba(72, 184, 208, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.1rem 0.4rem;
   }
 
   iframe {
