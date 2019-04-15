@@ -123,6 +123,11 @@ const GlobalStyles = createGlobalStyle`
       width: 39rem !important;
     }
   }
+
+  p > img {
+    display: block;
+    margin: 0 auto;
+  }
 `
 
 export default GlobalStyles
