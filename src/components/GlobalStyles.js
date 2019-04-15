@@ -99,12 +99,21 @@ const GlobalStyles = createGlobalStyle`
     padding: 0.15rem 0.4rem;
   }
 
+  body.light div[class^='blog-post'] .gatsby-resp-image-link {
+    padding: 0;
+  }
+
   body.dark div[class^='blog-post'] a,
   body.dark div[class*=' blog-post'] a {
     background: rgba(72, 184, 208, 0.8);
     color: rgba(255, 255, 255, 0.7);
     padding: 0.15rem 0.4rem;
   }
+
+    body.dark div[class^='blog-post'] .gatsby-resp-image-link {
+    padding: 0;
+  }
+
 
   iframe {
     max-width: 90vw;
