@@ -1,6 +1,6 @@
 ---
 title: Should (web) developers design?
-date: '2019-03-22'
+date: '2019-04-15'
 ---
 
 Throughout my still young career I've heard plenty of time stuff like "eww CSS"
