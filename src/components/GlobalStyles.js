@@ -127,6 +127,7 @@ const GlobalStyles = createGlobalStyle`
   p > img {
     display: block;
     margin: 0 auto;
+    max-width: 100%;
   }
 `
 
