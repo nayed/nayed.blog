@@ -22,10 +22,11 @@ Should (web) developers design?
 
 For me, it's a yes. Definitely. But when I'm talking design, I'm not saying devs
 should know how to use Photoshop/Sketch/Figma/[insert your favorite design app].
-Or not saying they should know how to design [Awwward](https://www.awwwards.com)
-level. Nope. That's not even the same job. All I'm saying is devs should know
-basic CSS stuff, how to not make your users run away of your website because of
-bad design decision and you should be proud of your design.
+Or not saying they should know how to design
+[Awwwards](https://www.awwwards.com) level. Nope. That's not even the same job.
+All I'm saying is devs should know basic CSS stuff, how to not make your users
+run away of your website because of bad design decision and you should be proud
+of your design.
 
 I am not a designer but I believe the design is an important step of the
 website. It's how you want people to see what you have envisioned. I know this
