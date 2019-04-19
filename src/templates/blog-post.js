@@ -82,35 +82,6 @@ export default class BlogPost extends React.Component {
   }
 }
 
-/*export default ({ data, location }) => {
-  const post = data.markdownRemark
-  const description = data.markdownRemark.excerpt
-
-  return (
-    <Layout displayListPosts={true} location={location}>
-      <SEO
-        title={`Nayed's blog | ${post.frontmatter.title}`}
-        description={description}
-      />
-      <Content>
-        <Title>
-          {post.frontmatter.title}
-          <PostInfo>
-            <Date>{post.frontmatter.date} </Date>
-            <MinToRead>— {post.timeToRead} min read or so</MinToRead>
-          </PostInfo>
-        </Title>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <Signature>
-          <p>Until next time,</p>
-          <p>Plus ultra!</p>
-          <p>NSA</p>
-        </Signature>
-      </Content>
-    </Layout>
-  )
-}*/
-
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
