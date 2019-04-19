@@ -28,17 +28,9 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 700
-            }
-          },
-          'gatsby-remark-copy-linked-files'
-        ]
+        plugins: ['gatsby-remark-copy-images']
       }
     },
     {

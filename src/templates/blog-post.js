@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import Zooming from 'zooming'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -41,7 +42,47 @@ const Signature = styled.div`
   }
 `
 
-export default ({ data, location }) => {
+export default class BlogPost extends React.Component {
+  componentDidMount() {
+    const zooming = new Zooming({
+      // options...
+    })
+
+    zooming.listen('img')
+  }
+
+  render() {
+    const { data, location } = this.props
+    const post = data.markdownRemark
+    const description = data.markdownRemark.excerpt
+
+    return (
+      <Layout displayListPosts={true} location={location}>
+        <SEO
+          title={`Nayed's blog | ${post.frontmatter.title}`}
+          description={description}
+        />
+        <Content>
+          <Title>
+            {post.frontmatter.title}
+            <PostInfo>
+              <Date>{post.frontmatter.date} </Date>
+              <MinToRead>— {post.timeToRead} min read or so</MinToRead>
+            </PostInfo>
+          </Title>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Signature>
+            <p>Until next time,</p>
+            <p>Plus ultra!</p>
+            <p>NSA</p>
+          </Signature>
+        </Content>
+      </Layout>
+    )
+  }
+}
+
+/*export default ({ data, location }) => {
   const post = data.markdownRemark
   const description = data.markdownRemark.excerpt
 
@@ -68,7 +109,7 @@ export default ({ data, location }) => {
       </Content>
     </Layout>
   )
-}
+}*/
 
 export const query = graphql`
   query($slug: String!) {
