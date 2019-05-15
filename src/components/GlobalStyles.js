@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 // because we can't use css var in @media queries
-export const mainMw = '45rem'
+export const mainMw = '47rem'
 export const sbMw = '20rem'
 
 const GlobalStyles = createGlobalStyle`
@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --light-fc: #445566;
     --main-a-fc: #00b1bb;
     --main-a-fc-hover: #faa500;
-    --main-fs: 1.13rem;
+    --main-fs: 1.2rem;
     --main-mw: ${mainMw};
     --sb-mw: ${sbMw};
   }
