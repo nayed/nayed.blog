@@ -34,9 +34,21 @@ const Github = styled.img`
 
 export default () => (
   <Footer>
-    Copyright © 2019 · <A href="https://nayed.io">Nayed Saïd Ali</A> ·{' '}
-    <a href="https://github.com/nayed">
+    Copyright © 2019 ·{' '}
+    <A href="https://nayed.io" target="_blank" rel="noopener noreferrer">
+      Nayed Saïd Ali
+    </A>{' '}
+    ·{' '}
+    <a
+      href="https://github.com/nayed"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <Github src={githubIcon} alt="github icon" />
-    </a>
+    </a>{' '}
+    ·{' '}
+    <A href="/rss.xml" target="_blank" rel="noopener noreferrer">
+      rss
+    </A>
   </Footer>
 )
