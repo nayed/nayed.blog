@@ -82,6 +82,7 @@ export default class SB extends Component {
           query {
             allMarkdownRemark(
               sort: { fields: [frontmatter___date], order: DESC }
+              filter: { frontmatter: { draft: { ne: true } } }
             ) {
               totalCount
               edges {

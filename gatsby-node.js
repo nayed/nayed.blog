@@ -18,7 +18,14 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+      sort: {fields: [frontmatter___date], order: DESC},
+      ${
+        process.env.NODE_ENV === 'production'
+          ? 'filter: {frontmatter: {draft: {ne: true}}}'
+          : ''
+      }
+      ) {
         edges {
           node {
             fields {
