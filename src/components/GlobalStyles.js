@@ -129,6 +129,14 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
     max-width: 100%;
   }
+
+  .draft,
+  .draft a > h5,
+  .draft a p,
+  .draft a > h1 {
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
 `
 
 export default GlobalStyles

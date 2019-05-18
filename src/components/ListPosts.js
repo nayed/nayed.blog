@@ -54,7 +54,10 @@ export default ({ children }) => (
           (process.env.NODE_ENV === 'production' && !node.frontmatter.draft)
         ) {
           return (
-            <Post key={node.id}>
+            <Post
+              key={node.id}
+              className={node.frontmatter.draft ? 'draft' : ''}
+            >
               <Link to={node.fields.slug}>
                 <Title>
                   {node.frontmatter.title}

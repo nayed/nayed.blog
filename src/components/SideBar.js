@@ -114,7 +114,11 @@ export default class SB extends Component {
                       !node.frontmatter.draft)
                   ) {
                     return (
-                      <Post key={node.id} slug={node.fields.slug}>
+                      <Post
+                        key={node.id}
+                        slug={node.fields.slug}
+                        className={node.frontmatter.draft ? 'draft' : ''}
+                      >
                         <Link to={node.fields.slug}>
                           <Title>
                             {node.frontmatter.title}{' '}
