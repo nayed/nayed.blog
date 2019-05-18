@@ -82,7 +82,6 @@ export default class SB extends Component {
           query {
             allMarkdownRemark(
               sort: { fields: [frontmatter___date], order: DESC }
-              filter: { frontmatter: { draft: { ne: true } } }
             ) {
               totalCount
               edges {
@@ -91,6 +90,7 @@ export default class SB extends Component {
                   frontmatter {
                     title
                     date(formatString: "MMMM DD, YYYY")
+                    draft
                   }
                   fields {
                     slug
@@ -107,20 +107,29 @@ export default class SB extends Component {
             <About />
             <Posts>
               {displayListPosts &&
-                data.allMarkdownRemark.edges.map(({ node }) => (
-                  <Post key={node.id} slug={node.fields.slug}>
-                    <Link to={node.fields.slug}>
-                      <Title>
-                        {node.frontmatter.title}{' '}
-                        <PostInfo>
-                          <Date>{node.frontmatter.date} </Date>
-                          <MinToRead>— {node.timeToRead}min</MinToRead>
-                        </PostInfo>
-                      </Title>
-                      <Excerpt>{node.excerpt}</Excerpt>
-                    </Link>
-                  </Post>
-                ))}
+                data.allMarkdownRemark.edges.map(({ node }) => {
+                  if (
+                    process.env.NODE_ENV === 'development' ||
+                    (process.env.NODE_ENV === 'production' &&
+                      !node.frontmatter.draft)
+                  ) {
+                    return (
+                      <Post key={node.id} slug={node.fields.slug}>
+                        <Link to={node.fields.slug}>
+                          <Title>
+                            {node.frontmatter.title}{' '}
+                            <PostInfo>
+                              <Date>{node.frontmatter.date} </Date>
+                              <MinToRead>— {node.timeToRead}min</MinToRead>
+                            </PostInfo>
+                          </Title>
+                          <Excerpt>{node.excerpt}</Excerpt>
+                        </Link>
+                      </Post>
+                    )
+                  }
+                  return ''
+                })}
             </Posts>
           </SideBar>
         )}
