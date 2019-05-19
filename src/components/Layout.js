@@ -30,8 +30,12 @@ const Main = styled.main`
 
 const Switcher = styled.div`
   float: right;
-  height: 5rem;
+  margin-bottom: 2rem;
   padding-right: 1.5rem;
+
+  @media (min-width: ${mainMw}) {
+    margin-bottom: 3rem;
+  }
 `
 
 const Content = styled.div`
