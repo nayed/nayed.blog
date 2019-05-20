@@ -19,6 +19,21 @@ const PostInfo = styled.p`
   margin: 0;
 `
 
+const Post = styled.div`
+  margin-top: 2.5rem;
+
+  p:first-child:first-letter {
+    color: teal;
+    float: left;
+    font-family: Times;
+    font-size: calc(100px + 1vw);
+    line-height: 50px;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+`
+
 const Date = styled.span`
   font-size: 1rem;
 `
@@ -70,7 +85,7 @@ export default class BlogPost extends React.Component {
               <MinToRead>— {post.timeToRead} min read or so</MinToRead>
             </PostInfo>
           </Title>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <Post dangerouslySetInnerHTML={{ __html: post.html }} />
           <Signature>
             <p>Until next time,</p>
             <p>Plus ultra!</p>
