@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Nayed Blog — Front Page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&amp;family=UnifrakturCook:wght@700&amp;family=Pirata+One&amp;family=Grenze+Gotisch:wght@600&amp;family=Fruktur&amp;family=Abril+Fatface&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.18em}
+::selection{background:#1C1A17;color:#F1EADB}
+:focus-visible{outline:2px solid #8A1C1C;outline-offset:3px}
+p{hyphens:auto;-webkit-hyphens:auto}
+@media (max-width: 720px){.ear{margin-left:auto;margin-right:auto}.sub{font-size:12px !important;letter-spacing:0.12em !important;white-space:nowrap}}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: {{paper}}; color: {{ink}}; font-family: 'Libre Caslon Text', Georgia, serif; transition: background 400ms cubic-bezier(0.16,1,0.3,1), color 400ms cubic-bezier(0.16,1,0.3,1);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box;">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px;">
+<div class="ear" style="flex: 1 1 200px; max-width: 230px; border: 1px solid {{ink}}; padding: 10px 12px; font-family: 'Old Standard TT', serif; font-size: 12px; line-height: 1.45; text-align: center;">
+<div style="font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px;">Our Motto</div>
+<div style="font-style: italic;">“20-something developer ranting about stuff he doesn’t grasp.”</div>
+</div>
+<div style="flex: 10 1 420px; text-align: center; min-width: 0; position: relative;">
+<sc-if value="{{showStamp}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; right: 1%; top: -10px; z-index: 1; transform: rotate(-9deg); border: 4px double {{stamp}}; color: {{stamp}}; padding: 4px 14px 3px; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 22px; line-height: 1.1; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9;">{{stampText}}</div>
+</sc-if>
+<h1 style="margin: 0; font-family: {{mastheadFont}}; font-weight: {{mastheadWeight}}; font-size: {{mastheadSize}}; line-height: 0.95; letter-spacing: -0.01em;">The Nayed Blog</h1>
+<div class="sub" style="margin-top: 8px; font-family: 'Old Standard TT', serif; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase;">Personal Blog of Nayed Saïd Ali</div>
+</div>
+<div class="ear" style="flex: 1 1 200px; max-width: 230px; border: 1px solid {{ink}}; padding: 10px 12px; font-family: 'Old Standard TT', serif; font-size: 12px; line-height: 1.45; text-align: center;">
+<div style="font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 11px;">{{editionName}}</div>
+<button type="button" onClick="{{toggle}}" aria-pressed="{{evening}}" style="margin-top: 6px; min-height: 44px; padding: 6px 12px; background: transparent; color: {{ink}}; border: 1px solid {{ink}}; font-family: 'Old Standard TT', serif; font-size: 12px; font-style: italic; cursor: pointer;">{{toggleLabel}}</button>
+</div>
+</header>
+
+<div style="margin-top: 18px; border-top: 4px double {{ink}}; border-bottom: 1px solid {{ink}}; padding: 6px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">
+<span>Vol. I — No. 3</span>
+<span>Paris, Monday, April 15, 2019</span>
+<span>Three Stories · Price: Free</span>
+</div>
+
+<main style="margin-top: 22px; display: flex; flex-wrap: wrap; gap: 28px;">
+
+<article style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column;">
+<h2 style="margin: 0; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(2.2rem, 5.2vw, 4.4rem); line-height: 0.98; letter-spacing: -0.02em; text-transform: uppercase; text-wrap: balance;"><a href="Article.dc.html">Should (Web) Developers Design?</a></h2>
+<div style="width: 120px; margin: 14px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 auto; max-width: 34ch; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 18px; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.04em; text-wrap: balance;">Young Programmer Hears “I Hate CSS” Once Too Often</p>
+<div style="width: 60px; margin: 12px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 auto; max-width: 46ch; text-align: center; font-style: italic; font-size: 16px; line-height: 1.4; text-wrap: balance;">Recalls Boyhood Awe at Websites “So Awesome” He Knew His Calling; Asks Why Craft and Code Must Part Ways</p>
+<div style="margin: 16px 0 14px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; border-top: 1px solid {{ink}}; border-bottom: 1px solid {{ink}}; padding: 5px 0;">By Nayed Saïd Ali · April 15, 2019 · Two Minutes’ Reading, or So</div>
+<div style="column-width: 17rem; column-gap: 28px; column-rule: 1px solid {{rule}}; font-size: 16.5px; line-height: 1.55; text-align: justify;">
+<p style="margin: 0 0 0.9em;"><span style="float: left; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 4.6em; line-height: 0.8; padding: 0.06em 0.08em 0 0;">T</span>hroughout my still young career I’ve heard plenty of time stuff like “eww CSS” “I hate CSS” “I can’t design” when talking design with developers and I…</p>
+<p style="margin: 0 0 0.9em; text-indent: 1.4em;">This. This is something I don’t get. Because one of the main reason why I’m in this industry is because 10 years-old-Nayed saw websites that were so awesome he knew that this is what he wanted to do when growing up. So I’m always wondering how can…</p>
+<p style="margin: 0; font-family: 'Old Standard TT', serif; font-size: 13px; font-style: italic; text-align: right;"><a href="Article.dc.html">Continued on Page 2, Column 1 →</a></p>
+</div>
+
+<sc-if value="{{showQuote}}" hint-placeholder-val="{{true}}">
+<figure style="flex: 1 0 auto; margin: 28px 0 0; padding: 26px 0 22px; border-top: 3px double {{ink}}; border-bottom: 1px solid {{ink}}; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 14px;">
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 14px; width: 60%;"><span style="flex: 1; border-top: 1px solid {{ink}};"></span><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg><span style="flex: 1; border-top: 1px solid {{ink}};"></span></div>
+<blockquote style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.92; letter-spacing: -0.02em; text-transform: uppercase;">“I Hate CSS.”</blockquote>
+<figcaption style="font-style: italic; font-size: 17px; line-height: 1.4;">— Overheard among developers, again and again. <a href="Article.dc.html" style="font-style: normal; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 0.2em;">The full story, Page 2</a></figcaption>
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 14px; width: 60%;"><span style="flex: 1; border-top: 1px solid {{ink}};"></span><svg width="22" height="22" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg><span style="flex: 1; border-top: 1px solid {{ink}};"></span></div>
+</figure>
+</sc-if>
+
+<sc-if value="{{showCartoon}}" hint-placeholder-val="{{false}}">
+<figure style="flex: 1 0 auto; margin: 28px 0 0; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-family: 'Old Standard TT', serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; text-align: center; border-top: 3px double {{ink}}; border-bottom: 1px solid {{ink}}; padding: 5px 0;">Our Cartoonist Considers the Question</div>
+<div style="flex: 1 0 auto; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 4px; margin: 5px; padding: 18px 24px 0; display: flex; align-items: flex-end; justify-content: center; gap: clamp(8px, 4vw, 48px); overflow: hidden;">
+<img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="Nayed in bowler hat and monocle, peering at the stack" style="display: block; width: clamp(150px, 26vw, 240px); height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);">
+<svg role="img" aria-label="A teetering stack of paper labelled styles.css, its top sheet covered in !important" viewBox="0 0 300 380" style="display: block; width: clamp(140px, 24vw, 230px); height: auto;">
+<g stroke="{{ink}}" stroke-width="1.6" fill="{{paper}}">
+<rect x="48" y="350" width="200" height="14"/>
+<rect x="44" y="336" width="200" height="14"/>
+<rect x="54" y="322" width="200" height="14"/>
+<rect x="47" y="308" width="200" height="14"/>
+<rect x="56" y="294" width="200" height="14"/>
+<rect x="50" y="280" width="200" height="14"/>
+<rect x="60" y="266" width="200" height="14"/>
+<rect x="53" y="252" width="200" height="14"/>
+<rect x="64" y="238" width="200" height="14"/>
+<rect x="58" y="224" width="200" height="14"/>
+<rect x="69" y="210" width="200" height="14"/>
+<rect x="63" y="196" width="200" height="14"/>
+<rect x="74" y="182" width="200" height="14"/>
+</g>
+<g transform="rotate(-7 170 110)">
+<rect x="78" y="40" width="190" height="140" fill="{{paper}}" stroke="{{ink}}" stroke-width="2"/>
+<text x="92" y="66" font-family="Old Standard TT, serif" font-weight="700" font-size="17" fill="{{ink}}">STYLES.CSS</text>
+<g stroke="{{ink}}" stroke-width="2" stroke-linecap="round">
+<path d="M92 82 H180"/><path d="M104 96 H210"/><path d="M104 110 H170"/><path d="M92 124 H130"/><path d="M92 140 H196"/><path d="M104 154 H226"/>
+</g>
+<text x="182" y="114" font-family="Old Standard TT, serif" font-style="italic" font-size="13" fill="{{ink}}">!important</text>
+<text x="200" y="98" font-family="Old Standard TT, serif" font-style="italic" font-size="11" fill="{{ink}}" transform="rotate(8 200 98)">!important</text>
+<text x="140" y="128" font-family="Old Standard TT, serif" font-style="italic" font-size="12" fill="{{ink}}">!important</text>
+</g>
+<g stroke="{{ink}}" stroke-width="1.6" stroke-linecap="round">
+<path d="M24 120 l-14 -6"/><path d="M22 140 l-16 0"/><path d="M24 160 l-14 6"/>
+</g>
+</svg>
+</div>
+<figcaption style="text-align: center; font-style: italic; font-size: 17px; line-height: 1.45; max-width: 58ch; margin: 6px auto 0; text-wrap: balance;">“My good man, I count forty-seven <span style="font-family: 'Old Standard TT', serif; font-style: normal;">!important</span> declarations. This is no stylesheet. It is a confession.”</figcaption>
+</figure>
+</sc-if>
+</article>
+
+<aside style="flex: 1 1 300px; min-width: 0; border-left: 1px solid {{rule}}; padding-left: 28px; display: flex; flex-direction: column; gap: 22px;">
+<figure style="margin: 0; text-align: center;">
+<div style="aspect-ratio: 4 / 5; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 4px; margin: 5px; background-image: radial-gradient({{dot}} 0.9px, transparent 1.1px); background-size: 4px 4px; display: flex; align-items: flex-end; justify-content: center; overflow: hidden;"><img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="Cartoon portrait of Nayed in a bowler hat, monocle, waxed mustache and bow tie" style="display: block; width: 92%; height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);"></div>
+<figcaption style="margin-top: 12px; font-family: 'Old Standard TT', serif; font-size: 12.5px; line-height: 1.4;"><b style="letter-spacing: 0.12em; text-transform: uppercase;">The Author.</b> <i>Mr. Saïd Ali, lately of Lyon, now of Paris, photographed in his Sunday best.</i></figcaption>
+</figure>
+
+<article style="border-top: 3px double {{ink}}; padding-top: 14px;">
+<h3 style="margin: 0; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 26px; line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em; text-wrap: balance;"><a href="Article.dc.html">My First (React) Meetup</a></h3>
+<p style="margin: 8px 0 10px; text-align: center; font-style: italic; font-size: 14px; line-height: 1.35; text-wrap: balance;">Correspondent, Removed From Lyon to Paris, Reports on the Tech Scene</p>
+<div style="text-align: center; font-family: 'Old Standard TT', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;">Feb. 13, 2019 · 3 min.</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; text-align: justify;">It’s been almost a year since I moved to Paris and one of the reason was because of the tech industry. Compared to back home in Lyon, here…</p>
+</article>
+
+<article style="border-top: 1px solid {{ink}}; padding-top: 14px;">
+<h3 style="margin: 0; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 26px; line-height: 1.02; text-transform: uppercase; letter-spacing: -0.01em;"><a href="Article.dc.html">Origin Story</a></h3>
+<p style="margin: 8px 0 10px; text-align: center; font-style: italic; font-size: 14px; line-height: 1.35; text-wrap: balance;">Fourth Blog in Six Years Declared, at Last, the Serious One</p>
+<div style="text-align: center; font-family: 'Old Standard TT', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px;">Feb. 5, 2019 · 4 min.</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; text-align: justify;">Alright. I think this is the 4th time in 6 years that I’m starting a new blog. But this time, this is it. This time I’ll be serious about…</p>
+</article>
+</aside>
+</main>
+
+<section aria-label="Index" style="margin-top: 32px; border-top: 4px double {{ink}}; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 20px 28px; align-items: flex-start;">
+<div style="flex: 1 1 260px; font-family: 'Old Standard TT', serif;">
+<div style="font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid {{ink}}; padding-bottom: 4px;">Index to This Issue</div>
+<sc-for list="{{index}}" as="row" hint-placeholder-count="3">
+<a href="Article.dc.html" style="display: flex; align-items: baseline; gap: 6px; min-height: 30px; font-size: 15px; padding-top: 6px;"><span>{{row.title}}</span><span aria-hidden="true" style="flex: 1; border-bottom: 1px dotted {{ink}}; transform: translateY(-4px);"></span><span style="font-variant-numeric: lining-nums tabular-nums;">{{row.page}}</span></a>
+</sc-for>
+</div>
+<div style="flex: 1 1 260px; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 3px; margin: 4px; padding: 14px 16px; text-align: center;">
+<div style="font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 24px; line-height: 1.05; text-transform: uppercase; letter-spacing: 0.04em;">The Archive</div>
+<div aria-hidden="true" style="width: 80px; margin: 8px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 0 12px; font-style: italic; font-size: 14px; line-height: 1.45; text-wrap: balance;">The complete index of this paper: every story ever printed, newest first, each with the cartoon that ran beside it.</p>
+<a href="Gallery.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: {{ink}}; color: {{paper}}; font-family: 'Old Standard TT', serif; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;">Browse the Archive →</a>
+</div>
+</section>
+
+<footer style="margin-top: 32px; border-top: 1px solid {{ink}}; padding-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">
+<span>Printed &amp; Published by Nayed Saïd Ali</span>
+<span aria-hidden="true">·</span>
+<a href="https://github.com/nayed">GitHub</a>
+<span aria-hidden="true">·</span>
+<a href="https://nayed.blog/rss.xml">RSS</a>
+<span aria-hidden="true">·</span>
+<span>Copyright MMXIX – {{yearRoman}}</span>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;edition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;morning&quot;,&quot;evening&quot;,&quot;late&quot;],&quot;default&quot;:&quot;morning&quot;},&quot;filler&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;quote&quot;,&quot;cartoon&quot;],&quot;default&quot;:&quot;cartoon&quot;},&quot;masthead&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;maguntia&quot;,&quot;cook&quot;,&quot;pirata&quot;,&quot;grenze&quot;,&quot;fruktur&quot;,&quot;abril&quot;],&quot;default&quot;:&quot;abril&quot;},&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1900}}">
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { edition: null }; }
+  renderVals() {
+    const EDITIONS = {
+      morning: { name: 'Morning Edition', paper: '#F1EADB', ink: '#1C1A17', rgb: '28,26,23', stamp: null },
+      evening: { name: 'Evening Edition', paper: '#1A1815', ink: '#E9E1CF', rgb: '233,225,207', stamp: null },
+      late:    { name: 'Late Final', paper: '#EBC4AC', ink: '#2A1610', rgb: '42,22,16', stamp: '#A3121A', stampText: 'Late Final' }
+    };
+    const ORDER = ['morning', 'evening', 'late'];
+    const FACES = {
+      maguntia: { family: "'UnifrakturMaguntia', serif", weight: 400, scale: 1 },
+      cook:     { family: "'UnifrakturCook', serif", weight: 700, scale: 0.92 },
+      pirata:   { family: "'Pirata One', serif", weight: 400, scale: 1.05 },
+      grenze:   { family: "'Grenze Gotisch', serif", weight: 600, scale: 0.95 },
+      fruktur:  { family: "'Fruktur', serif", weight: 400, scale: 0.84 },
+      abril:    { family: "'Abril Fatface', serif", weight: 400, scale: 0.72 }
+    };
+    const face = FACES[this.props.masthead ?? 'abril'] || FACES.abril;
+    const toRoman = (n) => { const m = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]; let s = ''; for (const [v, r] of m) { while (n >= v) { s += r; n -= v; } } return s; };
+    const key = this.state.edition ?? this.props.edition ?? 'morning';
+    const ed = EDITIONS[key] || EDITIONS.morning;
+    const next = ORDER[(ORDER.indexOf(key) + 1) % ORDER.length];
+    return {
+      evening: key !== 'morning',
+      mastheadFont: face.family,
+      mastheadWeight: face.weight,
+      mastheadSize: 'clamp(' + (3 * face.scale).toFixed(2) + 'rem, ' + (8.6 * face.scale).toFixed(2) + 'vw, ' + (6.25 * face.scale).toFixed(2) + 'rem)',
+      yearRoman: toRoman(new Date().getFullYear()),
+      showQuote: (this.props.filler ?? 'quote') === 'quote',
+      showCartoon: this.props.filler === 'cartoon',
+      paper: ed.paper,
+      ink: ed.ink,
+      rule: 'rgba(' + ed.rgb + ',0.35)',
+      dot: 'rgba(' + ed.rgb + ',0.42)',
+      stamp: ed.stamp || ed.ink,
+      showStamp: !!ed.stamp,
+      stampText: ed.stampText || '',
+      editionName: ed.name,
+      toggleLabel: 'Next: the ' + EDITIONS[next].name,
+      toggle: () => this.setState({ edition: next }),
+      index: [
+        { title: 'Should (Web) Developers Design?', page: '1–2' },
+        { title: 'My First (React) Meetup', page: '3' },
+        { title: 'Origin Story', page: '4' }
+      ].slice(0, 5)
+    };
+  }
+}
+</script>
+</body>
+</html>

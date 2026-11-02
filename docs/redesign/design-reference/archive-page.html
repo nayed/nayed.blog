@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Archive — The Nayed Blog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.18em}
+::selection{background:#1C1A17;color:#F1EADB}
+:focus-visible{outline:2px solid #8A1C1C;outline-offset:3px}
+p{hyphens:auto;-webkit-hyphens:auto}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: {{paper}}; color: {{ink}}; font-family: 'Libre Caslon Text', Georgia, serif; transition: background 400ms cubic-bezier(0.16,1,0.3,1), color 400ms cubic-bezier(0.16,1,0.3,1);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box;">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; border-bottom: 4px double {{ink}}; padding-bottom: 10px;">
+<a href="Main.dc.html" style="font-family: 'Abril Fatface', serif; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1;">The Nayed Blog</a>
+<nav aria-label="Sections" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px;">← Front Page</a>
+<span>The Archive</span>
+<button type="button" onClick="{{toggle}}" aria-pressed="{{evening}}" style="min-height: 44px; padding: 6px 12px; background: transparent; color: {{ink}}; border: 1px solid {{ink}}; font-family: 'Old Standard TT', serif; font-size: 12px; font-style: italic; letter-spacing: 0; text-transform: none; cursor: pointer;">{{toggleLabel}}</button>
+</nav>
+</header>
+
+<section style="margin-top: 30px; text-align: center;">
+<h1 style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(2.8rem, 8vw, 6rem); line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase;">The Archive</h1>
+<div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 16px auto; width: min(420px, 70%);"><span style="flex: 1; border-top: 1px solid {{ink}};"></span><svg width="18" height="18" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg><span style="flex: 1; border-top: 1px solid {{ink}};"></span></div>
+<p style="margin: 0 auto; max-width: 52ch; font-style: italic; font-size: 18px; line-height: 1.45; text-wrap: balance;">Every story printed in these pages, newest first, each with the cartoon that ran beside it.</p>
+</section>
+
+<div style="margin-top: 22px; border-top: 1px solid {{ink}}; border-bottom: 1px solid {{ink}}; padding: 6px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;">
+<span>Volume I</span>
+<span>Three Stories · Three Cartoons</span>
+<span>Newest First</span>
+</div>
+
+<section aria-labelledby="y2019" style="margin-top: 40px;">
+<h2 id="y2019" style="margin: 0; display: flex; align-items: center; gap: 18px; font-family: 'Old Standard TT', serif; font-weight: 700; text-transform: uppercase;">
+<span aria-hidden="true" style="flex: 1; border-top: 4px double {{ink}};"></span>
+<span style="font-size: 30px; letter-spacing: 0.08em;">MMXIX</span>
+<span style="font-size: 13px; font-weight: 400; letter-spacing: 0.2em;">The Year 2019</span>
+<span aria-hidden="true" style="flex: 1; border-top: 4px double {{ink}};"></span>
+</h2>
+
+<!-- Entry: Should (Web) Developers Design? -->
+<article style="margin-top: 30px; padding-bottom: 32px; border-bottom: 1px solid {{ink}}; display: flex; flex-wrap: wrap; gap: 26px 36px; align-items: flex-start;">
+<figure style="flex: 1 1 340px; max-width: 420px; margin: 0;">
+<a href="Article.dc.html" aria-label="Read: Should (Web) Developers Design?" style="display: flex; align-items: flex-end; justify-content: center; gap: 2px; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 4px; margin: 5px; padding: 14px 10px 0; overflow: hidden;">
+<img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="" style="display: block; width: 46%; height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);">
+<svg aria-hidden="true" viewBox="0 0 260 380" style="display: block; width: 52%; height: auto;">
+<g stroke="{{ink}}" stroke-width="2.4" fill="{{paper}}">
+<rect x="34" y="348" width="190" height="16"/><rect x="28" y="332" width="190" height="16"/><rect x="40" y="316" width="190" height="16"/><rect x="32" y="300" width="190" height="16"/><rect x="44" y="284" width="190" height="16"/><rect x="36" y="268" width="190" height="16"/><rect x="48" y="252" width="190" height="16"/><rect x="40" y="236" width="190" height="16"/><rect x="52" y="220" width="190" height="16"/><rect x="44" y="204" width="190" height="16"/>
+</g>
+<g transform="rotate(-7 140 120)">
+<rect x="20" y="36" width="230" height="168" fill="{{paper}}" stroke="{{ink}}" stroke-width="3"/>
+<text x="36" y="72" font-family="Old Standard TT, serif" font-weight="700" font-size="26" fill="{{ink}}">STYLES.CSS</text>
+<text x="40" y="112" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="{{ink}}">!important</text>
+<text x="96" y="146" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="{{ink}}">!important</text>
+<text x="40" y="182" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="{{ink}}">!important</text>
+</g>
+</svg>
+</a>
+<figcaption style="margin-top: 12px; text-align: center; font-style: italic; font-size: 13.5px; line-height: 1.4; text-wrap: balance;">“My good man, I count forty-seven <span style="font-family: 'Old Standard TT', serif; font-style: normal;">!important</span> declarations. This is no stylesheet. It is a confession.”</figcaption>
+</figure>
+<div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;"><span>Monday, April 15, 2019</span><span aria-hidden="true">·</span><span>Two Minutes’ Reading</span></div>
+<h3 style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 0.98; letter-spacing: -0.015em; text-transform: uppercase; text-wrap: balance;"><a href="Article.dc.html">Should (Web) Developers Design?</a></h3>
+<p style="margin: 0; font-style: italic; font-size: 17px; line-height: 1.4;">Young Programmer Hears “I Hate CSS” Once Too Often</p>
+<p style="margin: 4px 0 0; max-width: 64ch; font-size: 16px; line-height: 1.6; text-align: justify;">Throughout my still young career I’ve heard plenty of time stuff like “eww CSS” “I hate CSS” “I can’t design” when talking design with developers and I…</p>
+<a href="Article.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 0.22em;">Read the Story →</a>
+</div>
+</article>
+
+<!-- Entry: My First (React) Meetup -->
+<article style="margin-top: 32px; padding-bottom: 32px; border-bottom: 1px solid {{ink}}; display: flex; flex-wrap: wrap; gap: 26px 36px; align-items: flex-start;">
+<figure style="flex: 1 1 340px; max-width: 420px; margin: 0;">
+<a href="Article.dc.html" aria-label="Read: My First (React) Meetup" style="display: flex; align-items: flex-end; justify-content: center; gap: 4px; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 4px; margin: 5px; padding: 14px 10px 0; overflow: hidden;">
+<img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="" style="display: block; width: 42%; height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);">
+<svg aria-hidden="true" viewBox="0 0 320 400" style="display: block; width: 54%; height: auto; align-self: flex-start;">
+<ellipse cx="170" cy="140" rx="146" ry="122" fill="{{paper}}" stroke="{{ink}}" stroke-width="2.5"/>
+<circle cx="44" cy="300" r="13" fill="{{paper}}" stroke="{{ink}}" stroke-width="2"/>
+<circle cx="26" cy="338" r="8" fill="{{paper}}" stroke="{{ink}}" stroke-width="2"/>
+<circle cx="14" cy="366" r="5" fill="{{paper}}" stroke="{{ink}}" stroke-width="2"/>
+<g stroke="{{ink}}" stroke-width="2" fill="{{paper}}" stroke-linecap="round" stroke-linejoin="round" transform="translate(170 172) scale(0.84) translate(-170 -172)">
+<g transform="translate(92 0)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-26 140 -14 200 0 236 C14 200 26 140 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-10 108 C-12 150 -6 190 -2 218" fill="none" stroke-width="1.2"/><path d="M0 104 V226" fill="none" stroke-width="1.2"/><path d="M10 108 C12 150 6 190 2 218" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 70 L-3 72" fill="none" stroke-width="3"/><path d="M15 70 L3 72" fill="none" stroke-width="3"/>
+</g>
+<g transform="translate(170 -10)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-28 150 -14 220 0 262 C14 220 28 150 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-11 108 C-13 160 -7 205 -2 240" fill="none" stroke-width="1.2"/><path d="M0 104 V250" fill="none" stroke-width="1.2"/><path d="M11 108 C13 160 7 205 2 240" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 68 L-3 73" fill="none" stroke-width="3"/><path d="M15 68 L3 73" fill="none" stroke-width="3"/>
+</g>
+<g transform="translate(248 0)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-26 140 -14 200 0 236 C14 200 26 140 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-10 108 C-12 150 -6 190 -2 218" fill="none" stroke-width="1.2"/><path d="M0 104 V226" fill="none" stroke-width="1.2"/><path d="M10 108 C12 150 6 190 2 218" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 72 L-3 71" fill="none" stroke-width="3"/><path d="M15 72 L3 71" fill="none" stroke-width="3"/>
+</g>
+</g>
+<text x="170" y="58" text-anchor="middle" font-family="Old Standard TT, serif" font-weight="700" font-size="14" letter-spacing="1" fill="{{ink}}">15 YRS. EXP. MIN.</text>
+</svg>
+</a>
+<figcaption style="margin-top: 12px; text-align: center; font-style: italic; font-size: 13.5px; line-height: 1.4; text-wrap: balance;">Our correspondent arrives at his first meetup, fully braced for the Council of Grey Beards.</figcaption>
+</figure>
+<div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;"><span>Wednesday, February 13, 2019</span><span aria-hidden="true">·</span><span>Three Minutes’ Reading</span></div>
+<h3 style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 0.98; letter-spacing: -0.015em; text-transform: uppercase; text-wrap: balance;"><a href="Article.dc.html">My First (React) Meetup</a></h3>
+<p style="margin: 0; font-style: italic; font-size: 17px; line-height: 1.4;">Correspondent, Removed From Lyon to Paris, Reports on the Tech Scene</p>
+<p style="margin: 4px 0 0; max-width: 64ch; font-size: 16px; line-height: 1.6; text-align: justify;">It’s been almost a year since I moved to Paris and one of the reason was because of the tech industry. Compared to back home in Lyon, here in Paris the tech community is bigger, more vibrant and more people are involved…</p>
+<a href="Article.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 0.22em;">Read the Story →</a>
+</div>
+</article>
+
+<!-- Entry: Origin Story -->
+<article style="margin-top: 32px; padding-bottom: 32px; display: flex; flex-wrap: wrap; gap: 26px 36px; align-items: flex-start;">
+<figure style="flex: 1 1 340px; max-width: 420px; margin: 0;">
+<a href="Article.dc.html" aria-label="Read: Origin Story" style="display: flex; align-items: flex-end; justify-content: center; gap: 0; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 4px; margin: 5px; padding: 14px 10px 0; overflow: hidden;">
+<img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="" style="display: block; width: 38%; height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);">
+<svg aria-hidden="true" viewBox="0 0 360 300" style="display: block; width: 60%; height: auto;">
+<g stroke="{{ink}}" stroke-width="2" fill="{{paper}}" stroke-linejoin="round">
+<g transform="rotate(-8 55 280)"><path d="M22 280 V200 A33 33 0 0 1 88 200 V280 Z"/><path d="M76 180 L69 192 L75 199" fill="none" stroke-width="1.4"/></g>
+<g transform="rotate(5 140 280)"><path d="M108 280 V196 A32 32 0 0 1 172 196 V280 Z"/></g>
+<g transform="rotate(-3 222 280)"><path d="M192 280 V192 A30 30 0 0 1 252 192 V280 Z"/><path d="M200 186 L212 196 L206 206" fill="none" stroke-width="1.4"/></g>
+<path d="M272 280 V168 A40 40 0 0 1 352 168 V280 Z" stroke-width="2.5"/>
+</g>
+<g fill="{{ink}}" font-family="Old Standard TT, serif" text-anchor="middle">
+<text x="55" y="232" font-size="15" font-weight="700" transform="rotate(-8 55 280)">BLOG I</text>
+<text x="140" y="228" font-size="15" font-weight="700" transform="rotate(5 140 280)">BLOG II</text>
+<text x="222" y="224" font-size="14" font-weight="700" transform="rotate(-3 222 280)">BLOG III</text>
+<text x="312" y="180" font-size="18" font-weight="700">BLOG IV</text>
+<text x="312" y="206" font-size="15">2019 –</text>
+<text x="312" y="236" font-size="12" font-style="italic">“for real”</text>
+</g>
+<g stroke="{{ink}}" stroke-width="1.6" stroke-linecap="round" fill="none">
+<path d="M0 281 H360"/><path d="M30 281 l-3 -9 M34 281 l0 -11 M38 281 l3 -8"/><path d="M118 281 l-3 -8 M122 281 l1 -10"/><path d="M258 281 l-2 -9 M262 281 l2 -10 M266 281 l4 -7"/><path d="M300 281 l-2 -8 M304 281 l0 -12 M308 281 l3 -9"/>
+</g>
+</svg>
+</a>
+<figcaption style="margin-top: 12px; text-align: center; font-style: italic; font-size: 13.5px; line-height: 1.4; text-wrap: balance;">“This one,” declared Mr. Saïd Ali, “is the serious one.”</figcaption>
+</figure>
+<div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;"><span>Tuesday, February 5, 2019</span><span aria-hidden="true">·</span><span>Four Minutes’ Reading</span></div>
+<h3 style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 0.98; letter-spacing: -0.015em; text-transform: uppercase; text-wrap: balance;"><a href="Article.dc.html">Origin Story</a></h3>
+<p style="margin: 0; font-style: italic; font-size: 17px; line-height: 1.4;">Fourth Blog in Six Years Declared, at Last, the Serious One</p>
+<p style="margin: 4px 0 0; max-width: 64ch; font-size: 16px; line-height: 1.6; text-align: justify;">Alright. I think this is the 4th time in 6 years that I’m starting a new blog. But this time, this is it. This time I’ll be serious about blogging…</p>
+<a href="Article.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 0.22em;">Read the Story →</a>
+</div>
+</article>
+</section>
+
+<footer style="margin-top: 36px; border-top: 4px double {{ink}}; padding-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">
+<span>Printed &amp; Published by Nayed Saïd Ali</span>
+<span aria-hidden="true">·</span>
+<a href="https://github.com/nayed">GitHub</a>
+<span aria-hidden="true">·</span>
+<a href="https://nayed.blog/rss.xml">RSS</a>
+<span aria-hidden="true">·</span>
+<span>Copyright MMXIX – {{yearRoman}}</span>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2100}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { evening: false }; }
+  renderVals() {
+    const ev = this.state.evening;
+    return {
+      evening: ev,
+      paper: ev ? '#1A1815' : '#F1EADB',
+      ink: ev ? '#E9E1CF' : '#1C1A17',
+      toggleLabel: ev ? 'Morning Edition' : 'Evening Edition',
+      toggle: () => this.setState({ evening: !ev }),
+      yearRoman: ((n) => { const m = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]; let s = ''; for (const [v, r] of m) { while (n >= v) { s += r; n -= v; } } return s; })(new Date().getFullYear())
+    };
+  }
+}
+</script>
+</body>
+</html>

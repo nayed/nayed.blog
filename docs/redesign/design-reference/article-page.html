@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Should (Web) Developers Design? — The Nayed Blog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.18em}
+::selection{background:#1C1A17;color:#F1EADB}
+:focus-visible{outline:2px solid #8A1C1C;outline-offset:3px}
+p{hyphens:auto;-webkit-hyphens:auto}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: {{paper}}; color: {{ink}}; font-family: 'Libre Caslon Text', Georgia, serif; transition: background 400ms cubic-bezier(0.16,1,0.3,1), color 400ms cubic-bezier(0.16,1,0.3,1);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box;">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; border-bottom: 4px double {{ink}}; padding-bottom: 10px;">
+<a href="Main.dc.html" style="font-family: 'Abril Fatface', serif; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1;">The Nayed Blog</a>
+<nav aria-label="Sections" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 44px;">← Front Page</a>
+<span>Page 2</span>
+<button type="button" onClick="{{toggle}}" aria-pressed="{{evening}}" style="min-height: 44px; padding: 6px 12px; background: transparent; color: {{ink}}; border: 1px solid {{ink}}; font-family: 'Old Standard TT', serif; font-size: 12px; font-style: italic; letter-spacing: 0; text-transform: none; cursor: pointer;">{{toggleLabel}}</button>
+</nav>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 26px;">
+
+<article style="flex: 999 1 600px; min-width: 0;">
+<h1 style="margin: 0; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: clamp(2.4rem, 6vw, 5rem); line-height: 0.96; letter-spacing: -0.025em; text-transform: uppercase; text-wrap: balance;">Should (Web) Developers Design?</h1>
+<div style="width: 140px; margin: 16px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 auto; max-width: 36ch; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 19px; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.04em; text-wrap: balance;">Young Programmer Hears “I Hate CSS” Once Too Often</p>
+<div style="width: 60px; margin: 12px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 auto; max-width: 48ch; text-align: center; font-style: italic; font-size: 17px; line-height: 1.4; text-wrap: balance;">Recalls Boyhood Awe at Websites “So Awesome” He Knew His Calling; Asks Why Craft and Code Must Part Ways</p>
+
+<div style="margin: 20px 0 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; border-top: 1px solid {{ink}}; border-bottom: 1px solid {{ink}}; padding: 6px 0; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;">
+<span>By Nayed Saïd Ali, Staff Correspondent</span>
+<span>Paris, April 15, 2019</span>
+<span>Two Minutes’ Reading, or So</span>
+</div>
+
+<div style="column-width: 18rem; column-gap: 32px; column-rule: 1px solid {{rule}}; font-size: 17px; line-height: 1.6; text-align: justify;">
+<p style="margin: 0 0 0.9em;"><span style="float: left; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 5.2em; line-height: 0.78; padding: 0.06em 0.08em 0 0;">T</span>hroughout my still young career I’ve heard plenty of time stuff like “eww CSS” “I hate CSS” “I can’t design” when talking design with developers and I…</p>
+<figure style="margin: 0.4em 0 1.1em; break-inside: avoid;">
+<div style="aspect-ratio: 4 / 3; border: 1px solid {{ink}}; background-image: radial-gradient({{dot}} 0.9px, transparent 1.1px); background-size: 4px 4px; display: flex; align-items: center; justify-content: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center;"><span style="background: {{paper}}; padding: 4px 8px;">[Reaction GIF, halftoned]</span></div>
+<figcaption style="margin-top: 6px; padding-bottom: 6px; border-bottom: 1px solid {{rule}}; font-family: 'Old Standard TT', serif; font-size: 12.5px; line-height: 1.4; text-align: left;"><b style="letter-spacing: 0.1em; text-transform: uppercase;">Bewilderment.</b> <i>The writer’s face, approximately, on hearing “I hate CSS.”</i></figcaption>
+</figure>
+<p style="margin: 0 0 0.9em; text-indent: 1.4em;">This. This is something I don’t get. Because one of the main reason why I’m in this industry is because 10 years-old-Nayed saw websites that were so awesome he knew that this is what he wanted to do when growing up. So I’m always wondering how can people want to work as a <s>software</s> <s>enginer</s> web developer without liking the design part of the job? Yo how did you end up here, don’t tell me it’s because younger you saw databases transactions or tree algorithms and you were in such awe that it was your call to be a web developer.</p>
+<p style="margin: 0 0 0.9em; text-indent: 1.4em;">So as you can guess, this is a very opiniated post.</p>
+
+<h2 style="break-after: avoid; margin: 1.2em 0 0.6em; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 20px; line-height: 1.15; text-transform: uppercase; letter-spacing: 0.04em; text-wrap: balance;">Should (Web) Developers Design?</h2>
+<p style="margin: 0 0 0.9em;">For me, it’s a yes. Definitely. But when I’m talking design, I’m not saying devs should know how to use Photoshop/Sketch/Figma/[insert your favorite design app]. Or not saying they should know how to design <a href="https://www.awwwards.com" style="text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em;">Awwwards</a> level. Nope. That’s not even the same job. All I’m saying is devs should know basic CSS stuff, how to not make your users run away of your website because of bad design decision and you should be proud of your design.</p>
+
+<figure style="column-span: all; break-inside: avoid; margin: 1.1em 4px 1.4em; border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 3px; text-align: left;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 0 0 18px; border-bottom: 1px solid {{ink}}; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">
+<span>Wire Copy · styles.css</span>
+<button type="button" aria-label="Copy the code" style="min-height: 44px; padding: 0 18px; background: transparent; color: {{ink}}; border: 0; border-left: 1px solid {{ink}}; font-family: 'Old Standard TT', serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;">Copy</button>
+</div>
+<pre style="margin: 0; padding: 22px 24px 24px; overflow-x: auto; background: {{codeTint}}; font-family: 'Courier Prime', 'Courier New', monospace; font-size: 17px; line-height: 1.65; tab-size: 2; hyphens: none;"><code><span style="color: {{faded}}; font-style: italic;">/* Centre anything. Truly. */</span>
+<span style="font-weight: 700;">.front-page</span> <span style="color: {{faded}};">{</span>
+  display<span style="color: {{faded}};">:</span> <i>grid</i><span style="color: {{faded}};">;</span>
+  place-items<span style="color: {{faded}};">:</span> <i>center</i><span style="color: {{faded}};">;</span>
+  min-height<span style="color: {{faded}};">:</span> <span style="color: {{accent}};">100vh</span><span style="color: {{faded}};">;</span>
+<span style="color: {{faded}};">}</span></code></pre>
+<figcaption style="padding: 9px 18px; border-top: 1px solid {{ink}}; font-style: italic; font-size: 14px; line-height: 1.45; text-align: center;">Exhibit: <code style="font-family: 'Courier Prime', 'Courier New', monospace; font-style: normal; font-size: 0.95em; background: {{codeTint}}; padding: 0.05em 0.3em; border-bottom: 1px solid {{rule}};">place-items</code>, the one line that ended a decade of jokes about centring a div.</figcaption>
+</figure>
+<p style="margin: 0 0 0.9em; text-indent: 1.4em;">I am not a designer but I believe the design is an important step of the website. It’s how you want people to see what you have envisioned. I know this is not a simple task but I always try to have different design website to website. Not to brag (again, I’m not a designer), here are some of my latest open source toy project:</p>
+
+<figure style="column-span: all; margin: 1.1em 0 1.4em; padding: 16px 0 12px; border-top: 3px double {{ink}}; border-bottom: 1px solid {{ink}};">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 22px;">
+<div>
+<img src="/_blob/cb93d43fee8a22b3a825df9441d20194" alt="Screenshot of nayed.io" style="display: block; width: 100%; height: auto; border: 1px solid {{ink}}; filter: grayscale(1) contrast(1.08) sepia(0.15);">
+<div style="margin-top: 7px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Exhibit A · nayed.io</div>
+</div>
+<div>
+<img src="/_blob/3044812d81f907d12e920e8d509e570f" alt="Screenshot of nayed.blog" style="display: block; width: 100%; height: auto; border: 1px solid {{ink}}; filter: grayscale(1) contrast(1.08) sepia(0.15);">
+<div style="margin-top: 7px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Exhibit B · nayed.blog</div>
+</div>
+<div>
+<img src="/_blob/afd35ccdd2b33421f62c59dd39b9d767" alt="Screenshot of the Pokédex project" style="display: block; width: 100%; height: auto; border: 1px solid {{ink}}; filter: grayscale(1) contrast(1.08) sepia(0.15);">
+<div style="margin-top: 7px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Exhibit C · Pokédex</div>
+</div>
+</div>
+<figcaption style="margin-top: 12px; text-align: center; font-style: italic; font-size: 14px;">For the defence: the writer’s latest open source toy projects.</figcaption>
+</figure>
+
+<p style="margin: 0 0 0.9em;">I am no expert, nor trying to revolutionize the design industry, but I can say that I’m damn proud of those design and how these website feel.</p>
+
+<h2 style="break-after: avoid; margin: 1.2em 0 0.6em; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;">The Early Years</h2>
+<p style="margin: 0 0 0.9em;">Off course at the beginning of my journey CSS was hard (and still is, let’s not pretend it’s an easy programming language because it is not). Here are some of my first websites when I was in school around 2011-2013 (I think):</p>
+
+<figure style="column-span: all; margin: 1.1em 0 1.4em; padding: 16px 0 12px; border-top: 1px solid {{ink}}; border-bottom: 1px solid {{ink}};">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; max-width: 760px; margin: 0 auto;">
+<div>
+<img src="/_blob/534132eae4ab9d63e079aa29246ce517" alt="Screenshot of an early school project, Quizz Sida" style="display: block; width: 100%; height: auto; border: 1px solid {{ink}}; filter: grayscale(1) contrast(1.08) sepia(0.15);">
+<div style="margin-top: 7px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Quizz Sida · c. 2011</div>
+</div>
+<div>
+<img src="/_blob/f975108d4de8f434ab011fc61f3ecc02" alt="Screenshot of an early school project, Espace Design" style="display: block; width: 100%; height: auto; border: 1px solid {{ink}}; filter: grayscale(1) contrast(1.08) sepia(0.15);">
+<div style="margin-top: 7px; text-align: center; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Espace Design · c. 2013</div>
+</div>
+</div>
+<figcaption style="margin-top: 12px; text-align: center; font-style: italic; font-size: 14px;">Yeah not very attractive isn’t it?</figcaption>
+</figure>
+
+<p style="margin: 0 0 0.9em;">In french we have this proverb:</p>
+<blockquote style="break-inside: avoid; margin: 0.6em 0 1em; padding: 14px 6px; border-top: 1px solid {{ink}}; border-bottom: 1px solid {{ink}}; text-align: center;">
+<p lang="fr" style="margin: 0; font-family: 'Old Standard TT', serif; font-style: italic; font-size: 25px; line-height: 1.25; text-wrap: balance;">« C’est en forgeant qu’on devient forgeron. »</p>
+<p style="margin: 8px 0 0; font-family: 'Old Standard TT', serif; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;">“It’s by smithing that one becomes a blacksmith”</p>
+</blockquote>
+<p style="margin: 0 0 0.9em;">which means “practice makes perfect” (the literal translation would be “it’s by smithing that one becomes a blacksmith”) and this is also why devs should design. How can you expect to upgrade your design skills and your design “sensibility” if you despise and avoid it?</p>
+
+<h2 style="break-after: avoid; margin: 1.2em 0 0.6em; text-align: center; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;">The Verdict</h2>
+<p style="margin: 0 0 0.9em;">Yes, in their own way, developers should design. Again I know this is a very opiniated view, but for me a web developer that doesn’t want to design it’s like a baker that doesn’t want to bake. That doesn’t make any sense.</p>
+<p style="margin: 0 0 0.9em; text-indent: 1.4em;">Design is the best way to show your user what you have pictured. It is the part of the iceberg that people will see first. And let’s be honest, it feels damn good to be proud of your own design when showing off.</p>
+<div aria-hidden="true" style="display: flex; justify-content: center; gap: 18px; margin: 1em 0 0.6em;">
+<svg width="14" height="14" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg>
+<svg width="14" height="14" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg>
+<svg width="14" height="14" viewBox="0 0 22 22"><path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="{{ink}}"/></svg>
+</div>
+<p style="margin: 0; font-family: 'Old Standard TT', serif; font-size: 13px; text-align: center; letter-spacing: 0.18em; text-transform: uppercase;">— 30 —</p>
+</div>
+
+<figure style="margin: 36px 0 0; display: flex; flex-direction: column; gap: 12px;">
+<div style="font-family: 'Old Standard TT', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; text-align: center; border-top: 3px double {{ink}}; border-bottom: 1px solid {{ink}}; padding: 6px 0;">This Story’s Cartoon</div>
+<div style="border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 5px; margin: 6px; padding: 22px 24px 0; display: flex; align-items: flex-end; justify-content: center; gap: clamp(8px, 4vw, 48px); overflow: hidden;">
+<img src="/_blob/a7960a7631b79dc190bd9f04c566c08f" alt="Nayed in bowler hat and monocle, peering at the stack" style="display: block; width: clamp(150px, 28vw, 270px); height: auto; filter: grayscale(1) contrast(1.12) sepia(0.18);">
+<svg role="img" aria-label="A teetering stack of paper labelled styles.css, its top sheet covered in !important" viewBox="0 0 300 380" style="display: block; width: clamp(140px, 26vw, 260px); height: auto;">
+<g stroke="{{ink}}" stroke-width="1.6" fill="{{paper}}">
+<rect x="48" y="350" width="200" height="14"/><rect x="44" y="336" width="200" height="14"/><rect x="54" y="322" width="200" height="14"/><rect x="47" y="308" width="200" height="14"/><rect x="56" y="294" width="200" height="14"/><rect x="50" y="280" width="200" height="14"/><rect x="60" y="266" width="200" height="14"/><rect x="53" y="252" width="200" height="14"/><rect x="64" y="238" width="200" height="14"/><rect x="58" y="224" width="200" height="14"/><rect x="69" y="210" width="200" height="14"/><rect x="63" y="196" width="200" height="14"/><rect x="74" y="182" width="200" height="14"/>
+</g>
+<g transform="rotate(-7 170 110)">
+<rect x="78" y="40" width="190" height="140" fill="{{paper}}" stroke="{{ink}}" stroke-width="2"/>
+<text x="92" y="66" font-family="Old Standard TT, serif" font-weight="700" font-size="17" fill="{{ink}}">STYLES.CSS</text>
+<g stroke="{{ink}}" stroke-width="2" stroke-linecap="round"><path d="M92 82 H180"/><path d="M104 96 H210"/><path d="M104 110 H170"/><path d="M92 124 H130"/><path d="M92 140 H196"/><path d="M104 154 H226"/></g>
+<text x="182" y="114" font-family="Old Standard TT, serif" font-style="italic" font-size="13" fill="{{ink}}">!important</text>
+<text x="200" y="98" font-family="Old Standard TT, serif" font-style="italic" font-size="11" fill="{{ink}}" transform="rotate(8 200 98)">!important</text>
+<text x="140" y="128" font-family="Old Standard TT, serif" font-style="italic" font-size="12" fill="{{ink}}">!important</text>
+</g>
+<g stroke="{{ink}}" stroke-width="1.6" stroke-linecap="round"><path d="M24 120 l-14 -6"/><path d="M22 140 l-16 0"/><path d="M24 160 l-14 6"/></g>
+</svg>
+</div>
+<figcaption style="text-align: center; font-style: italic; font-size: 18px; line-height: 1.45; max-width: 52ch; margin: 6px auto 0; text-wrap: balance;">“My good man, I count forty-seven <span style="font-family: 'Old Standard TT', serif; font-style: normal;">!important</span> declarations. This is no stylesheet. It is a confession.”</figcaption>
+</figure>
+</article>
+
+<aside style="flex: 1 1 280px; min-width: 0; border-left: 1px solid {{rule}}; padding-left: 28px; display: flex; flex-direction: column; gap: 20px;">
+<div style="font-family: 'Old Standard TT', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; border-top: 3px double {{ink}}; border-bottom: 1px solid {{ink}}; padding: 6px 0;">The Latest Stories</div>
+<sc-for list="{{latest}}" as="s" hint-placeholder-count="2">
+<article style="border-bottom: 1px solid {{rule}}; padding-bottom: 16px; display: flex; flex-direction: column; gap: 6px; text-align: center;">
+<div style="font-family: 'Old Standard TT', serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;">{{s.date}}</div>
+<h2 style="margin: 0; font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 21px; line-height: 1.04; text-transform: uppercase; text-wrap: balance;"><a href="Article.dc.html">{{s.title}}</a></h2>
+<p style="margin: 0; font-style: italic; font-size: 13.5px; line-height: 1.35; text-wrap: balance;">{{s.deck}}</p>
+</article>
+</sc-for>
+<div style="border: 1px solid {{ink}}; outline: 1px solid {{ink}}; outline-offset: 3px; margin: 4px; padding: 14px; text-align: center;">
+<div style="font-family: 'Old Standard TT', serif; font-weight: 700; font-size: 20px; line-height: 1.05; text-transform: uppercase; letter-spacing: 0.04em;">The Archive</div>
+<div aria-hidden="true" style="width: 60px; margin: 8px auto; border-top: 1px solid {{ink}};"></div>
+<p style="margin: 0 0 12px; font-style: italic; font-size: 13.5px; line-height: 1.45; text-wrap: balance;">The complete index of this paper: every story ever printed, newest first, each with the cartoon that ran beside it.</p>
+<a href="Gallery.dc.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; background: {{ink}}; color: {{paper}}; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Browse the Archive →</a>
+</div>
+</aside>
+</div>
+
+<footer style="margin-top: 36px; border-top: 4px double {{ink}}; padding-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; font-family: 'Old Standard TT', serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">
+<span>Printed &amp; Published by Nayed Saïd Ali</span>
+<span aria-hidden="true">·</span>
+<a href="https://github.com/nayed">GitHub</a>
+<span aria-hidden="true">·</span>
+<a href="https://nayed.blog/rss.xml">RSS</a>
+<span aria-hidden="true">·</span>
+<span>Copyright MMXIX – {{yearRoman}}</span>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { evening: false }; }
+  renderVals() {
+    const ev = this.state.evening;
+    return {
+      evening: ev,
+      paper: ev ? '#1A1815' : '#F1EADB',
+      ink: ev ? '#E9E1CF' : '#1C1A17',
+      rule: ev ? 'rgba(233,225,207,0.35)' : 'rgba(28,26,23,0.35)',
+      dot: ev ? 'rgba(233,225,207,0.4)' : 'rgba(28,26,23,0.45)',
+      codeTint: ev ? 'rgba(233,225,207,0.06)' : 'rgba(28,26,23,0.05)',
+      faded: ev ? '#A99F8C' : '#5E574C',
+      accent: ev ? '#E58A7C' : '#8A1C1C',
+      toggleLabel: ev ? 'Morning Edition' : 'Evening Edition',
+      toggle: () => this.setState({ evening: !ev }),
+      latest: [
+        { date: 'Feb. 13, 2019', title: 'My First (React) Meetup', deck: 'Correspondent, Removed From Lyon to Paris, Reports on the Tech Scene' },
+        { date: 'Feb. 5, 2019', title: 'Origin Story', deck: 'Fourth Blog in Six Years Declared, at Last, the Serious One' }
+      ].slice(0, 5),
+      yearRoman: ((n) => { const m = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']]; let s = ''; for (const [v, r] of m) { while (n >= v) { s += r; n -= v; } } return s; })(new Date().getFullYear())
+    };
+  }
+}
+</script>
+</body>
+</html>
