@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+/**
+ * One photograph or screenshot with a newspaper caption.
+ * `wide` spans every column; otherwise it sits inside a column.
+ * GIFs are served untouched so they keep their animation.
+ */
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** Bold small-caps lead-in, e.g. "Bewilderment." */
+  label?: string;
+  caption?: string;
+  wide?: boolean;
+}
+
+const { src, alt, label, caption, wide = false } = Astro.props;
+---
+
+<figure class:list={['figure', { wide }]}>
+  {
+    src.format === 'gif' ? (
+      <img class="photo" src={src.src} width={src.width} height={src.height} alt={alt} loading="lazy" decoding="async" />
+    ) : (
+      <Image class="photo" src={src} alt={alt} widths={[480, 960, 1440]} sizes="(min-width: 1200px) 860px, 100vw" />
+    )
+  }
+  {
+    (label || caption) && (
+      <figcaption class="caption">
+        {label && <b>{label}</b>} {caption && <i>{caption}</i>}
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .figure {
+    margin: 0.4em 0 1.1em;
+    break-inside: avoid;
+  }
+  .wide {
+    column-span: all;
+    margin: 1.1em 0 1.4em;
+  }
+  .figure :global(.photo) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .caption {
+    margin-top: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .caption b {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>

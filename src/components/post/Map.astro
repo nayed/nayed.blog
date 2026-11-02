@@ -1,0 +1,52 @@
+---
+import type { SvgComponent } from 'astro/types';
+
+/** A drawn map (an imported SVG, inlined so it follows the edition), full width, with a caption. */
+interface Props {
+  map: SvgComponent;
+  label?: string;
+  caption?: string;
+}
+
+const { map: Drawing, label, caption } = Astro.props;
+---
+
+<figure class="map">
+  <Drawing class="drawing" />
+  {
+    (label || caption) && (
+      <figcaption>
+        {label && <b>{label}</b>} {caption && <i>{caption}</i>}
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  .map {
+    column-span: all;
+    break-inside: avoid;
+    margin: 1.1em 0 1.4em;
+    padding: 16px 0 12px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .map :global(.drawing) {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    margin: 0 auto;
+  }
+  figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  figcaption b {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>

@@ -2,7 +2,18 @@
 title: 'Origin story'
 date: '2019-02-05'
 draft: false
+deck: Fourth Blog in Six Years Declared, at Last, the Serious One
+section: life
+cartoon:
+  image: ./cartoon.svg
+  caption: “This one,” declared Mr. Saïd Ali, “is the serious one.”
+  alt: Nayed in bowler hat and monocle beside four headstones, Blog I, II and III tilted with age, and a tall new Blog IV, 2019, “for real”
 ---
+
+import Map from '../../../../components/post/Map.astro';
+import comoros from './map-comoros.svg';
+import france from './map-france.svg';
+
 
 Alright. I think this is the 4th time in 6 years that I'm starting a new blog.
 But this time, this is it. This time I'll be serious about blogging. I took
@@ -17,14 +28,7 @@ But what I like to start as a first post is my story. Here it is.
 
 ---
 
-<iframe
-  height="500"
-  frameborder="0"
-  style="border:0"
-  src="https://www.google.com/maps/embed/v1/view?center=-11.702902,43.25222&zoom=5&key=AIzaSyD9l_Oj8S4zr8djo7ezUL6OAj_7CEjBhXA"
-  allowfullscreen
-  >
-</iframe>
+<Map map={comoros} label="The Islands." caption="Comoros, between the coast of Africa and Madagascar: Moroni, and Mayotte across the water." />
 
 I was born February 6, 1992, in a little archipelago between Africa and
 Madagascar called [Comoros](https://en.wikipedia.org/wiki/Comoros). Born in
@@ -49,14 +53,7 @@ quite a lot in my childhood) in
 [Marseille](https://en.wikipedia.org/wiki/Marseille). We did not stay there very
 long, less than a year.
 
-<iframe
-  height="500"
-  frameborder="0"
-  style="border:0"
-  src="https://www.google.com/maps/embed/v1/view?center=45.757175,4.831332&zoom=6&key=AIzaSyD9l_Oj8S4zr8djo7ezUL6OAj_7CEjBhXA"
-  allowfullscreen
-  >
-</iframe>
+<Map map={france} label="The Mainland." caption="Marseille, then Lyon, then, much later, Paris." />
 
 And then we moved to the city I consider it to be my hometown, my spot, my
 hills, my heaven, my hood: [Lyon](https://en.wikipedia.org/wiki/Lyon). (Yes I'm

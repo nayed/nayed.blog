@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 470" width="560" height="470" role="img" aria-label="Map of the Comoros archipelago between the African coast and Madagascar, marking Moroni, where the author was born, and Mayotte, where he grew up">
+<style>.pp{fill:var(--paper,#F1EADB)}.lbl{font-family:'Old Standard TT',serif;fill:currentColor}.sm{font-size:11px;letter-spacing:.14em;text-transform:uppercase}.it{font-style:italic}.bd{font-weight:700}</style>
+<defs>
+<clipPath id="inner-comoros"><rect x="6" y="6" width="548" height="458"/></clipPath>
+<pattern id="sea-comoros" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M0 3.5 H7" stroke="currentColor" stroke-width="0.6" opacity="0.4"/></pattern>
+</defs>
+<rect x="1" y="1" width="558" height="468" fill="url(#sea-comoros)" stroke="currentColor" stroke-width="1.5"/>
+<rect x="6" y="6" width="548" height="458" fill="none" stroke="currentColor" stroke-width="0.8"/>
+<g clip-path="url(#inner-comoros)">
+<path d="M0.0 0.0 L72.5 0.0 L76.4 8.0 L66.6 40.0 L78.4 72.0 L88.2 96.0 L105.8 118.0 L111.7 148.0 L115.6 188.0 L113.7 220.0 L119.6 252.0 L115.6 284.0 L123.5 304.0 L101.9 340.0 L90.2 352.0 L62.7 376.0 L0.0 408.0 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M457.1 182.0 L470.4 208.0 L484.1 240.0 L493.9 280.0 L504.9 320.0 L497.8 348.0 L480.2 368.0 L470.4 408.0 L466.5 440.0 L454.7 472.0 L443.0 504.0 L431.2 528.0 L392.0 528.0 L266.6 528.0 L258.7 496.0 L264.6 460.0 L250.9 424.0 L252.8 388.0 L268.5 352.0 L301.8 342.0 L341.0 332.0 L372.4 304.0 L390.0 288.0 L403.8 264.0 L419.4 244.0 L437.1 220.0 L444.9 200.0 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</g>
+<path d="M231.2 169.1 L230.1 163.4 L227.4 160.5 L224.8 156.0 L222.6 159.3 L219.8 159.8 L219.7 165.6 L219.6 170.9 L220.8 176.6 L223.4 179.5 L226.0 184.0 L228.2 180.7 L231.0 180.3 L231.1 174.4 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-width="1.3"/>
+<path d="M248.9 195.2 L248.3 193.8 L245.3 193.3 L242.7 192.3 L239.3 193.4 L235.5 193.8 L234.3 195.4 L233.2 196.8 L233.9 198.2 L236.9 198.7 L239.5 199.7 L242.9 198.6 L246.7 198.2 L247.8 196.6 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-width="1.3"/>
+<path d="M272.8 189.0 L271.2 187.2 L268.4 187.6 L265.6 187.2 L263.8 189.9 L261.1 191.7 L261.5 194.3 L261.8 196.7 L263.5 198.4 L266.3 198.0 L269.1 198.4 L270.9 195.7 L273.6 193.9 L273.2 191.3 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-width="1.3"/>
+<path d="M299.8 217.6 L300.2 214.5 L299.1 212.5 L298.4 209.7 L296.3 210.9 L294.5 210.5 L293.2 213.4 L292.1 216.0 L291.7 219.1 L292.8 221.1 L293.6 223.8 L295.6 222.7 L297.5 223.1 L298.7 220.2 Z" class="pp" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-width="1.3"/>
+<path d="M221.9 166.0 L223.3 170.6 L227.9 172.0 L223.3 173.4 L221.9 178.0 L220.5 173.4 L215.9 172.0 L220.5 170.6 Z" fill="currentColor"/>
+<text class="lbl it" x="211.9" y="176.0" text-anchor="end" font-size="13">Moroni</text>
+<text class="lbl sm" x="211.9" y="190.0" text-anchor="end" font-size="9">born 1992</text>
+<circle cx="296.0" cy="216.8" r="13" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2.5"/>
+<text class="lbl bd" x="314.0" y="218.8" text-anchor="start" font-size="15">Mayotte</text>
+<text class="lbl it" x="314.0" y="232.8" text-anchor="start" font-size="11">the first eight years</text>
+<text class="lbl bd sm" x="248.9" y="144.0" text-anchor="middle" font-size="13">COMOROS</text>
+<text class="lbl bd sm" x="62.7" y="208.0" text-anchor="middle" font-size="14">AFRICA</text>
+<text class="lbl it" x="58.8" y="232.0" text-anchor="middle" font-size="12">Mozambique</text>
+<text class="lbl bd sm" x="392.0" y="400.0" text-anchor="middle" font-size="14">MADAGASCAR</text>
+<text class="lbl it" x="294.0" y="312.0" text-anchor="middle" font-size="12">Mozambique Channel</text>
+<text class="lbl sm" x="274.4" y="48.0" text-anchor="middle" font-size="12">INDIAN OCEAN</text>
+<g transform="translate(514 52)" aria-hidden="true">
+<path d="M0 -20 L4 -4 L0 0 L-4 -4 Z" fill="currentColor"/><path d="M0 20 L4 4 L0 0 L-4 4 Z" class="pp" stroke="currentColor"/>
+<path d="M-14 0 H14" stroke="currentColor" stroke-width="0.8"/>
+<text class="lbl bd" x="0" y="-25" text-anchor="middle" font-size="11">N</text>
+</g>
+<g transform="translate(542 452)">
+<rect x="-176" y="-46" width="176" height="46" class="pp" stroke="currentColor"/>
+<rect x="-172" y="-42" width="168" height="38" fill="none" stroke="currentColor" stroke-width="0.6"/>
+<text class="lbl bd sm" x="-88.0" y="-27.0" text-anchor="middle">Fig. 1 · The Islands</text>
+<text class="lbl it" x="-88.0" y="-12.0" text-anchor="middle" font-size="11">where our correspondent began</text>
+</g>
+</svg>

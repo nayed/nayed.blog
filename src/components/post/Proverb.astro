@@ -1,0 +1,43 @@
+---
+/** A quoted saying, centred between rules, with an optional gloss below. */
+interface Props {
+  lang?: string;
+  gloss?: string;
+}
+
+const { lang, gloss } = Astro.props;
+---
+
+<blockquote class="proverb">
+  <p class="saying" lang={lang}><slot /></p>
+  {gloss && <p class="gloss">{gloss}</p>}
+</blockquote>
+
+<style>
+  .proverb {
+    break-inside: avoid;
+    margin: 0.6em 0 1em;
+    padding: 14px 6px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    text-align: center;
+  }
+  .saying {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 25px;
+    line-height: 1.25;
+    text-wrap: balance;
+    text-align: center;
+    hyphens: none;
+  }
+  .gloss {
+    margin: 8px 0 0;
+    font-family: var(--font-display);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+</style>

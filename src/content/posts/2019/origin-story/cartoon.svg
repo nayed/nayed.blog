@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 392 218.5" width="392" height="218.5">
+<style>.pp{fill:var(--paper,#F1EADB)}</style>
+<defs>
+<filter id="press-os" color-interpolation-filters="sRGB">
+<feColorMatrix type="saturate" values="0"/>
+<feColorMatrix type="matrix" values="0.9393 0.1385 0.0340 0 0  0.0628 1.0123 0.0302 0 0  0.0491 0.0961 0.8236 0 0  0 0 0 1 0"/>
+<feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="-0.06"/><feFuncG type="linear" slope="1.12" intercept="-0.06"/><feFuncB type="linear" slope="1.12" intercept="-0.06"/></feComponentTransfer>
+</filter>
+</defs>
+<image href="/images/avatar-1920s.svg" x="0" y="0.0" width="152" height="218.5" filter="url(#press-os)"/>
+<svg x="152" y="18.5" width="240" height="200.0" viewBox="0 0 360 300">
+<g stroke="currentColor" stroke-width="2" class="pp" stroke-linejoin="round">
+<g transform="rotate(-8 55 280)"><path d="M22 280 V200 A33 33 0 0 1 88 200 V280 Z"/><path d="M76 180 L69 192 L75 199" fill="none" stroke-width="1.4"/></g>
+<g transform="rotate(5 140 280)"><path d="M108 280 V196 A32 32 0 0 1 172 196 V280 Z"/></g>
+<g transform="rotate(-3 222 280)"><path d="M192 280 V192 A30 30 0 0 1 252 192 V280 Z"/><path d="M200 186 L212 196 L206 206" fill="none" stroke-width="1.4"/></g>
+<path d="M272 280 V168 A40 40 0 0 1 352 168 V280 Z" stroke-width="2.5"/>
+</g>
+<g fill="currentColor" font-family="Old Standard TT, serif" text-anchor="middle">
+<text x="55" y="232" font-size="15" font-weight="700" transform="rotate(-8 55 280)">BLOG I</text>
+<text x="140" y="228" font-size="15" font-weight="700" transform="rotate(5 140 280)">BLOG II</text>
+<text x="222" y="224" font-size="14" font-weight="700" transform="rotate(-3 222 280)">BLOG III</text>
+<text x="312" y="180" font-size="18" font-weight="700">BLOG IV</text>
+<text x="312" y="206" font-size="15">2019 –</text>
+<text x="312" y="236" font-size="12" font-style="italic">“for real”</text>
+</g>
+<g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none">
+<path d="M0 281 H360"/><path d="M30 281 l-3 -9 M34 281 l0 -11 M38 281 l3 -8"/><path d="M118 281 l-3 -8 M122 281 l1 -10"/><path d="M258 281 l-2 -9 M262 281 l2 -10 M266 281 l4 -7"/><path d="M300 281 l-2 -8 M304 281 l0 -12 M308 281 l3 -9"/>
+</g>
+</svg>
+</svg>

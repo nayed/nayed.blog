@@ -1,0 +1,43 @@
+---
+/** A full-width row of exhibits (screenshots) between rules, with one caption. */
+interface Props {
+  caption?: string;
+  /** Major (double) or minor (single) top rule. */
+  rule?: 'major' | 'minor';
+  /** Minimum width of one exhibit, in px. */
+  min?: number;
+}
+
+const { caption, rule = 'minor', min = 220 } = Astro.props;
+---
+
+<figure class:list={['exhibits', rule]} style={`--min: ${min}px`}>
+  <div class="grid"><slot /></div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .exhibits {
+    column-span: all;
+    margin: 1.1em 0 1.4em;
+    padding: 16px 0 12px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .major {
+    border-top: 3px double var(--ink);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+    gap: 22px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  figcaption {
+    margin-top: 12px;
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+  }
+</style>

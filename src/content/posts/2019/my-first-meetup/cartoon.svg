@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 388 270.0" width="388" height="270.0">
+<style>.pp{fill:var(--paper,#F1EADB)}</style>
+<defs>
+<filter id="press-mfm" color-interpolation-filters="sRGB">
+<feColorMatrix type="saturate" values="0"/>
+<feColorMatrix type="matrix" values="0.9393 0.1385 0.0340 0 0  0.0628 1.0123 0.0302 0 0  0.0491 0.0961 0.8236 0 0  0 0 0 1 0"/>
+<feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="-0.06"/><feFuncG type="linear" slope="1.12" intercept="-0.06"/><feFuncB type="linear" slope="1.12" intercept="-0.06"/></feComponentTransfer>
+</filter>
+</defs>
+<image href="/images/avatar-1920s.svg" x="0" y="28.5" width="168" height="241.5" filter="url(#press-mfm)"/>
+<svg x="172" y="0.0" width="216" height="270.0" viewBox="0 0 320 400">
+<ellipse cx="170" cy="140" rx="146" ry="122" class="pp" stroke="currentColor" stroke-width="2.5"/>
+<circle cx="44" cy="300" r="13" class="pp" stroke="currentColor" stroke-width="2"/>
+<circle cx="26" cy="338" r="8" class="pp" stroke="currentColor" stroke-width="2"/>
+<circle cx="14" cy="366" r="5" class="pp" stroke="currentColor" stroke-width="2"/>
+<g stroke="currentColor" stroke-width="2" class="pp" stroke-linecap="round" stroke-linejoin="round" transform="translate(170 172) scale(0.84) translate(-170 -172)">
+<g transform="translate(92 0)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-26 140 -14 200 0 236 C14 200 26 140 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-10 108 C-12 150 -6 190 -2 218" fill="none" stroke-width="1.2"/><path d="M0 104 V226" fill="none" stroke-width="1.2"/><path d="M10 108 C12 150 6 190 2 218" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 70 L-3 72" fill="none" stroke-width="3"/><path d="M15 70 L3 72" fill="none" stroke-width="3"/>
+</g>
+<g transform="translate(170 -10)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-28 150 -14 220 0 262 C14 220 28 150 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-11 108 C-13 160 -7 205 -2 240" fill="none" stroke-width="1.2"/><path d="M0 104 V250" fill="none" stroke-width="1.2"/><path d="M11 108 C13 160 7 205 2 240" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 68 L-3 73" fill="none" stroke-width="3"/><path d="M15 68 L3 73" fill="none" stroke-width="3"/>
+</g>
+<g transform="translate(248 0)">
+<circle cx="0" cy="82" r="22"/>
+<path d="M-22 88 C-26 140 -14 200 0 236 C14 200 26 140 22 88 C12 98 -12 98 -22 88 Z"/>
+<path d="M-10 108 C-12 150 -6 190 -2 218" fill="none" stroke-width="1.2"/><path d="M0 104 V226" fill="none" stroke-width="1.2"/><path d="M10 108 C12 150 6 190 2 218" fill="none" stroke-width="1.2"/>
+<circle cx="-8" cy="80" r="5.5"/><circle cx="8" cy="80" r="5.5"/><path d="M-2.5 80 H2.5" fill="none"/>
+<path d="M-15 72 L-3 71" fill="none" stroke-width="3"/><path d="M15 72 L3 71" fill="none" stroke-width="3"/>
+</g>
+</g>
+<text x="170" y="58" text-anchor="middle" font-family="Old Standard TT, serif" font-weight="700" font-size="14" letter-spacing="1" fill="currentColor">15 YRS. EXP. MIN.</text>
+</svg>
+</svg>

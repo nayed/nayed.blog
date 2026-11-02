@@ -1,12 +1,32 @@
 ---
 title: Should (web) developers design?
 date: '2019-04-15'
+deck: Young Programmer Hears “I Hate CSS” Once Too Often
+subdeck: Recalls Boyhood Awe at Websites “So Awesome” He Knew His Calling; Asks Why Craft and Code Must Part Ways
+section: technology
+cartoon:
+  image: ./cartoon.svg
+  imageNarrow: ./cartoon-narrow.svg
+  caption: “My good man, I count forty-seven !important declarations. This is no stylesheet. It is a confession.”
+  alt: Nayed in bowler hat and monocle, peering at a teetering stack of paper labelled styles.css, its top sheet covered in !important
 ---
+
+import Figure from '../../../../components/post/Figure.astro';
+import Exhibits from '../../../../components/post/Exhibits.astro';
+import Exhibit from '../../../../components/post/Exhibit.astro';
+import Proverb from '../../../../components/post/Proverb.astro';
+import obama from './obama-what.gif';
+import nayedIo from './nayed.io.png';
+import nayedBlog from './nayed.blog.png';
+import pokedex from './pokedex.png';
+import quizzSida from './quizz-sida.png';
+import espaceDesign from './espacedesign.png';
+
 
 Throughout my still young career I've heard plenty of time stuff like "eww CSS"
 "I hate CSS" "I can't design" when talking design with developers and I...
 
-![Obama](./obama-what.gif)
+<Figure src={obama} alt="Barack Obama squinting in disbelief" label="Bewilderment." caption="The writer’s face, approximately, on hearing “I hate CSS.”" />
 
 This. This is something I don't get. Because one of the main reason why I'm in
 this industry is because 10 years-old-Nayed saw websites that were so awesome he
@@ -18,7 +38,7 @@ were in such awe that it was your call to be a web developer.
 
 So as you can guess, this is a very opiniated post.
 
-Should (web) developers design?
+## Should (web) developers design?
 
 For me, it's a yes. Definitely. But when I'm talking design, I'm not saying devs
 should know how to use Photoshop/Sketch/Figma/[insert your favorite design app].
@@ -34,34 +54,36 @@ is not a simple task but I always try to have different design website to
 website. Not to brag (again, I'm not a designer), here are some of my latest
 open source toy project:
 
-![nayed.io screenshot](./nayed.io.png)
-
-![nayed.blog screenshot](./nayed.blog.png)
-
-![pokedex screenshot](./pokedex.png)
+<Exhibits rule="major" caption="For the defence: the writer’s latest open source toy projects.">
+  <Exhibit src={nayedIo} alt="nayed.io screenshot" label="Exhibit A · nayed.io" />
+  <Exhibit src={nayedBlog} alt="nayed.blog screenshot" label="Exhibit B · nayed.blog" />
+  <Exhibit src={pokedex} alt="pokedex screenshot" label="Exhibit C · Pokédex" />
+</Exhibits>
 
 I am no expert, nor trying to revolutionize the design industry, but I can say
 that I'm damn proud of those design and how these website feel.
 
--
+## The Early Years
 
 Off course at the beginning of my journey CSS was hard (and still is, let's not
 pretend it's an easy programming language because it is not). Here are some of
 my first websites when I was in school around 2011-2013 (I think):
 
-![quizz sida screenshot](./quizz-sida.png)
+<Exhibits caption="Yeah not very attractive isn't it?" min={260}>
+  <Exhibit src={quizzSida} alt="quizz sida screenshot" label="Quizz Sida · c. 2011" />
+  <Exhibit src={espaceDesign} alt="espace design" label="Espace Design · c. 2013" />
+</Exhibits>
 
-![espace design](./espacedesign.png)
+In french we have this proverb:
 
-Yeah not very attractive isn't it?
+<Proverb lang="fr" gloss="“It’s by smithing that one becomes a blacksmith”">« c'est en forgeant qu'on devient forgeron »</Proverb>
 
-In french we have this proverb: « c'est en forgeant qu'on devient forgeron »
 which means "practice makes perfect" (the literal translation would be "it's by
 smithing that one becomes a blacksmith") and this is also why devs should
 design. How can you expect to upgrade your design skills and your design
 "sensibility" if you despise and avoid it?
 
--
+## The Verdict
 
 Yes, in their own way, developers should design. Again I know this is a very
 opiniated view, but for me a web developer that doesn't want to design it's like

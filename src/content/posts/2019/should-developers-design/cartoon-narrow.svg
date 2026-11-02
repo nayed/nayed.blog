@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 304.0" width="400" height="304.0">
+<style>.pp{fill:var(--paper,#F1EADB)}</style>
+<defs>
+<filter id="press-sddn" color-interpolation-filters="sRGB">
+<feColorMatrix type="saturate" values="0"/>
+<feColorMatrix type="matrix" values="0.9393 0.1385 0.0340 0 0  0.0628 1.0123 0.0302 0 0  0.0491 0.0961 0.8236 0 0  0 0 0 1 0"/>
+<feComponentTransfer><feFuncR type="linear" slope="1.12" intercept="-0.06"/><feFuncG type="linear" slope="1.12" intercept="-0.06"/><feFuncB type="linear" slope="1.12" intercept="-0.06"/></feComponentTransfer>
+</filter>
+</defs>
+<image href="/images/avatar-1920s.svg" x="0" y="39.5" width="184" height="264.5" filter="url(#press-sddn)"/>
+<svg x="192" y="0.0" width="208" height="304.0" viewBox="0 0 260 380">
+<g stroke="currentColor" stroke-width="2.4" class="pp">
+<rect x="34" y="348" width="190" height="16"/><rect x="28" y="332" width="190" height="16"/><rect x="40" y="316" width="190" height="16"/><rect x="32" y="300" width="190" height="16"/><rect x="44" y="284" width="190" height="16"/><rect x="36" y="268" width="190" height="16"/><rect x="48" y="252" width="190" height="16"/><rect x="40" y="236" width="190" height="16"/><rect x="52" y="220" width="190" height="16"/><rect x="44" y="204" width="190" height="16"/>
+</g>
+<g transform="rotate(-7 140 120)">
+<rect x="20" y="36" width="230" height="168" class="pp" stroke="currentColor" stroke-width="3"/>
+<text x="36" y="72" font-family="Old Standard TT, serif" font-weight="700" font-size="26" fill="currentColor">STYLES.CSS</text>
+<text x="40" y="112" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="currentColor">!important</text>
+<text x="96" y="146" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="currentColor">!important</text>
+<text x="40" y="182" font-family="Old Standard TT, serif" font-style="italic" font-size="25" fill="currentColor">!important</text>
+</g>
+</svg>
+</svg>
