@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SlimHeader from '../../components/SlimHeader.astro';
+import StarRule from '../../components/StarRule.astro';
+import Cartoon from '../../components/Cartoon.astro';
+import Footer from '../../components/Footer.astro';
+import { getIssues, postUrl, excerpt, readingTime, volumeLabel, type Issue } from '../../lib/posts';
+import { fullDate, numberWord } from '../../lib/words';
+import { toRoman } from '../../lib/roman';
+
+const issues = await getIssues();
+const cartoonCount = issues.filter((i) => i.post.data.cartoon).length;
+
+const years = new Map<number, Issue[]>();
+for (const issue of issues) {
+  const year = issue.post.data.date.getUTCFullYear();
+  years.set(year, [...(years.get(year) ?? []), issue]);
+}
+
+const plural = (n: number, one: string, many: string) => `${numberWord(n)} ${n === 1 ? one : many}`;
+const currentVolume = volumeLabel(new Date()).replace('Vol.', 'Volume');
+---
+
+<BaseLayout title="The Archive" description="Every story printed in The Nayed Blog, newest first, each with the cartoon that ran beside it.">
+  <SlimHeader page="The Archive" />
+
+  <section class="intro">
+    <h1 class="headline archive-title">The Archive</h1>
+    <StarRule width="min(420px, 70%)" />
+    <p class="lede">Every story printed in these pages, newest first, each with the cartoon that ran beside it.</p>
+  </section>
+
+  <div class="strip label facts">
+    <span>{currentVolume}</span>
+    <span>{plural(issues.length, 'Story', 'Stories')} · {plural(cartoonCount, 'Cartoon', 'Cartoons')}</span>
+    <span>Newest First</span>
+  </div>
+
+  {
+    [...years].map(([year, yearIssues]) => (
+      <section class="year" aria-labelledby={`y${year}`}>
+        <h2 id={`y${year}`} class="year-title">
+          <span class="year-rule" aria-hidden="true" />
+          <span class="year-roman">{toRoman(year)}</span>
+          <span class="year-plain">The Year {year}</span>
+          <span class="year-rule" aria-hidden="true" />
+        </h2>
+
+        {yearIssues.map(({ post }) => (
+          <article class="entry">
+            <div class="entry-art">
+              {post.data.cartoon ? (
+                <Cartoon
+                  cartoon={post.data.cartoon}
+                  narrow
+                  href={postUrl(post)}
+                  linkLabel={`Read: ${post.data.title}`}
+                  class="entry-cartoon"
+                />
+              ) : (
+                <a class="frame halftone blank" href={postUrl(post)} aria-label={`Read: ${post.data.title}`} />
+              )}
+            </div>
+            <div class="entry-text">
+              <p class="label entry-meta">
+                <time datetime={post.data.date.toISOString()}>{fullDate(post.data.date)}</time>
+                <span aria-hidden="true">·</span>
+                <span>{readingTime(post)}</span>
+              </p>
+              <h3 class="headline entry-headline">
+                <a href={postUrl(post)}>{post.data.title}</a>
+              </h3>
+              {post.data.deck && <p class="entry-deck">{post.data.deck}</p>}
+              <p class="entry-excerpt">{excerpt(post, 220)}</p>
+              <a class="label read" href={postUrl(post)}>
+                Read the Story →
+              </a>
+            </div>
+          </article>
+        ))}
+      </section>
+    ))
+  }
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .archive-title {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 0.95;
+  }
+  .lede {
+    margin: 0 auto;
+    max-width: 52ch;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.45;
+    text-wrap: balance;
+    hyphens: manual;
+  }
+  .facts {
+    margin-top: 22px;
+  }
+
+  .year {
+    margin-top: 40px;
+  }
+  .year-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px 18px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  @media (max-width: 480px) {
+    .year-title {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .year-plain {
+      order: 5;
+      flex-basis: 100%;
+      text-align: center;
+    }
+  }
+  .year-rule {
+    flex: 1;
+    min-width: 24px;
+    border-top: 4px double var(--ink);
+  }
+  .year-roman {
+    font-size: 30px;
+    letter-spacing: 0.08em;
+  }
+  .year-plain {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+  }
+
+  .entry {
+    margin-top: 30px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px 36px;
+    align-items: flex-start;
+  }
+  .year .entry:last-child {
+    border-bottom: 0;
+  }
+  .entry-art {
+    flex: 1 1 340px;
+    max-width: 420px;
+  }
+  .entry-art :global(.entry-cartoon) {
+    --caption-size: 13.5px;
+    gap: 6px;
+  }
+  .entry-art :global(.entry-cartoon .panel) {
+    padding: 14px 10px 0;
+  }
+  .blank {
+    display: block;
+    aspect-ratio: 4 / 3;
+  }
+  .entry-text {
+    flex: 999 1 420px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .entry-meta {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .entry-headline {
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+  }
+  .entry-deck {
+    margin: 0;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .entry-excerpt {
+    margin: 4px 0 0;
+    max-width: 64ch;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  .read {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    letter-spacing: 0.18em;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+</style>
