@@ -1,3 +1,438 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EditionName from '../components/edition/EditionName.astro';
+import EditionButton from '../components/edition/EditionButton.astro';
+import Byline from '../components/Byline.astro';
+import Cartoon from '../components/Cartoon.astro';
+import ArchiveBox from '../components/ArchiveBox.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../lib/site';
+import { getIssues, postUrl, plainParagraphs, truncate, excerpt, readingMinutes } from '../lib/posts';
+import { fullDate, numberWord, shortDate } from '../lib/words';
+
+const issues = await getIssues();
+const [lead, ...others] = issues;
+if (!lead) throw new Error('The front page needs at least one published story.');
+
+const leadPost = lead.post;
+const { title, deck, subdeck, cartoon } = leadPost.data;
+const opening = plainParagraphs(leadPost).slice(0, 2);
+const [first = '', second] = opening;
+const teasers = others.slice(0, 4);
+const index = issues.slice(0, 5).map((issue, i) => ({
+  issue,
+  page: i === 0 ? '1–2' : String(i + 2),
+}));
+const storyCount = issues.length;
 ---
-<html lang="en"><head><meta charset="utf-8" /><title>The Nayed Blog</title></head><body><p>Stop the presses.</p></body></html>
+
+<BaseLayout>
+  <header class="front-header">
+    <div class="ear">
+      <div class="ear-title">Our Motto</div>
+      <div class="ear-body">“{SITE.description.replace(/'/g, '’').replace(/\.$/, '')}.”</div>
+    </div>
+    <div class="nameplate">
+      <div class="stamp" data-for-edition="late" aria-hidden="true">Late Final</div>
+      <h1 class="masthead">The Nayed Blog</h1>
+      <p class="sub">Personal Blog of {SITE.author}</p>
+    </div>
+    <div class="ear">
+      <div class="ear-title"><EditionName /></div>
+      <EditionButton class="ear-button" />
+    </div>
+  </header>
+
+  <div class="dateline label">
+    <span>{lead.label}</span>
+    <span>{SITE.city}, {fullDate(leadPost.data.date)}</span>
+    <span>{numberWord(storyCount)} {storyCount === 1 ? 'Story' : 'Stories'} · Price: Free</span>
+  </div>
+
+  <main class="front">
+    <article class="lead">
+      <h2 class="headline lead-headline"><a href={postUrl(leadPost)}>{title}</a></h2>
+      {deck && <hr class="short-rule" />}
+      {deck && <p class="deck lead-deck">{deck}</p>}
+      {subdeck && <hr class="short-rule" style="--w: 60px; margin: 12px auto" />}
+      {subdeck && <p class="subdeck lead-subdeck">{subdeck}</p>}
+      <Byline post={leadPost} compact />
+      <div class="lead-columns">
+        <p class="opening">{first}</p>
+        {second && <p class="indent">{truncate(second, 260)}</p>}
+        <p class="continued">
+          <a href={postUrl(leadPost)}>Continued on Page 2, Column 1 →</a>
+        </p>
+      </div>
+
+      {
+        cartoon && (
+          <section class="filler" aria-labelledby="cartoonist">
+            <h2 id="cartoonist" class="kicker">Our Cartoonist Considers the Question</h2>
+            <Cartoon cartoon={cartoon} class="filler-cartoon" />
+          </section>
+        )
+      }
+    </article>
+
+    <aside class="side" aria-label="More stories">
+      <figure class="portrait">
+        <div class="portrait-frame frame halftone">
+          <img
+            src="/images/avatar-1920s.svg"
+            width="640"
+            height="920"
+            alt="Cartoon portrait of Nayed in a bowler hat, monocle, waxed mustache and bow tie"
+          />
+        </div>
+        <figcaption>
+          <b>The Author.</b> <i>Mr. Saïd Ali, lately of Lyon, now of Paris, photographed in his Sunday best.</i>
+        </figcaption>
+      </figure>
+
+      {
+        teasers.map(({ post }, i) => (
+          <article class:list={['teaser', { first: i === 0 }]}>
+            <h3 class="headline teaser-headline">
+              <a href={postUrl(post)}>{post.data.title}</a>
+            </h3>
+            {post.data.deck && <p class="teaser-deck">{post.data.deck}</p>}
+            <p class="teaser-meta label">
+              <time datetime={post.data.date.toISOString()}>{shortDate(post.data.date)}</time> · {readingMinutes(post)} min.
+            </p>
+            <p class="teaser-text">{excerpt(post, 140)}</p>
+          </article>
+        ))
+      }
+    </aside>
+  </main>
+
+  <section class="bottom" aria-labelledby="index-title">
+    <nav class="index" aria-labelledby="index-title">
+      <h2 id="index-title" class="index-title">Index to This Issue</h2>
+      <ol>
+        {
+          index.map(({ issue, page }) => (
+            <li>
+              <a href={postUrl(issue.post)}>
+                <span>{issue.post.data.title}</span>
+                <span class="leader" aria-hidden="true" />
+                <span class="page">
+                  <span class="visually-hidden">page </span>
+                  {page}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <ArchiveBox />
+  </section>
+
+  <Footer rule="minor" />
+</BaseLayout>
+
+<style>
+  /* --- Masthead row ------------------------------------------------------ */
+  .front-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    padding-top: 8px;
+  }
+  .ear {
+    flex: 1 1 200px;
+    max-width: 230px;
+    border: 1px solid var(--ink);
+    padding: 10px 12px;
+    font-family: var(--font-display);
+    font-size: 12px;
+    line-height: 1.45;
+    text-align: center;
+  }
+  .ear-title {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .ear-body {
+    font-style: italic;
+  }
+  .ear :global(.ear-button) {
+    margin-top: 6px;
+  }
+  .nameplate {
+    flex: 10 1 420px;
+    min-width: 0;
+    position: relative;
+    text-align: center;
+  }
+  .masthead {
+    margin: 0;
+    font-family: var(--font-masthead);
+    font-weight: 400;
+    font-size: clamp(2.16rem, 6.19vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .sub {
+    margin: 8px 0 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  .stamp {
+    position: absolute;
+    right: 1%;
+    top: -10px;
+    z-index: 1;
+    transform: rotate(-9deg);
+    border: 4px double var(--stamp);
+    color: var(--stamp);
+    padding: 4px 14px 3px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .ear {
+      margin-inline: auto;
+    }
+    .sub {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+    .stamp {
+      font-size: 16px;
+      top: -14px;
+    }
+  }
+
+  .dateline {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding: 6px 0;
+    border-top: 4px double var(--ink);
+    border-bottom: 1px solid var(--ink);
+    letter-spacing: 0.14em;
+  }
+
+  /* --- Lead and sidebar -------------------------------------------------- */
+  .front {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .lead {
+    flex: 999 1 560px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .lead-headline {
+    text-align: center;
+    font-size: clamp(2.2rem, 5.2vw, 4.4rem);
+    line-height: 0.98;
+  }
+  .lead-deck {
+    max-width: 34ch;
+    text-align: center;
+    font-size: 18px;
+  }
+  .lead-subdeck {
+    max-width: 46ch;
+    text-align: center;
+    font-size: 16px;
+  }
+  .lead-columns {
+    column-width: 17rem;
+    column-gap: 28px;
+    column-rule: 1px solid var(--rule);
+    font-size: 16.5px;
+    line-height: 1.55;
+    text-align: justify;
+  }
+  .lead-columns p {
+    margin: 0 0 0.9em;
+  }
+  .indent {
+    text-indent: 1.4em;
+  }
+  .opening::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 4.6em;
+    line-height: 0.8;
+    padding: 0.06em 0.08em 0 0;
+  }
+  .lead-columns .continued {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-style: italic;
+    text-align: right;
+  }
+  .continued a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .filler {
+    flex: 1 0 auto;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .filler :global(.filler-cartoon) {
+    flex: 1 0 auto;
+  }
+  .filler :global(.filler-cartoon .panel) {
+    flex: 1 0 auto;
+  }
+
+  .side {
+    flex: 1 1 300px;
+    min-width: 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  @media (max-width: 919px) {
+    .side {
+      border-left: 0;
+      padding-left: 0;
+      border-top: 4px double var(--ink);
+      padding-top: 22px;
+    }
+  }
+  .portrait {
+    margin: 0;
+    text-align: center;
+  }
+  .portrait-frame {
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .portrait-frame img {
+    display: block;
+    width: 92%;
+    height: auto;
+    filter: grayscale(1) contrast(1.12) sepia(0.18);
+  }
+  .portrait figcaption {
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .portrait b {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .teaser {
+    border-top: 1px solid var(--ink);
+    padding-top: 14px;
+  }
+  .teaser.first {
+    border-top: 3px double var(--ink);
+  }
+  .teaser-headline {
+    text-align: center;
+    font-size: 26px;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+  .teaser-deck {
+    margin: 8px 0 10px;
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .teaser-meta {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+  .teaser-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    text-align: justify;
+  }
+
+  /* --- Index and archive ------------------------------------------------- */
+  .bottom {
+    margin-top: 32px;
+    border-top: 4px double var(--ink);
+    padding-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 28px;
+    align-items: flex-start;
+  }
+  .index {
+    flex: 1 1 260px;
+    font-family: var(--font-display);
+  }
+  .bottom :global(.archive-box) {
+    flex: 1 1 260px;
+  }
+  .index-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+  }
+  .index ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .index a {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-height: 44px;
+    padding-top: 12px;
+    font-size: 15px;
+  }
+  .leader {
+    flex: 1;
+    min-width: 1.5em;
+    border-bottom: 1px dotted var(--ink);
+    transform: translateY(-4px);
+  }
+  .page {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+</style>
