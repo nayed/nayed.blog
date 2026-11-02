@@ -8,6 +8,7 @@ import Cartoon from '../../components/Cartoon.astro';
 import ArchiveBox from '../../components/ArchiveBox.astro';
 import Star from '../../components/Star.astro';
 import Footer from '../../components/Footer.astro';
+import CopyCode from '../../components/post/CopyCode.astro';
 import { getIssues, postUrl, excerpt, type Issue } from '../../lib/posts';
 import { shortDate } from '../../lib/words';
 import '../../styles/prose.css';
@@ -86,6 +87,7 @@ const latest = issues.filter((i) => i.post.id !== post.id).slice(0, 5);
   </div>
 
   <Footer />
+  <CopyCode />
 </BaseLayout>
 
 <style>

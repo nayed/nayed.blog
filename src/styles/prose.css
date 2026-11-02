@@ -130,3 +130,81 @@
 .prose del {
   text-decoration-thickness: 1px;
 }
+
+/* --- Code: "wire copy" ---------------------------------------------------- */
+
+.code-block {
+  column-span: all;
+  break-inside: avoid;
+  margin: 1.1em 4px 1.4em;
+  border: 1px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+  text-align: left;
+}
+
+.code-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-left: 18px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  hyphens: none;
+}
+
+.code-copy {
+  flex: none;
+  min-height: 44px;
+  padding: 0 18px;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.code-copy:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 22px 24px 24px;
+  overflow-x: auto;
+  background: var(--code-tint) !important; /* beats Shiki's inline background */
+  font-family: var(--font-mono);
+  font-size: 17px;
+  line-height: 1.65;
+  tab-size: 2;
+  hyphens: none;
+  text-align: left;
+}
+
+.code-block pre code {
+  font-family: inherit;
+}
+
+.code-block figcaption {
+  padding: 9px 18px;
+  border-top: 1px solid var(--ink);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .code-block pre {
+    padding: 16px;
+    font-size: 15px;
+  }
+}
