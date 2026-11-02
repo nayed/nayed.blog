@@ -52,23 +52,41 @@ export function readingTime(post: Post): string {
   return `${numberWord(n)} ${n === 1 ? 'Minute’s' : 'Minutes’'} Reading`;
 }
 
+/** Straight quotes to typographic ones, as the Markdown renderer does. */
+export function smartQuotes(text: string): string {
+  return text
+    .replace(/(^|[\s([{«—–-])"/g, '$1“')
+    .replace(/"/g, '”')
+    .replace(/(^|[\s([{«—–-])'/g, '$1‘')
+    .replace(/'/g, '’')
+    .replace(/\.\.\./g, '…');
+}
+
 /**
- * First paragraphs of the post as plain text, for teasers.
- * Skips MDX imports/components, headings, images and rules.
+ * The post's prose paragraphs as plain text, for teasers and the lead story.
+ * Skips MDX imports and components, headings, images, quotes and rules.
  */
-export function excerpt(post: Post, maxChars = 160): string {
-  const paragraphs = (post.body ?? '')
+export function plainParagraphs(post: Post): string[] {
+  return (post.body ?? '')
     .split(/\n\s*\n/)
     .map((p) => p.trim())
-    .filter((p) => p && !/^(import |<|#|!\[|---|-$|>)/.test(p));
-  let text = paragraphs
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/~~|[_*`]/g, '')
-    .replace(/'/g, '’');
-  if (text.length <= maxChars) return text;
-  text = text.slice(0, maxChars);
-  return text.slice(0, text.lastIndexOf(' ')).replace(/[,.;:!?\s]+$/, '') + '…';
+    .filter((p) => p && !/^(import |<|#|!\[|---|-$|>)/.test(p))
+    .map((p) =>
+      smartQuotes(
+        p
+          .replace(/\s+/g, ' ')
+          .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+          .replace(/~~|[_*`]/g, ''),
+      ),
+    );
 }
+
+/** Cut at a word boundary and add an ellipsis. */
+export function truncate(text: string, maxChars: number): string {
+  if (text.length <= maxChars) return text;
+  const cut = text.slice(0, maxChars);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,.;:!?\s]+$/, '') + '…';
+}
+
+/** Opening lines of the post as one plain-text run. */
+export const excerpt = (post: Post, maxChars = 160) => truncate(plainParagraphs(post).join(' '), maxChars);

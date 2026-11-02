@@ -1,0 +1,19 @@
+---
+/** The four-pointed star ornament. Always decorative. */
+interface Props {
+  size?: number;
+}
+
+const { size = 22 } = Astro.props;
+---
+
+<svg class="star" width={size} height={size} viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+  <path d="M11 1 L13.5 8.5 L21 11 L13.5 13.5 L11 21 L8.5 13.5 L1 11 L8.5 8.5 Z" fill="currentColor"></path>
+</svg>
+
+<style>
+  .star {
+    display: block;
+    flex: none;
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import { SITE } from '../lib/site';
+import { longDate } from '../lib/words';
+import { readingTime, type Post } from '../lib/posts';
+
+/** The strip under a headline: author, place and date, reading time. */
+interface Props {
+  post: Post;
+  /** Front-page lead uses a single centred line; the article page spreads it out. */
+  compact?: boolean;
+}
+
+const { post, compact = false } = Astro.props;
+---
+
+{
+  compact ? (
+    <p class="byline compact label">
+      By {SITE.author} · <time datetime={post.data.date.toISOString()}>{longDate(post.data.date)}</time> ·{' '}
+      {readingTime(post)}, or So
+    </p>
+  ) : (
+    <div class="byline strip label">
+      <span>By {SITE.author}, Staff Correspondent</span>
+      <span>
+        {SITE.city}, <time datetime={post.data.date.toISOString()}>{longDate(post.data.date)}</time>
+      </span>
+      <span>{readingTime(post)}, or So</span>
+    </div>
+  )
+}
+
+<style>
+  .byline {
+    margin: 20px 0 22px;
+  }
+  .compact {
+    margin: 16px 0 14px;
+    padding: 5px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    text-align: center;
+  }
+</style>

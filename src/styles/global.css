@@ -1,0 +1,311 @@
+/* ===========================================================================
+   The Nayed Blog: global styles
+   Editions are set on <html data-edition="morning|evening|late"> by an inline
+   script in <head>, before first paint.
+   ======================================================================== */
+
+@import '@fontsource/abril-fatface/400.css';
+@import '@fontsource/old-standard-tt/400.css';
+@import '@fontsource/old-standard-tt/700.css';
+@import '@fontsource/old-standard-tt/400-italic.css';
+@import '@fontsource/libre-caslon-text/400.css';
+@import '@fontsource/libre-caslon-text/700.css';
+@import '@fontsource/libre-caslon-text/400-italic.css';
+@import '@fontsource/courier-prime/400.css';
+@import '@fontsource/courier-prime/700.css';
+@import '@fontsource/courier-prime/400-italic.css';
+
+/* --- Editions -------------------------------------------------------------- */
+
+:root,
+:root[data-edition='morning'] {
+  --paper: #f1eadb;
+  --ink: #1c1a17;
+  --ink-rgb: 28 26 23;
+  --code-faded: #5e574c;
+  --code-accent: #8a1c1c;
+  --focus: #8a1c1c;
+  --stamp: transparent;
+  --code-tint-alpha: 0.05;
+  color-scheme: light;
+}
+
+:root[data-edition='evening'] {
+  --paper: #1a1815;
+  --ink: #e9e1cf;
+  --ink-rgb: 233 225 207;
+  --code-faded: #a99f8c;
+  --code-accent: #e58a7c;
+  --focus: #e58a7c;
+  --code-tint-alpha: 0.06;
+  color-scheme: dark;
+}
+
+:root[data-edition='late'] {
+  --paper: #ebc4ac;
+  --ink: #2a1610;
+  --ink-rgb: 42 22 16;
+  --code-faded: #5c4034;
+  --code-accent: #8a1c1c;
+  --focus: #8a1c1c;
+  --stamp: #a3121a;
+  color-scheme: light;
+}
+
+/* Without the head script (JS off), still honour a dark system preference. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-edition]) {
+    --paper: #1a1815;
+    --ink: #e9e1cf;
+    --ink-rgb: 233 225 207;
+    --code-faded: #a99f8c;
+    --code-accent: #e58a7c;
+    --focus: #e58a7c;
+    --code-tint-alpha: 0.06;
+    color-scheme: dark;
+  }
+}
+
+:root {
+  --rule: rgb(var(--ink-rgb) / 0.35);
+  --dot: rgb(var(--ink-rgb) / 0.42);
+  --code-tint: rgb(var(--ink-rgb) / var(--code-tint-alpha));
+
+  --font-masthead: 'Abril Fatface', 'Bodoni 72', Didot, serif;
+  --font-display: 'Old Standard TT', 'Times New Roman', serif;
+  --font-body: 'Libre Caslon Text', Georgia, serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(16px, 3vw, 40px);
+}
+
+/* --- Base ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  transition:
+    background-color 400ms var(--ease),
+    color 400ms var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+p {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Page frame ------------------------------------------------------------ */
+
+.sheet {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px var(--gutter) 48px;
+}
+
+/* --- Type ------------------------------------------------------------------ */
+
+/* Small caps labels, datelines, kickers. */
+.label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.deck {
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.subdeck {
+  margin: 0 auto;
+  font-style: italic;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+/* A rule centred between headline, deck and subdeck. */
+.short-rule {
+  width: var(--w, 120px);
+  margin: 14px auto;
+  border: 0;
+  border-top: 1px solid var(--ink);
+}
+
+/* Section heading set between a double and a single rule. */
+.kicker {
+  margin: 0;
+  padding: 5px 0;
+  border-top: 3px double var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* A strip of facts between rules: datelines, bylines. */
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 6px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+/* --- Ornaments ------------------------------------------------------------- */
+
+/* Double-frame box: border plus an offset outline. */
+.frame {
+  border: 1px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: var(--frame-offset, 4px);
+  margin: calc(var(--frame-offset, 4px) + 1px);
+}
+
+.halftone {
+  background-image: radial-gradient(var(--dot) 0.9px, transparent 1.1px);
+  background-size: 4px 4px;
+}
+
+/* Photographs and screenshots, printed on newsprint. */
+.photo {
+  border: 1px solid var(--ink);
+  filter: grayscale(1) contrast(1.08) sepia(0.15);
+}
+
+/* Ink-coloured button / link set in reverse. */
+.button-solid {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.button-solid:hover {
+  text-decoration: underline;
+}
+
+/* --- Edition-specific content ---------------------------------------------- */
+
+/* Elements printed once per edition; only the active one shows. */
+:root:not([data-edition='morning']) [data-for-edition='morning'],
+:root:not([data-edition='evening']) [data-for-edition='evening'],
+:root:not([data-edition='late']) [data-for-edition='late'] {
+  display: none;
+}
+
+/* No script: fall back to Morning (or Evening in dark mode). */
+:root:not([data-edition]) [data-for-edition] {
+  display: none;
+}
+:root:not([data-edition]) [data-for-edition='morning'] {
+  display: revert;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-edition]) [data-for-edition='morning'] {
+    display: none;
+  }
+  :root:not([data-edition]) [data-for-edition='evening'] {
+    display: revert;
+  }
+}
+
+/* The edition button is useless without script. */
+:root:not([data-edition]) [data-edition-button] {
+  display: none;
+}

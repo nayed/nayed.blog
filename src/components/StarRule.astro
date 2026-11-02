@@ -1,0 +1,31 @@
+---
+import Star from './Star.astro';
+
+/** A star between two hairlines: a section break. */
+interface Props {
+  width?: string;
+  size?: number;
+}
+
+const { width = '60%', size = 18 } = Astro.props;
+---
+
+<div class="star-rule" style={`--w: ${width}`} aria-hidden="true">
+  <span></span>
+  <Star size={size} />
+  <span></span>
+</div>
+
+<style>
+  .star-rule {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: var(--w);
+    margin: 16px auto;
+  }
+  span {
+    flex: 1;
+    border-top: 1px solid var(--ink);
+  }
+</style>

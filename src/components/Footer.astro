@@ -1,0 +1,46 @@
+---
+import { SITE } from '../lib/site';
+import { toRoman } from '../lib/roman';
+
+interface Props {
+  rule?: 'major' | 'minor';
+}
+
+const { rule = 'major' } = Astro.props;
+const thisYear = toRoman(new Date().getFullYear());
+---
+
+<footer class:list={['footer', 'label', rule]}>
+  <span>Printed &amp; Published by {SITE.author}</span>
+  <span aria-hidden="true">·</span>
+  <a href={SITE.github}>GitHub</a>
+  <span aria-hidden="true">·</span>
+  <a href="/rss.xml">RSS</a>
+  <span aria-hidden="true">·</span>
+  <span>Copyright {toRoman(SITE.founded)} – {thisYear}</span>
+</footer>
+
+<style>
+  .footer {
+    margin-top: 36px;
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0 18px;
+    letter-spacing: 0.14em;
+  }
+  .major {
+    border-top: 4px double var(--ink);
+  }
+  .minor {
+    margin-top: 32px;
+    border-top: 1px solid var(--ink);
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

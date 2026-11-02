@@ -1,0 +1,56 @@
+---
+interface Props {
+  size?: 'large' | 'small';
+}
+
+const { size = 'large' } = Astro.props;
+---
+
+<aside class:list={['archive-box', 'frame', size]} aria-labelledby="archive-box-title">
+  <h2 id="archive-box-title" class="title">The Archive</h2>
+  <hr class="short-rule" />
+  <p>The complete index of this paper: every story ever printed, newest first, each with the cartoon that ran beside it.</p>
+  <a class="button-solid" href="/archive/">Browse the Archive →</a>
+</aside>
+
+<style>
+  .archive-box {
+    --frame-offset: 3px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .short-rule {
+    --w: 80px;
+    margin: 8px auto;
+  }
+  p {
+    margin: 0 0 12px;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.45;
+    text-wrap: balance;
+    hyphens: manual;
+  }
+  .small .title {
+    font-size: 20px;
+  }
+  .small .short-rule {
+    --w: 60px;
+  }
+  .small p {
+    font-size: 13.5px;
+  }
+  .small .button-solid {
+    padding: 0 16px;
+    font-size: 12px;
+  }
+</style>

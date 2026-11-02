@@ -1,0 +1,6 @@
+---
+import { EDITIONS } from '../../lib/editions';
+---
+
+<!-- Every name is printed; CSS shows the active one, so nothing flashes. -->
+{EDITIONS.map((e) => <span data-for-edition={e.id}>{e.name}</span>)}

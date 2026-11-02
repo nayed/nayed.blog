@@ -1,0 +1,95 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { SvgComponent } from 'astro/types';
+
+type CartoonData = NonNullable<CollectionEntry<'posts'>['data']['cartoon']>;
+
+/**
+ * A post's cartoon in its double frame, with caption.
+ * SVG cartoons are inlined so their ink and paper follow the edition;
+ * raster ones get the newsprint photo treatment.
+ */
+interface Props {
+  cartoon: CartoonData;
+  /** Use the narrow drawing when there is one. */
+  narrow?: boolean;
+  /** Turns the whole frame into a link (archive); the drawing is then decorative. */
+  href?: string;
+  linkLabel?: string;
+  class?: string;
+}
+
+const { cartoon, narrow = false, href, linkLabel, class: className } = Astro.props;
+const image = (narrow && cartoon.imageNarrow) || cartoon.image;
+const isSvg = image.format === 'svg';
+const Drawing = image as unknown as SvgComponent;
+const decorative = Boolean(href);
+
+// `code` in captions is set upright, like the mockup's !important.
+const captionParts = cartoon.caption.split(/(`[^`]+`)/).map((part) =>
+  part.startsWith('`') ? { code: true, text: part.slice(1, -1) } : { code: false, text: part },
+);
+const Frame = href ? 'a' : 'div';
+---
+
+<figure class:list={['cartoon', className]}>
+  <Frame class="frame panel" href={href} aria-label={href ? linkLabel : undefined}>
+    {
+      isSvg ? (
+        <Drawing
+          class="drawing"
+          role={decorative ? undefined : 'img'}
+          aria-label={decorative ? undefined : cartoon.alt}
+          aria-hidden={decorative ? 'true' : undefined}
+        />
+      ) : (
+        <img class="drawing raster" src={image.src} width={image.width} height={image.height} alt={decorative ? '' : cartoon.alt} />
+      )
+    }
+  </Frame>
+  <figcaption>
+    {captionParts.map((p) => (p.code ? <span class="upright">{p.text}</span> : p.text))}
+  </figcaption>
+</figure>
+
+<style>
+  .cartoon {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .panel {
+    --frame-offset: 4px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 18px 24px 0;
+    overflow: hidden;
+  }
+  a.panel:hover {
+    text-decoration: none;
+  }
+  .drawing {
+    display: block;
+    width: 100%;
+    max-width: var(--drawing-max, 520px);
+    height: auto;
+  }
+  .raster {
+    filter: grayscale(1) contrast(1.12) sepia(0.18);
+  }
+  figcaption {
+    margin: 6px auto 0;
+    max-width: 58ch;
+    text-align: center;
+    font-style: italic;
+    font-size: var(--caption-size, 17px);
+    line-height: 1.45;
+    text-wrap: balance;
+  }
+  .upright {
+    font-family: var(--font-display);
+    font-style: normal;
+  }
+</style>

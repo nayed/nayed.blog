@@ -1,0 +1,51 @@
+---
+import EditionButton from './edition/EditionButton.astro';
+
+/** Header for inside pages: small masthead, way home, page name, edition button. */
+interface Props {
+  /** What this page is called in the paper, e.g. "Page 2" or "The Archive". */
+  page: string;
+}
+
+const { page } = Astro.props;
+---
+
+<header class="slim-header">
+  <a class="masthead" href="/">The Nayed Blog</a>
+  <nav class="label" aria-label="Paper">
+    <a href="/">← Front Page</a>
+    <span aria-current="page">{page}</span>
+    <EditionButton />
+  </nav>
+</header>
+
+<style>
+  .slim-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 24px;
+    padding-bottom: 10px;
+    border-bottom: 4px double var(--ink);
+  }
+  .masthead {
+    font-family: var(--font-masthead);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 18px;
+  }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+</style>

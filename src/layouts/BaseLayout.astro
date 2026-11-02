@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import EditionScript from '../components/edition/EditionScript.astro';
+import { SITE } from '../lib/site';
+
+interface Props {
+  /** Page title; the paper's name is appended. Omit on the front page. */
+  title?: string;
+  description?: string;
+  type?: 'website' | 'article';
+  published?: Date;
+}
+
+const { title, description = SITE.description, type = 'website', published } = Astro.props;
+const fullTitle = title ? `${title} — ${SITE.title}` : `${SITE.title} — Personal Blog of ${SITE.author}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F1EADB" />
+    <EditionScript />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:title" content={title ?? SITE.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    {published && <meta property="article:published_time" content={published.toISOString()} />}
+    <meta name="twitter:card" content="summary" />
+    <slot name="head" />
+  </head>
+  <body>
+    <div class="sheet">
+      <slot />
+    </div>
+  </body>
+</html>

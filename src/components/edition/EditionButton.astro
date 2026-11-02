@@ -1,0 +1,64 @@
+---
+import { EDITIONS, nextEdition } from '../../lib/editions';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<button type="button" class:list={['edition-button', className]} data-edition-button>
+  {
+    EDITIONS.map((e, i) => (
+      <span data-for-edition={e.id}>
+        Next: the {nextEdition(i).name}
+      </span>
+    ))
+  }
+</button>
+
+<style>
+  .edition-button {
+    min-height: 44px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--ink);
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+    cursor: pointer;
+  }
+
+  .edition-button:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+</style>
+
+<script>
+  import { EDITIONS } from '../../lib/editions';
+
+  const live = document.createElement('p');
+  live.className = 'visually-hidden';
+  live.setAttribute('aria-live', 'polite');
+  document.body.append(live);
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-edition-button]')) {
+    button.addEventListener('click', () => {
+      const root = document.documentElement;
+      const i = EDITIONS.findIndex((e) => e.id === root.dataset.edition);
+      const next = EDITIONS[(i + 1) % EDITIONS.length]!;
+      root.dataset.edition = next.id;
+      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')!.content = next.paper;
+      try {
+        localStorage.setItem('edition', next.id);
+      } catch {
+        // Private mode or storage disabled: the choice lasts for this page only.
+      }
+      live.textContent = `Now printing the ${next.name}.`;
+    });
+  }
+</script>
