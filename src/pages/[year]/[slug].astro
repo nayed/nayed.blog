@@ -1,0 +1,190 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SlimHeader from '../../components/SlimHeader.astro';
+import Byline from '../../components/Byline.astro';
+import Cartoon from '../../components/Cartoon.astro';
+import ArchiveBox from '../../components/ArchiveBox.astro';
+import Star from '../../components/Star.astro';
+import Footer from '../../components/Footer.astro';
+import { getIssues, postUrl, excerpt, type Issue } from '../../lib/posts';
+import { shortDate } from '../../lib/words';
+import '../../styles/prose.css';
+
+export const getStaticPaths = (async () => {
+  const issues = await getIssues();
+  return issues.map((issue) => {
+    const [year, slug] = issue.post.id.split('/');
+    return { params: { year, slug }, props: { issue, issues } };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  issue: Issue;
+  issues: Issue[];
+}
+
+const { issue, issues } = Astro.props;
+const { post } = issue;
+const { title, deck, subdeck, cartoon, date } = post.data;
+const { Content } = await render(post);
+const latest = issues.filter((i) => i.post.id !== post.id).slice(0, 5);
+---
+
+<BaseLayout title={title} description={deck ?? excerpt(post)} type="article" published={date}>
+  <SlimHeader page="Page 2" />
+
+  <div class="spread">
+    <article class="story">
+      <header class="story-head">
+        <p class="issue label">{issue.label}</p>
+        <h1 class="headline story-headline">{title}</h1>
+        {deck && <hr class="short-rule" style="--w: 140px; margin: 16px auto" />}
+        {deck && <p class="deck story-deck">{deck}</p>}
+        {subdeck && <hr class="short-rule" style="--w: 60px; margin: 12px auto" />}
+        {subdeck && <p class="subdeck story-subdeck">{subdeck}</p>}
+        <Byline post={post} />
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <div class="end" aria-hidden="true">
+        <div class="dinkus"><Star size={14} /><Star size={14} /><Star size={14} /></div>
+        <p class="label thirty">— 30 —</p>
+      </div>
+
+      {
+        cartoon && (
+          <section class="story-cartoon" aria-labelledby="story-cartoon-title">
+            <h2 id="story-cartoon-title" class="kicker">This Story’s Cartoon</h2>
+            <Cartoon cartoon={cartoon} />
+          </section>
+        )
+      }
+    </article>
+
+    <aside class="side" aria-labelledby="latest-title">
+      <h2 id="latest-title" class="kicker">The Latest Stories</h2>
+      {
+        latest.map(({ post: other }) => (
+          <article class="latest">
+            <p class="label latest-date">
+              <time datetime={other.data.date.toISOString()}>{shortDate(other.data.date)}</time>
+            </p>
+            <h3 class="headline latest-headline">
+              <a href={postUrl(other)}>{other.data.title}</a>
+            </h3>
+            {other.data.deck && <p class="latest-deck">{other.data.deck}</p>}
+          </article>
+        ))
+      }
+      <ArchiveBox size="small" />
+    </aside>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .spread {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 26px;
+  }
+  .story {
+    flex: 999 1 600px;
+    min-width: 0;
+  }
+  .issue {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 11px;
+  }
+  .story-headline {
+    text-align: center;
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    letter-spacing: -0.025em;
+  }
+  .story-deck {
+    max-width: 36ch;
+    text-align: center;
+    font-size: 19px;
+  }
+  .story-subdeck {
+    max-width: 48ch;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .end {
+    margin: 1em 0 0;
+  }
+  .dinkus {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 0.6em;
+  }
+  .thirty {
+    margin: 0;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+  }
+
+  .story-cartoon {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    --caption-size: 18px;
+  }
+  .story-cartoon :global(.panel) {
+    --frame-offset: 5px;
+    padding: 22px 24px 0;
+  }
+
+  .side {
+    flex: 1 1 280px;
+    min-width: 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  @media (max-width: 951px) {
+    .side {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+  .latest {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+  .latest-date {
+    margin: 0;
+    font-size: 11px;
+  }
+  .latest-headline {
+    font-size: 21px;
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+  .latest-deck {
+    margin: 0;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+</style>

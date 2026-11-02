@@ -1,0 +1,132 @@
+/* ===========================================================================
+   Article body: columns of justified Caslon with newspaper furniture.
+   Applied to the rendered Markdown inside .prose.
+   ======================================================================== */
+
+.prose {
+  column-width: 18rem;
+  column-gap: 32px;
+  column-rule: 1px solid var(--rule);
+  font-size: 17px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.prose > p {
+  margin: 0 0 0.9em;
+}
+
+/* A paragraph that follows another is indented, as in print. */
+.prose > p + p {
+  text-indent: 1.4em;
+}
+
+.prose > p:first-child::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5.2em;
+  line-height: 0.78;
+  padding: 0.06em 0.08em 0 0;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ## headings: centred small-caps subheads. */
+.prose h2,
+.prose h3 {
+  break-after: avoid;
+  margin: 1.2em 0 0.6em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.prose blockquote {
+  break-inside: avoid;
+  margin: 0.6em 0 1em;
+  padding: 14px 6px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  text-align: center;
+  font-style: italic;
+}
+
+.prose blockquote p {
+  margin: 0;
+  text-align: center;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 0.9em;
+  padding-left: 1.4em;
+  text-align: left;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Markdown images (outside the Figure component) get the press treatment. */
+.prose > p > img {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--ink);
+  filter: grayscale(1) contrast(1.08) sepia(0.15);
+}
+
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  background: var(--code-tint);
+  padding: 0.05em 0.3em;
+  border-bottom: 1px solid var(--rule);
+  hyphens: none;
+}
+
+/* --- Thematic break (---) as a star ornament ------------------------------- */
+
+.prose hr {
+  border: 0;
+  height: 22px;
+  margin: 1em auto;
+  width: 60%;
+  break-after: avoid;
+  background:
+    linear-gradient(var(--ink), var(--ink)) left center / calc(50% - 22px) 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) right center / calc(50% - 22px) 1px no-repeat;
+  position: relative;
+}
+
+.prose hr::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0 -9px;
+  background: var(--ink);
+  clip-path: polygon(50% 0, 61.4% 38.6%, 100% 50%, 61.4% 61.4%, 50% 100%, 38.6% 61.4%, 0 50%, 38.6% 38.6%);
+}
+
+/* --- Strikethrough: a single ink line --------------------------------------- */
+
+.prose del {
+  text-decoration-thickness: 1px;
+}
