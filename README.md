@@ -31,6 +31,7 @@ Each story is a folder: `src/content/posts/{year}/{slug}/index.mdx`. The folder 
 ---
 title: The headline                 # required
 date: '2026-11-02'                  # required
+city: Lyon                          # optional, shown in the dateline and byline
 draft: true                         # hidden in production, still counts for issue numbers
 deck: Bold Subheadline, Headline Case, ≤ 60 Chars
 subdeck: A longer italic line for the article page and front-page lead

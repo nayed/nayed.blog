@@ -20,6 +20,8 @@ const posts = defineCollection({
       deck: z.string().optional(),
       // Longer italic line: article page and front-page lead only.
       subdeck: z.string().optional(),
+      // Where the story was filed from, for the dateline and byline.
+      city: z.string().optional(),
       section: z.enum(['technology', 'sport', 'life']).optional(),
       cartoon: z
         .object({

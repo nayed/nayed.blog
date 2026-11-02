@@ -45,7 +45,7 @@ const storyCount = issues.length;
 
   <div class="dateline label">
     <span>{lead.label}</span>
-    <span>{SITE.city}, {fullDate(leadPost.data.date)}</span>
+    <span>{leadPost.data.city && `${leadPost.data.city}, `}{fullDate(leadPost.data.date)}</span>
     <span>{numberWord(storyCount)} {storyCount === 1 ? 'Story' : 'Stories'} · Price: Free</span>
   </div>
 

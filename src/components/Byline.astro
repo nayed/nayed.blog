@@ -23,7 +23,7 @@ const { post, compact = false } = Astro.props;
     <div class="byline strip label">
       <span>By {SITE.author}, Staff Correspondent</span>
       <span>
-        {SITE.city}, <time datetime={post.data.date.toISOString()}>{longDate(post.data.date)}</time>
+        {post.data.city && `${post.data.city}, `}<time datetime={post.data.date.toISOString()}>{longDate(post.data.date)}</time>
       </span>
       <span>{readingTime(post)}, or So</span>
     </div>
