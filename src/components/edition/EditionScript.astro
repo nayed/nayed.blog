@@ -2,14 +2,17 @@
 import { EDITIONS } from '../../lib/editions';
 
 const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
+const schemes = Object.fromEntries(EDITIONS.map((e) => [e.id, e.scheme]));
 ---
 
 <!--
   Runs before first paint so the wrong edition never flashes.
   Every reader starts on the Morning Edition, whatever their system theme;
   the edition they pick with the button is saved and applied here.
+  The color-scheme meta tells the browser how dark the page is before any CSS
+  arrives, so a browser that blanks the window between pages blanks it dark.
 -->
-<script is:inline define:vars={{ papers }}>
+<script is:inline define:vars={{ papers, schemes }}>
   (function () {
     var edition;
     try {
@@ -18,5 +21,6 @@ const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
     if (!papers[edition]) edition = 'morning';
     document.documentElement.dataset.edition = edition;
     document.querySelector('meta[name="theme-color"]').content = papers[edition];
+    document.querySelector('meta[name="color-scheme"]').content = schemes[edition];
   })();
 </script>

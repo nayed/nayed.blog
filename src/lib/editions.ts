@@ -1,7 +1,7 @@
 export const EDITIONS = [
-  { id: 'morning', name: 'Morning Edition', paper: '#F1EADB' },
-  { id: 'evening', name: 'Evening Edition', paper: '#1A1815' },
-  { id: 'late', name: 'Late Final', paper: '#EBC4AC' },
+  { id: 'morning', name: 'Morning Edition', paper: '#F1EADB', scheme: 'light' },
+  { id: 'evening', name: 'Evening Edition', paper: '#1A1815', scheme: 'dark' },
+  { id: 'late', name: 'Late Final', paper: '#EBC4AC', scheme: 'light' },
 ] as const;
 
 export type EditionId = (typeof EDITIONS)[number]['id'];

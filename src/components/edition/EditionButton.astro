@@ -53,6 +53,7 @@ const { class: className } = Astro.props;
       const next = EDITIONS[(i + 1) % EDITIONS.length]!;
       root.dataset.edition = next.id;
       document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')!.content = next.paper;
+      document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]')!.content = next.scheme;
       try {
         localStorage.setItem('edition', next.id);
       } catch {
