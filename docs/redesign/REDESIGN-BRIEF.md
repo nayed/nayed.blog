@@ -104,7 +104,7 @@ Behaviour:
 ## 5. Pages
 
 ### Front page (`/`), see `design-reference/front-page.html`
-- **Masthead row:** "Our Motto" box (left, *"20-something developer ranting about stuff he doesn't grasp."*), masthead centred with "PERSONAL BLOG OF NAYED SAÏD ALI" beneath, edition box (right).
+- **Masthead row:** "Our Motto" box (left, *"Printed whenever the editor has something to say, which is rarely."*, changed 2026-11-04 from *"20-something developer ranting about stuff he doesn't grasp."*), masthead centred with "PERSONAL BLOG OF NAYED SAÏD ALI" beneath, edition box (right).
   - Under 720px: the boxes stack and centre; the subtitle drops to 12px with 0.12em tracking and no wrapping.
 - **Dateline strip** between a double rule and a single rule: `Vol. {roman} — No. {n}` · `Paris, {weekday}, {date}` · `{count} Stories · Price: Free`. Values come from the **latest** post (§6).
 - **Lead story** (latest post): headline, deck, subdeck, byline strip, opening paragraphs in columns, "Continued on Page 2 →" link to the post.
