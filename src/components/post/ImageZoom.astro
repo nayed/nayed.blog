@@ -36,8 +36,14 @@
     position: relative;
     z-index: 1001;
     cursor: zoom-out;
-    transition: transform 400ms cubic-bezier(0.4, 0, 0, 1);
-    will-change: transform;
+    transition:
+      transform 400ms cubic-bezier(0.4, 0, 0, 1),
+      filter 400ms cubic-bezier(0.4, 0, 0, 1);
+    will-change: transform, filter;
+  }
+  /* Enlarged, the print develops into its true colours. */
+  img.is-zoomed.in-colour {
+    filter: none;
   }
   @media (prefers-reduced-motion: reduce) {
     .zoom-overlay,
@@ -81,6 +87,7 @@
     requestAnimationFrame(() => {
       overlay.classList.add('is-open');
       img.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scale})`;
+      img.classList.add('in-colour');
     });
     open = { img, trigger, overlay, scrollY: window.scrollY };
   }
@@ -91,6 +98,7 @@
     open = null;
     overlay.classList.remove('is-open');
     img.style.transform = '';
+    img.classList.remove('in-colour');
     trigger.setAttribute('aria-expanded', 'false');
 
     const done = () => {
@@ -98,7 +106,15 @@
       overlay.remove();
     };
     if (reduceMotion.matches) done();
-    else img.addEventListener('transitionend', done, { once: true });
+    else {
+      // Wait for the transform; the filter fades on the same clock.
+      const onEnd = (event: TransitionEvent) => {
+        if (event.propertyName !== 'transform') return;
+        img.removeEventListener('transitionend', onEnd);
+        done();
+      };
+      img.addEventListener('transitionend', onEnd);
+    }
   }
 
   for (const img of document.querySelectorAll<HTMLImageElement>('img[data-zoom]')) {
