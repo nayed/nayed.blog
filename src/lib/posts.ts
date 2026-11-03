@@ -35,6 +35,13 @@ export async function getIssues(): Promise<Issue[]> {
 
 export const postUrl = (post: Post) => `/${post.id}/`;
 
+/**
+ * The page a story is printed on, given its place in getIssues() (newest first).
+ * The lead starts on the front page and continues on Page 2; each later story
+ * gets the next page. Stories move back a page whenever a new one is published.
+ */
+export const pageOf = (position: number) => position + 2;
+
 /** Words in the Markdown source, ignoring imports, JSX tags and URLs. */
 function wordCount(post: Post): number {
   const text = (post.body ?? '')

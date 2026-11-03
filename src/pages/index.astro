@@ -7,7 +7,7 @@ import Cartoon from '../components/Cartoon.astro';
 import ArchiveBox from '../components/ArchiveBox.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../lib/site';
-import { getIssues, postUrl, plainParagraphs, truncate, excerpt, readingMinutes } from '../lib/posts';
+import { getIssues, postUrl, pageOf, plainParagraphs, truncate, excerpt, readingMinutes } from '../lib/posts';
 import { fullDate, numberWord, shortDate } from '../lib/words';
 
 const issues = await getIssues();
@@ -21,7 +21,7 @@ const [first = '', second] = opening;
 const teasers = others.slice(0, 4);
 const index = issues.slice(0, 5).map((issue, i) => ({
   issue,
-  page: i === 0 ? '1–2' : String(i + 2),
+  page: i === 0 ? '1–2' : String(pageOf(i)),
 }));
 const storyCount = issues.length;
 ---
@@ -61,7 +61,7 @@ const storyCount = issues.length;
         <p class="opening">{first}</p>
         {second && <p class="indent">{truncate(second, 260)}</p>}
         <p class="continued">
-          <a href={postUrl(leadPost)}>Continued on Page 2, Column 1 →</a>
+          <a href={postUrl(leadPost)}>Continued on Page {pageOf(0)}, Column 1 →</a>
         </p>
       </div>
 

@@ -10,7 +10,7 @@ import Star from '../../components/Star.astro';
 import Footer from '../../components/Footer.astro';
 import CopyCode from '../../components/post/CopyCode.astro';
 import ImageZoom from '../../components/post/ImageZoom.astro';
-import { getIssues, postUrl, excerpt, type Issue } from '../../lib/posts';
+import { getIssues, postUrl, pageOf, excerpt, type Issue } from '../../lib/posts';
 import { shortDate } from '../../lib/words';
 import '../../styles/prose.css';
 
@@ -32,10 +32,11 @@ const { post } = issue;
 const { title, deck, subdeck, cartoon, date } = post.data;
 const { Content } = await render(post);
 const latest = issues.filter((i) => i.post.id !== post.id).slice(0, 5);
+const page = pageOf(issues.findIndex((i) => i.post.id === post.id));
 ---
 
 <BaseLayout title={title} description={deck ?? excerpt(post)} type="article" published={date}>
-  <SlimHeader page="Page 2" />
+  <SlimHeader page={`Page ${page}`} />
 
   <div class="spread">
     <article class="story">
