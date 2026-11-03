@@ -13,7 +13,15 @@ const { src, alt, label } = Astro.props;
 ---
 
 <div class="exhibit">
-  <Image class="photo" src={src} alt={alt} widths={[400, 800, 1200]} sizes="(min-width: 900px) 300px, 100vw" />
+  <Image
+    class="photo"
+    src={src}
+    alt={alt}
+    widths={[400, 800, 1200, 1920]}
+    sizes="(min-width: 900px) 300px, 100vw"
+    data-zoom
+    data-full-width={src.width}
+  />
   <div class="label">{label}</div>
 </div>
 

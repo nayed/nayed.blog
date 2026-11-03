@@ -22,9 +22,17 @@ const { src, alt, label, caption, wide = false } = Astro.props;
 <figure class:list={['figure', { wide }]}>
   {
     src.format === 'gif' ? (
-      <img class="photo" src={src.src} width={src.width} height={src.height} alt={alt} loading="lazy" decoding="async" />
+      <img class="photo" src={src.src} width={src.width} height={src.height} alt={alt} loading="lazy" decoding="async" data-zoom data-full-width={src.width} />
     ) : (
-      <Image class="photo" src={src} alt={alt} widths={[480, 960, 1440]} sizes="(min-width: 1200px) 860px, 100vw" />
+      <Image
+        class="photo"
+        src={src}
+        alt={alt}
+        widths={[480, 960, 1440, 1920]}
+        sizes="(min-width: 1200px) 860px, 100vw"
+        data-zoom
+        data-full-width={src.width}
+      />
     )
   }
   {

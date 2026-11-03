@@ -1,0 +1,127 @@
+<!--
+  Click (or Enter) on a photograph to enlarge it in place, as the Gatsby
+  site did with `zooming`: the image glides to the centre of the screen
+  while the page fades to paper. Click, Esc, scroll or resize to put it back.
+  Images opt in with `data-zoom`; `data-full-width` caps the enlargement at
+  the original file's width so nothing is blown up past its pixels.
+-->
+
+<style is:global>
+  .zoom-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+  }
+  .zoom-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .zoom-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--paper);
+    opacity: 0;
+    cursor: zoom-out;
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0, 1);
+  }
+  .zoom-overlay.is-open {
+    opacity: 1;
+  }
+  img.is-zoomed {
+    position: relative;
+    z-index: 1001;
+    cursor: zoom-out;
+    transition: transform 400ms cubic-bezier(0.4, 0, 0, 1);
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .zoom-overlay,
+    img.is-zoomed {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const MARGIN = 32;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+  let open: { img: HTMLImageElement; trigger: HTMLButtonElement; overlay: HTMLDivElement; scrollY: number } | null = null;
+
+  function zoomIn(img: HTMLImageElement, trigger: HTMLButtonElement) {
+    const rect = img.getBoundingClientRect();
+    const fullWidth = Number(img.dataset.fullWidth) || img.naturalWidth || rect.width;
+    const scale = Math.max(
+      1,
+      Math.min(
+        (window.innerWidth - MARGIN * 2) / rect.width,
+        (window.innerHeight - MARGIN * 2) / rect.height,
+        fullWidth / rect.width,
+      ),
+    );
+    const dx = window.innerWidth / 2 - (rect.left + rect.width / 2);
+    const dy = window.innerHeight / 2 - (rect.top + rect.height / 2);
+
+    // Let the browser fetch a larger candidate from the srcset.
+    if (img.sizes) img.sizes = `${Math.ceil(rect.width * scale)}px`;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'zoom-overlay';
+    overlay.addEventListener('click', zoomOut);
+    document.body.append(overlay);
+
+    img.classList.add('is-zoomed');
+    trigger.setAttribute('aria-expanded', 'true');
+    // Next frame, so both transitions start from their resting state.
+    requestAnimationFrame(() => {
+      overlay.classList.add('is-open');
+      img.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scale})`;
+    });
+    open = { img, trigger, overlay, scrollY: window.scrollY };
+  }
+
+  function zoomOut() {
+    if (!open) return;
+    const { img, trigger, overlay } = open;
+    open = null;
+    overlay.classList.remove('is-open');
+    img.style.transform = '';
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const done = () => {
+      img.classList.remove('is-zoomed');
+      overlay.remove();
+    };
+    if (reduceMotion.matches) done();
+    else img.addEventListener('transitionend', done, { once: true });
+  }
+
+  for (const img of document.querySelectorAll<HTMLImageElement>('img[data-zoom]')) {
+    // Wrap each image in a real button so it works from the keyboard too.
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'zoom-trigger';
+    trigger.setAttribute('aria-label', `Enlarge: ${img.alt}`);
+    trigger.setAttribute('aria-expanded', 'false');
+    img.replaceWith(trigger);
+    trigger.append(img);
+    trigger.addEventListener('click', () => (open ? zoomOut() : zoomIn(img, trigger)));
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') zoomOut();
+  });
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (open && Math.abs(window.scrollY - open.scrollY) > 40) zoomOut();
+    },
+    { passive: true },
+  );
+  window.addEventListener('resize', zoomOut);
+</script>
