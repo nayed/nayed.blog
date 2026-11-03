@@ -1,9 +1,6 @@
 <script>
   // COPY buttons on wire-copy code blocks (added by the wire-copy-frame transformer).
-  const live = document.createElement('p');
-  live.className = 'visually-hidden';
-  live.setAttribute('aria-live', 'polite');
-  document.body.append(live);
+  import { announce } from '../../lib/announce';
 
   document.addEventListener('click', async (event) => {
     const button = (event.target as Element).closest<HTMLButtonElement>('[data-copy]');
@@ -12,7 +9,7 @@
     if (!code) return;
     const done = (label: string) => {
       button.textContent = label;
-      live.textContent = label === 'Copied' ? 'Code copied to the clipboard.' : 'Could not copy the code.';
+      announce(label === 'Copied' ? 'Code copied to the clipboard.' : 'Could not copy the code.');
       setTimeout(() => (button.textContent = 'Copy'), 2000);
     };
     try {

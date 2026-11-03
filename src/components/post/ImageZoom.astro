@@ -117,17 +117,23 @@
     }
   }
 
-  for (const img of document.querySelectorAll<HTMLImageElement>('img[data-zoom]')) {
-    // Wrap each image in a real button so it works from the keyboard too.
-    const trigger = document.createElement('button');
-    trigger.type = 'button';
-    trigger.className = 'zoom-trigger';
-    trigger.setAttribute('aria-label', `Enlarge: ${img.alt}`);
-    trigger.setAttribute('aria-expanded', 'false');
-    img.replaceWith(trigger);
-    trigger.append(img);
-    trigger.addEventListener('click', () => (open ? zoomOut() : zoomIn(img, trigger)));
-  }
+  // Runs on every page the router swaps in, not only the first.
+  document.addEventListener('astro:page-load', () => {
+    for (const img of document.querySelectorAll<HTMLImageElement>('img[data-zoom]')) {
+      if (img.parentElement?.classList.contains('zoom-trigger')) continue;
+      // Wrap each image in a real button so it works from the keyboard too.
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'zoom-trigger';
+      trigger.setAttribute('aria-label', `Enlarge: ${img.alt}`);
+      trigger.setAttribute('aria-expanded', 'false');
+      img.replaceWith(trigger);
+      trigger.append(img);
+      trigger.addEventListener('click', () => (open ? zoomOut() : zoomIn(img, trigger)));
+    }
+  });
+  // Leaving the page drops the overlay with the old body; forget it.
+  document.addEventListener('astro:before-swap', () => (open = null));
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') zoomOut();

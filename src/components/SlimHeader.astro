@@ -10,7 +10,7 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<header class="slim-header">
+<header class="slim-header" transition:name="slim-header">
   <a class="masthead" href="/">The Nayed Blog</a>
   <nav class="label" aria-label="Paper">
     <a href="/">← Front Page</a>
@@ -28,8 +28,6 @@ const { page } = Astro.props;
     gap: 10px 24px;
     padding-bottom: 10px;
     border-bottom: 4px double var(--ink);
-    /* Held in place while the page beneath it changes. */
-    view-transition-name: slim-header;
   }
   .masthead {
     font-family: var(--font-masthead);

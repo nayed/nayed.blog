@@ -20,3 +20,14 @@ const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
     document.querySelector('meta[name="theme-color"]').content = papers[edition];
   })();
 </script>
+
+<script>
+  // The router swaps in the next page's <html> attributes and head, which
+  // know nothing of the reader's edition; carry it over before they land.
+  document.addEventListener('astro:before-swap', ({ newDocument }) => {
+    const edition = document.documentElement.dataset.edition;
+    if (edition) newDocument.documentElement.dataset.edition = edition;
+    const paper = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')!.content;
+    newDocument.querySelector<HTMLMetaElement>('meta[name="theme-color"]')!.content = paper;
+  });
+</script>

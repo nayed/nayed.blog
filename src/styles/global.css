@@ -95,23 +95,9 @@ body {
     color 400ms var(--ease);
 }
 
-/* Crossfade between pages where the browser supports it; elsewhere pages load as before. */
-@view-transition {
-  navigation: auto;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 250ms;
-  animation-timing-function: var(--ease);
-}
-
 @media (prefers-reduced-motion: reduce) {
   body {
     transition: none;
-  }
-  @view-transition {
-    navigation: none;
   }
 }
 
