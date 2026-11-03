@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SlimHeader from '../components/SlimHeader.astro';
+import Cartoon from '../components/Cartoon.astro';
+import Footer from '../components/Footer.astro';
+import spike from '../assets/cartoons/404-spike.svg';
+import { getIssues, postUrl } from '../lib/posts';
+import { fullDate, shortDate } from '../lib/words';
+import '../styles/prose.css';
+
+const issues = await getIssues();
+const latest = issues.slice(0, 5);
+// Filed from wherever the latest story was.
+const city = issues[0]?.post.data.city;
+---
+
+<BaseLayout title="Stop the Presses! Page Not Found" canonical={false}>
+  <meta slot="head" name="robots" content="noindex" />
+  <SlimHeader page="Special Edition" />
+
+  <div class="strip label dateline">
+    <span>Special Edition — No. 404</span>
+    <span>{city && `${city}, `}<time data-today>{fullDate(new Date())}</time></span>
+    <span>One Story · Price: Free</span>
+  </div>
+
+  <main>
+    <div class="head">
+      <h1 class="headline">Stop the Presses!</h1>
+      <div class="spiked" aria-hidden="true">Spiked</div>
+    </div>
+    <hr class="short-rule" style="--w: 160px; margin: 20px auto" />
+    <p class="deck">Page Not Found; Editor Spikes Story Before It Reaches Print</p>
+    <hr class="short-rule" style="--w: 60px" />
+    <p class="subdeck">
+      Staff Search Composing Room, Archive and Waste-Paper Basket to No Avail; Reader Advised to Check His Spelling
+    </p>
+
+    <div class="body">
+      <Cartoon
+        class="spike"
+        cartoon={{
+          image: spike,
+          caption: '“Not fit to print,” declared the editor, and reached for the spike.',
+          alt: 'A newsroom spike, its tall nail stacked with impaled pages, the top one stamped 404',
+        }}
+      />
+
+      <article class="story">
+        <p class="strip label">By the Night Editor</p>
+        <div class="prose columns">
+          <p>
+            {city && <b class="city">{city.toUpperCase()} —</b>} The page you asked for, filed under <code
+              data-missing-path>this address</code
+            >, could not be found anywhere in these offices.
+          </p>
+          <p>
+            Staff searched the composing room, the archive and the editor’s waste-paper basket. The story may have been
+            moved, renamed, or simply never printed at all.
+          </p>
+          <p>
+            The editor, reached for comment, adjusted his monocle and said only: “Check the spelling, then try the
+            front page.”
+          </p>
+        </div>
+
+        <nav class="where frame" aria-labelledby="where-title">
+          <h2 id="where-title" class="where-title">Where to Go From Here</h2>
+          <ul>
+            <li>
+              <a href="/"><span>Today’s Front Page</span><span class="leader" aria-hidden="true"></span><span>→</span></a>
+            </li>
+            <li>
+              <a href="/archive/">
+                <span>The Archive, Every Story Ever Printed</span><span class="leader" aria-hidden="true"></span><span
+                  >→</span
+                >
+              </a>
+            </li>
+          </ul>
+          <p class="label divider">Or One of the Latest Stories</p>
+          <ul>
+            {
+              latest.map(({ post }) => (
+                <li>
+                  <a href={postUrl(post)}>
+                    <span>{post.data.title}</span>
+                    <span class="leader" aria-hidden="true" />
+                    <span class="date">{shortDate(post.data.date)}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  // The router can bring a reader here from an internal link, so fill in on every page load.
+  document.addEventListener('astro:page-load', () => {
+    const missing = document.querySelector('[data-missing-path]');
+    if (missing) {
+      let path = location.pathname;
+      try {
+        path = decodeURI(path);
+      } catch {
+        // Malformed escapes: show the address as typed.
+      }
+      // The reader typed this; it goes in as text only, shortened in the middle if huge.
+      missing.textContent = path.length > 80 ? `${path.slice(0, 40)}…${path.slice(-39)}` : path;
+    }
+    const today = document.querySelector('[data-today]');
+    if (today) {
+      today.textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      });
+    }
+  });
+</script>
+
+<style>
+  .dateline {
+    margin-top: 14px;
+    border-top: 0;
+    letter-spacing: 0.14em;
+  }
+
+  main {
+    --spike: var(--code-accent);
+  }
+
+  .head {
+    position: relative;
+    margin-top: 34px;
+    text-align: center;
+  }
+  .headline {
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+  .spiked {
+    position: absolute;
+    right: 4%;
+    top: -18px;
+    padding: 4px 16px 2px;
+    border: 5px double var(--spike);
+    color: var(--spike);
+    transform: rotate(-11deg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(18px, 2.6vw, 30px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.88;
+  }
+
+  .deck {
+    max-width: 40ch;
+    text-align: center;
+    font-size: clamp(17px, 2vw, 21px);
+  }
+  .subdeck {
+    max-width: 52ch;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .body {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px 40px;
+  }
+  .body :global(.spike) {
+    flex: 1 1 340px;
+    max-width: 440px;
+    --caption-size: 15px;
+  }
+  .body :global(.spike .panel) {
+    padding: 18px 14px 0;
+  }
+  .story {
+    flex: 999 1 420px;
+    min-width: 0;
+  }
+  .story > .strip {
+    margin: 0 0 18px;
+  }
+
+  .columns {
+    column-width: 17rem;
+  }
+  /* A dateline opens this story, not a drop cap. */
+  .columns > p:first-child::first-letter {
+    float: none;
+    font: inherit;
+    padding: 0;
+  }
+  .city {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+  }
+  [data-missing-path] {
+    overflow-wrap: anywhere;
+  }
+
+  .where {
+    margin-top: 26px;
+    padding: 16px 20px;
+    font-family: var(--font-display);
+  }
+  .where-title {
+    margin: 0 0 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .where ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .where a {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-height: 44px;
+    padding-top: 10px;
+    font-size: 16px;
+  }
+  .leader {
+    flex: 1;
+    min-width: 1.5em;
+    border-bottom: 1px dotted var(--ink);
+    transform: translateY(-4px);
+  }
+  .date {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .divider {
+    margin: 10px 0 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .dateline {
+      flex-direction: column;
+      align-items: center;
+    }
+    /* Lift the stamp clear of the headline's first line, which fills the width here. */
+    .head {
+      margin-top: 52px;
+    }
+    .spiked {
+      right: 0;
+      top: -42px;
+    }
+  }
+</style>
