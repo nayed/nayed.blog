@@ -4,17 +4,24 @@ import { EDITIONS } from '../../lib/editions';
 const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
 ---
 
-<!-- Runs before first paint so the wrong edition never flashes. -->
+<!--
+  Runs before first paint so the wrong edition never flashes.
+  A saved choice is applied here; otherwise the edition is "auto" and CSS
+  follows prefers-color-scheme. (Reading matchMedia here once is unreliable:
+  Chrome incognito can report dark on a window's first page load.)
+-->
 <script is:inline define:vars={{ papers }}>
   (function () {
     var edition;
     try {
       edition = localStorage.getItem('edition');
     } catch (e) {}
-    if (!papers[edition]) {
-      edition = matchMedia('(prefers-color-scheme: dark)').matches ? 'evening' : 'morning';
-    }
+    if (!papers[edition]) edition = 'auto';
     document.documentElement.dataset.edition = edition;
-    document.querySelector('meta[name="theme-color"]').content = papers[edition];
+    if (edition !== 'auto') {
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+        meta.content = papers[edition];
+      });
+    }
   })();
 </script>

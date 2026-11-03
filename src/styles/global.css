@@ -52,9 +52,13 @@
   color-scheme: light;
 }
 
-/* Without the head script (JS off), still honour a dark system preference. */
+/*
+ * No choice saved ("auto"), or no script at all: follow the system setting.
+ * Left to CSS rather than read once in JS, so it stays right if the
+ * preference settles late (Chrome incognito) or changes while reading.
+ */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-edition]) {
+  :is(:root:not([data-edition]), :root[data-edition='auto']) {
     --paper: #1a1815;
     --ink: #e9e1cf;
     --ink-rgb: 233 225 207;
@@ -289,18 +293,18 @@ button {
   display: none;
 }
 
-/* No script: fall back to Morning (or Evening in dark mode). */
-:root:not([data-edition]) [data-for-edition] {
+/* Auto or no script: Morning, or Evening when the system is dark. */
+:is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition] {
   display: none;
 }
-:root:not([data-edition]) [data-for-edition='morning'] {
+:is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='morning'] {
   display: revert;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-edition]) [data-for-edition='morning'] {
+  :is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='morning'] {
     display: none;
   }
-  :root:not([data-edition]) [data-for-edition='evening'] {
+  :is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='evening'] {
     display: revert;
   }
 }
