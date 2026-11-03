@@ -52,24 +52,6 @@
   color-scheme: light;
 }
 
-/*
- * No choice saved ("auto"), or no script at all: follow the system setting.
- * Left to CSS rather than read once in JS, so it stays right if the
- * preference settles late (Chrome incognito) or changes while reading.
- */
-@media (prefers-color-scheme: dark) {
-  :is(:root:not([data-edition]), :root[data-edition='auto']) {
-    --paper: #1a1815;
-    --ink: #e9e1cf;
-    --ink-rgb: 233 225 207;
-    --code-faded: #a99f8c;
-    --code-accent: #e58a7c;
-    --focus: #e58a7c;
-    --code-tint-alpha: 0.06;
-    color-scheme: dark;
-  }
-}
-
 :root {
   --rule: rgb(var(--ink-rgb) / 0.35);
   --dot: rgb(var(--ink-rgb) / 0.42);
@@ -293,20 +275,12 @@ button {
   display: none;
 }
 
-/* Auto or no script: Morning, or Evening when the system is dark. */
-:is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition] {
+/* No script: the Morning Edition. */
+:root:not([data-edition]) [data-for-edition] {
   display: none;
 }
-:is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='morning'] {
+:root:not([data-edition]) [data-for-edition='morning'] {
   display: revert;
-}
-@media (prefers-color-scheme: dark) {
-  :is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='morning'] {
-    display: none;
-  }
-  :is(:root:not([data-edition]), :root[data-edition='auto']) [data-for-edition='evening'] {
-    display: revert;
-  }
 }
 
 /* The edition button is useless without script. */

@@ -49,19 +49,10 @@ const { class: className } = Astro.props;
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-edition-button]')) {
     button.addEventListener('click', () => {
       const root = document.documentElement;
-      // "auto" shows Morning or Evening depending on the system setting.
-      const current =
-        root.dataset.edition === 'auto'
-          ? matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'evening'
-            : 'morning'
-          : root.dataset.edition;
-      const i = EDITIONS.findIndex((e) => e.id === current);
+      const i = EDITIONS.findIndex((e) => e.id === root.dataset.edition);
       const next = EDITIONS[(i + 1) % EDITIONS.length]!;
       root.dataset.edition = next.id;
-      for (const meta of document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')) {
-        meta.content = next.paper;
-      }
+      document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')!.content = next.paper;
       try {
         localStorage.setItem('edition', next.id);
       } catch {

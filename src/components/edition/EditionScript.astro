@@ -6,9 +6,8 @@ const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
 
 <!--
   Runs before first paint so the wrong edition never flashes.
-  A saved choice is applied here; otherwise the edition is "auto" and CSS
-  follows prefers-color-scheme. (Reading matchMedia here once is unreliable:
-  Chrome incognito can report dark on a window's first page load.)
+  Every reader starts on the Morning Edition, whatever their system theme;
+  the edition they pick with the button is saved and applied here.
 -->
 <script is:inline define:vars={{ papers }}>
   (function () {
@@ -16,12 +15,8 @@ const papers = Object.fromEntries(EDITIONS.map((e) => [e.id, e.paper]));
     try {
       edition = localStorage.getItem('edition');
     } catch (e) {}
-    if (!papers[edition]) edition = 'auto';
+    if (!papers[edition]) edition = 'morning';
     document.documentElement.dataset.edition = edition;
-    if (edition !== 'auto') {
-      document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
-        meta.content = papers[edition];
-      });
-    }
+    document.querySelector('meta[name="theme-color"]').content = papers[edition];
   })();
 </script>

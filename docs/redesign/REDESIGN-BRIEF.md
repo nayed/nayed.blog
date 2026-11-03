@@ -77,7 +77,7 @@ Three editions. The reader cycles through them with a button. **No green "Sporti
 Derived: rules/column rules = ink at 35% alpha; halftone dots = ink at ~42% alpha.
 
 Behaviour:
-- Default edition: Morning, or Evening when `prefers-color-scheme: dark`.
+- Default edition: Morning, for every first-time reader regardless of system theme (changed 2026-11-03, see Answered questions §8).
 - The reader's choice is saved in `localStorage` and applied by an **inline script in `<head>`** before first paint, so the wrong colours never flash.
 - Button label: "Next: the {Edition name}". The masthead box shows the current edition name.
 
@@ -187,3 +187,4 @@ Further decisions taken with the author:
 5. **Editorial dressing:** image captions and "Exhibit" labels, subheads in place of the `-` separators in "Should developers design", and the French proverb as a centred blockquote are all in. The demo code block from the mockup is not (it isn't the author's text).
 6. **Analytics:** dropped (the Universal Analytics property is dead). No tracking scripts.
 7. **Separators:** remaining `---` rules in posts render as the star ornament.
+8. **Default edition:** always the Morning Edition on a first visit; the system light/dark setting is ignored. Readers choose other editions with the button, and that choice is remembered.
